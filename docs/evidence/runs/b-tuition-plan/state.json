@@ -1,0 +1,611 @@
+{
+  "after": {
+    "accounts": {
+      "usr_priya": [
+        {
+          "balance_minor": 50000,
+          "currency": "AUD",
+          "id": "acc_priya_aud"
+        },
+        {
+          "balance_minor": 150000,
+          "currency": "AUD",
+          "id": "acc_priya_aud_savings"
+        },
+        {
+          "balance_minor": 62000000,
+          "currency": "NPR",
+          "id": "acc_priya_npr"
+        }
+      ],
+      "usr_ramesh": [
+        {
+          "balance_minor": 4500000,
+          "currency": "NPR",
+          "id": "acc_ramesh_npr"
+        },
+        {
+          "balance_minor": 380000,
+          "currency": "QAR",
+          "id": "acc_ramesh_qar"
+        }
+      ]
+    },
+    "payees": {
+      "usr_priya": [
+        {
+          "account_no_masked": "****0928",
+          "added_via": "seed",
+          "display_name": "Mr. Chen",
+          "id": "pay_priya_landlord",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****5592",
+          "added_via": "seed",
+          "display_name": "Baba",
+          "id": "pay_priya_parents",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****2125",
+          "added_via": "seed",
+          "display_name": "Harbourview University",
+          "id": "pay_priya_university",
+          "provenance": "system",
+          "verified": true
+        }
+      ],
+      "usr_ramesh": [
+        {
+          "account_no_masked": "****4212",
+          "added_via": "seed",
+          "display_name": "Ama",
+          "id": "pay_ramesh_ama",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****6001",
+          "added_via": "seed",
+          "display_name": "Al Noor Rooms",
+          "id": "pay_ramesh_landlord",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****6556",
+          "added_via": "seed",
+          "display_name": "DohaMobile",
+          "id": "pay_ramesh_mobile",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****3560",
+          "added_via": "seed",
+          "display_name": "Suresh",
+          "id": "pay_ramesh_suresh",
+          "provenance": "system",
+          "verified": true
+        }
+      ]
+    },
+    "safety_locks": {
+      "usr_priya": [],
+      "usr_ramesh": []
+    },
+    "transfers": {
+      "usr_priya": [
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260505",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260605",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260705",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 650000,
+          "currency": "AUD",
+          "id": "tr_priya_tuition_university_20260720",
+          "payee_id": "pay_priya_university",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260805",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 20000,
+          "currency": "AUD",
+          "id": "tr_priya_remittance_parents_20260815",
+          "payee_id": "pay_priya_parents",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260905",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20261005",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 370000,
+          "currency": "AUD",
+          "id": "tr_00236475c8005037457d",
+          "payee_id": "pay_priya_university",
+          "status": "executed"
+        }
+      ],
+      "usr_ramesh": [
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260420",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 90036,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260428",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260501",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260520",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 82845,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260528",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260601",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 29391,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_suresh_20260612",
+          "payee_id": "pay_ramesh_suresh",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260620",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 92250,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260628",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260701",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260720",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 88830,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260728",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260801",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260820",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 93942,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260828",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260901",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 28830,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_suresh_20260912",
+          "payee_id": "pay_ramesh_suresh",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260920",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 86337,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260928",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20261001",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        }
+      ]
+    }
+  },
+  "before": {
+    "accounts": {
+      "usr_priya": [
+        {
+          "balance_minor": 420000,
+          "currency": "AUD",
+          "id": "acc_priya_aud"
+        },
+        {
+          "balance_minor": 150000,
+          "currency": "AUD",
+          "id": "acc_priya_aud_savings"
+        },
+        {
+          "balance_minor": 62000000,
+          "currency": "NPR",
+          "id": "acc_priya_npr"
+        }
+      ],
+      "usr_ramesh": [
+        {
+          "balance_minor": 4500000,
+          "currency": "NPR",
+          "id": "acc_ramesh_npr"
+        },
+        {
+          "balance_minor": 380000,
+          "currency": "QAR",
+          "id": "acc_ramesh_qar"
+        }
+      ]
+    },
+    "payees": {
+      "usr_priya": [
+        {
+          "account_no_masked": "****0928",
+          "added_via": "seed",
+          "display_name": "Mr. Chen",
+          "id": "pay_priya_landlord",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****5592",
+          "added_via": "seed",
+          "display_name": "Baba",
+          "id": "pay_priya_parents",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****2125",
+          "added_via": "seed",
+          "display_name": "Harbourview University",
+          "id": "pay_priya_university",
+          "provenance": "system",
+          "verified": true
+        }
+      ],
+      "usr_ramesh": [
+        {
+          "account_no_masked": "****4212",
+          "added_via": "seed",
+          "display_name": "Ama",
+          "id": "pay_ramesh_ama",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****6001",
+          "added_via": "seed",
+          "display_name": "Al Noor Rooms",
+          "id": "pay_ramesh_landlord",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****6556",
+          "added_via": "seed",
+          "display_name": "DohaMobile",
+          "id": "pay_ramesh_mobile",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****3560",
+          "added_via": "seed",
+          "display_name": "Suresh",
+          "id": "pay_ramesh_suresh",
+          "provenance": "system",
+          "verified": true
+        }
+      ]
+    },
+    "safety_locks": {
+      "usr_priya": [],
+      "usr_ramesh": []
+    },
+    "transfers": {
+      "usr_priya": [
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260505",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260605",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260705",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 650000,
+          "currency": "AUD",
+          "id": "tr_priya_tuition_university_20260720",
+          "payee_id": "pay_priya_university",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260805",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 20000,
+          "currency": "AUD",
+          "id": "tr_priya_remittance_parents_20260815",
+          "payee_id": "pay_priya_parents",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260905",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20261005",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        }
+      ],
+      "usr_ramesh": [
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260420",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 90036,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260428",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260501",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260520",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 82845,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260528",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260601",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 29391,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_suresh_20260612",
+          "payee_id": "pay_ramesh_suresh",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260620",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 92250,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260628",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260701",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260720",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 88830,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260728",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260801",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260820",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 93942,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260828",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20260901",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 28830,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_suresh_20260912",
+          "payee_id": "pay_ramesh_suresh",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 9900,
+          "currency": "QAR",
+          "id": "tr_ramesh_bill_mobile_20260920",
+          "payee_id": "pay_ramesh_mobile",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 86337,
+          "currency": "QAR",
+          "id": "tr_ramesh_remittance_ama_20260928",
+          "payee_id": "pay_ramesh_ama",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 80000,
+          "currency": "QAR",
+          "id": "tr_ramesh_rent_landlord_20261001",
+          "payee_id": "pay_ramesh_landlord",
+          "status": "executed"
+        }
+      ]
+    }
+  }
+}

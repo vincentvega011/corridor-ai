@@ -1,0 +1,107 @@
+{"id": "c001", "text": "Send 20000 rupees to my mother", "lang_style": "en", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "currency": "NPR", "payee_ref": "mother"}, "status": "moved"}
+{"id": "c002", "text": "Please transfer 500 AUD to Priya before 31 Oct", "lang_style": "en", "persona": "priya", "intent": "send_money", "slots": {"amount": 50000, "currency": "AUD", "payee_ref": "priya", "deadline": "2026-10-31"}, "status": "moved"}
+{"id": "c003", "text": "pay my university tuition invoice", "lang_style": "en", "persona": "priya", "intent": "pay_invoice", "slots": {"payee_ref": "university"}, "status": "moved"}
+{"id": "c004", "text": "how much money do I have", "lang_style": "en", "persona": "priya", "intent": "check_balance", "slots": {}, "status": "moved"}
+{"id": "c005", "text": "what's my AUD balance", "lang_style": "en", "persona": "priya", "intent": "check_balance", "slots": {"currency": "AUD"}, "status": "moved"}
+{"id": "c006", "text": "convert 1000 AUD to NPR", "lang_style": "en", "persona": "priya", "intent": "convert_currency", "slots": {"amount": 100000}, "status": "moved"}
+{"id": "c007", "text": "what is the cheapest way to send 5000 AUD to Nepal", "lang_style": "en", "persona": "priya", "intent": "compare_routes", "slots": {"amount": 500000, "currency": "AUD"}, "status": "moved"}
+{"id": "c008", "text": "send 200 QAR to Suresh every month", "lang_style": "en", "persona": "ramesh", "intent": "schedule_transfer", "slots": {"amount": 20000, "currency": "QAR", "payee_ref": "suresh", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c009", "text": "cancel my monthly transfer to mom", "lang_style": "en", "persona": "ramesh", "intent": "cancel_schedule", "slots": {"payee_ref": "mother", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c010", "text": "set a monthly budget of 3000 AUD", "lang_style": "en", "persona": "priya", "intent": "set_budget", "slots": {"amount": 300000, "currency": "AUD", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c011", "text": "how much did I spend this month", "lang_style": "en", "persona": "priya", "intent": "spending_summary", "slots": {}, "status": "moved"}
+{"id": "c012", "text": "add a new payee", "lang_style": "en", "persona": "priya", "intent": "add_payee", "slots": {}, "status": "moved"}
+{"id": "c013", "text": "issue my credit passport", "lang_style": "en", "persona": "priya", "intent": "credit_passport_issue", "slots": {}, "status": "moved"}
+{"id": "c014", "text": "share my credit passport with the landlord", "lang_style": "en", "persona": "priya", "intent": "credit_passport_share", "slots": {"payee_ref": "landlord"}, "status": "moved"}
+{"id": "c015", "text": "why was my transfer blocked", "lang_style": "en", "persona": "ramesh", "intent": "explain_decision", "slots": {}, "status": "moved"}
+{"id": "c016", "text": "help", "lang_style": "en", "persona": "ramesh", "intent": "help", "slots": {}, "status": "moved"}
+{"id": "c017", "text": "send 1.5 lakh to dad by next friday", "lang_style": "en", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 15000000, "payee_ref": "father", "deadline": "2026-10-23"}, "status": "moved"}
+{"id": "c018", "text": "send 100 dollars to Dai", "lang_style": "en", "persona": "priya", "intent": "send_money", "slots": {"amount": 10000, "payee_ref": "elder_brother"}, "status": "moved"}
+{"id": "c019", "text": "pay 6500 AUD to the university by 2026-10-31", "lang_style": "en", "persona": "priya", "intent": "pay_invoice", "slots": {"amount": 650000, "currency": "AUD", "payee_ref": "university", "deadline": "2026-10-31"}, "status": "moved"}
+{"id": "c020", "text": "send 30k to Suresh only if rent is covered", "lang_style": "en", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 3000000, "payee_ref": "suresh", "condition": "rent"}, "status": "moved"}
+{"id": "c021", "text": "what is the weather in Doha", "lang_style": "en", "persona": "ramesh", "intent": "other", "slots": {}, "status": "moved"}
+{"id": "c022", "text": "send money", "lang_style": "en", "persona": "ramesh", "intent": "send_money", "slots": {}, "status": "moved"}
+{"id": "c023", "text": "transfer 2 lakh rupees to my brother tomorrow", "lang_style": "en", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 20000000, "currency": "NPR", "payee_ref": "elder_brother", "deadline": "2026-10-11"}, "status": "moved"}
+{"id": "c024", "text": "I want to pay my landlord 1800 AUD", "lang_style": "en", "persona": "priya", "intent": "send_money", "slots": {"amount": 180000, "currency": "AUD", "payee_ref": "landlord"}, "status": "moved"}
+{"id": "c025", "text": "send twenty thousand rupees to my father", "lang_style": "en", "persona": "anil", "intent": "send_money", "slots": {"amount": 2000000, "currency": "NPR", "payee_ref": "father"}, "status": "moved"}
+{"id": "c026", "text": "आमालाई २० हजार रुपैयाँ पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "currency": "NPR", "payee_ref": "mother"}, "status": "moved"}
+{"id": "c027", "text": "भोलि दाइलाई ५० हजार पठाइदेउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 5000000, "payee_ref": "elder_brother", "deadline": "2026-10-11"}, "status": "moved"}
+{"id": "c028", "text": "मेरो ब्यालेन्स कति छ", "lang_style": "ne", "persona": "ramesh", "intent": "check_balance", "slots": {}, "status": "moved"}
+{"id": "c029", "text": "दशैँ भन्दा अगाडि आमालाई ३० हजार पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 3000000, "payee_ref": "mother", "deadline": "2026-10-21"}, "status": "moved"}
+{"id": "c030", "text": "हरेक महिना बुवालाई १५ हजार पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "schedule_transfer", "slots": {"amount": 1500000, "payee_ref": "father", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c031", "text": "विश्वविद्यालयको शुल्क तिर्नु छ", "lang_style": "ne", "persona": "anil", "intent": "pay_invoice", "slots": {"payee_ref": "university"}, "status": "moved"}
+{"id": "c032", "text": "सबैभन्दा सस्तो तरिका कुन हो ५ हजार पठाउन", "lang_style": "ne", "persona": "ramesh", "intent": "compare_routes", "slots": {"amount": 500000}, "status": "moved"}
+{"id": "c033", "text": "५०० रियाल दिदीलाई पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 50000, "currency": "QAR", "payee_ref": "elder_sister"}, "status": "moved"}
+{"id": "c034", "text": "२० हजार रुपैयाँ आमालाई भोलि पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "currency": "NPR", "payee_ref": "mother", "deadline": "2026-10-11"}, "status": "moved"}
+{"id": "c035", "text": "भाडा पुग्यो भने मात्र आमालाई १० हजार पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1000000, "payee_ref": "mother", "condition": "rent"}, "status": "moved"}
+{"id": "c036", "text": "मलाई क्रेडिट प्यासपोर्ट बनाउ", "lang_style": "ne", "persona": "priya", "intent": "credit_passport_issue", "slots": {}, "status": "moved"}
+{"id": "c037", "text": "यो महिनाको खर्च कति भयो", "lang_style": "ne", "persona": "priya", "intent": "spending_summary", "slots": {}, "status": "moved"}
+{"id": "c038", "text": "नयाँ पेयी थप", "lang_style": "ne", "persona": "priya", "intent": "add_payee", "slots": {}, "status": "moved"}
+{"id": "c039", "text": "किन ब्लक भयो", "lang_style": "ne", "persona": "ramesh", "intent": "explain_decision", "slots": {}, "status": "moved"}
+{"id": "c040", "text": "मद्दत", "lang_style": "ne", "persona": "ramesh", "intent": "help", "slots": {}, "status": "moved"}
+{"id": "c041", "text": "१ लाख रुपैयाँ दाइलाई पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 10000000, "currency": "NPR", "payee_ref": "elder_brother"}, "status": "moved"}
+{"id": "c042", "text": "५०० युआन भाइलाई पठाउ", "lang_style": "ne", "persona": "anil", "intent": "send_money", "slots": {"amount": 50000, "currency": "CNY", "payee_ref": "younger_brother"}, "status": "moved"}
+{"id": "c043", "text": "आमालाई पैसा पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"payee_ref": "mother"}, "status": "moved"}
+{"id": "c044", "text": "२५ हजार तिहार भन्दा अगाडि पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2500000, "deadline": "2026-11-08"}, "status": "moved"}
+{"id": "c045", "text": "आज १० हजार पठाउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1000000, "deadline": "2026-10-10"}, "status": "moved"}
+{"id": "c046", "text": "पचास हजार रुपैयाँ बुवालाई पठाइदेउ", "lang_style": "ne", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 5000000, "currency": "NPR", "payee_ref": "father"}, "status": "moved"}
+{"id": "c047", "text": "Ama lai 20 hajar pathaideu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c048", "text": "Ama lai 20k pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c049", "text": "mero balance kati chha", "lang_style": "ne_latn", "persona": "ramesh", "intent": "check_balance", "slots": {}, "status": "moved"}
+{"id": "c050", "text": "dashain bhanda agadi Suresh lai 30 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 3000000, "payee_ref": "suresh", "deadline": "2026-10-21"}, "status": "moved"}
+{"id": "c051", "text": "har mahina Ama lai 15 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "schedule_transfer", "slots": {"amount": 1500000, "payee_ref": "mother", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c052", "text": "rent pugyo bhane matra Ama lai 10 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1000000, "payee_ref": "mother", "condition": "rent"}, "status": "moved"}
+{"id": "c053", "text": "bholi dai lai 5 hajar rupiya pathaideu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 500000, "currency": "NPR", "payee_ref": "elder_brother", "deadline": "2026-10-11"}, "status": "moved"}
+{"id": "c054", "text": "500 riyal Suresh lai pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 50000, "currency": "QAR", "payee_ref": "suresh"}, "status": "moved"}
+{"id": "c055", "text": "bis hajar rupiya buwa lai pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "currency": "NPR", "payee_ref": "father"}, "status": "moved"}
+{"id": "c056", "text": "1.5 lakh Ama lai pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 15000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c057", "text": "ek lakh pachas hajar dai lai pathaideu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 15000000, "payee_ref": "elder_brother"}, "status": "moved"}
+{"id": "c058", "text": "university ko fee tirnu parne chha", "lang_style": "ne_latn", "persona": "anil", "intent": "pay_invoice", "slots": {"payee_ref": "university"}, "status": "moved"}
+{"id": "c059", "text": "tuition fee tirna 6500 AUD pathau", "lang_style": "ne_latn", "persona": "priya", "intent": "pay_invoice", "slots": {"amount": 650000, "currency": "AUD"}, "status": "moved"}
+{"id": "c060", "text": "kun sasto chha 5000 AUD pathauna", "lang_style": "ne_latn", "persona": "priya", "intent": "compare_routes", "slots": {"amount": 500000, "currency": "AUD"}, "status": "moved"}
+{"id": "c061", "text": "mero khata ma kati paisa chha", "lang_style": "ne_latn", "persona": "ramesh", "intent": "check_balance", "slots": {}, "status": "moved"}
+{"id": "c062", "text": "AUD ko balance dekhau", "lang_style": "ne_latn", "persona": "priya", "intent": "check_balance", "slots": {"currency": "AUD"}, "status": "moved"}
+{"id": "c063", "text": "1000 AUD lai NPR ma badli deu", "lang_style": "ne_latn", "persona": "priya", "intent": "convert_currency", "slots": {"amount": 100000}, "status": "moved"}
+{"id": "c064", "text": "yo mahina ko kharcha kati bhayo", "lang_style": "ne_latn", "persona": "ramesh", "intent": "spending_summary", "slots": {}, "status": "moved"}
+{"id": "c065", "text": "budget 50 hajar set gardeu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "set_budget", "slots": {"amount": 5000000}, "status": "moved"}
+{"id": "c066", "text": "naya payee thapnu parchha", "lang_style": "ne_latn", "persona": "ramesh", "intent": "add_payee", "slots": {}, "status": "moved"}
+{"id": "c067", "text": "credit passport banaideu", "lang_style": "ne_latn", "persona": "priya", "intent": "credit_passport_issue", "slots": {}, "status": "moved"}
+{"id": "c068", "text": "landlord lai passport share garnu", "lang_style": "ne_latn", "persona": "priya", "intent": "credit_passport_share", "slots": {"payee_ref": "landlord"}, "status": "moved"}
+{"id": "c069", "text": "kina rokiyo mero transfer", "lang_style": "ne_latn", "persona": "ramesh", "intent": "explain_decision", "slots": {}, "status": "moved"}
+{"id": "c070", "text": "maddat chahiyo", "lang_style": "ne_latn", "persona": "ramesh", "intent": "help", "slots": {}, "status": "moved"}
+{"id": "c071", "text": "Ama lai paisa pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"payee_ref": "mother"}, "status": "moved"}
+{"id": "c072", "text": "pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {}, "status": "moved"}
+{"id": "c073", "text": "didi lai 25000 rupiya pathaideu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2500000, "currency": "NPR", "payee_ref": "elder_sister"}, "status": "moved"}
+{"id": "c074", "text": "aaja kaka lai 8 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 800000, "payee_ref": "paternal_uncle", "deadline": "2026-10-10"}, "status": "moved"}
+{"id": "c075", "text": "parsi samma Ama lai 40 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 4000000, "payee_ref": "mother", "deadline": "2026-10-12"}, "status": "moved"}
+{"id": "c076", "text": "tihar bhanda pahile bahini lai 12 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1200000, "payee_ref": "younger_sister", "deadline": "2026-11-08"}, "status": "moved"}
+{"id": "c077", "text": "ghar bhada 25 hajar gharbeti lai pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2500000, "payee_ref": "landlord"}, "status": "moved"}
+{"id": "c078", "text": "pathaideu 5 hajar Suresh lai", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 500000, "payee_ref": "suresh"}, "status": "moved"}
+{"id": "c079", "text": "ama lai 20 hjr pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c080", "text": "Ama lai 20 hajaar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c081", "text": "ama la 20 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c082", "text": "dai lai 3 lakh pathau tara rent pugyo bhane matra", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 30000000, "payee_ref": "elder_brother", "condition": "rent"}, "status": "moved"}
+{"id": "c083", "text": "mahina mahina Ama lai 10 hajar pathaideu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "schedule_transfer", "slots": {"amount": 1000000, "payee_ref": "mother", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c084", "text": "2 hajar ringgit pathau Suresh lai", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 200000, "currency": "MYR", "payee_ref": "suresh"}, "status": "moved"}
+{"id": "c085", "text": "500 dollar pathau dai lai", "lang_style": "ne_latn", "persona": "priya", "intent": "send_money", "slots": {"amount": 50000, "payee_ref": "elder_brother"}, "status": "moved"}
+{"id": "c086", "text": "mero schedule cancel gardeu", "lang_style": "ne_latn", "persona": "ramesh", "intent": "cancel_schedule", "slots": {}, "status": "moved"}
+{"id": "c087", "text": "har hapta 2000 rupiya Ama lai pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "schedule_transfer", "slots": {"amount": 200000, "currency": "NPR", "payee_ref": "mother", "recurrence": "weekly"}, "status": "moved"}
+{"id": "c088", "text": "31 oct samma 6500 AUD university lai tirnu", "lang_style": "ne_latn", "persona": "priya", "intent": "pay_invoice", "slots": {"amount": 650000, "currency": "AUD", "payee_ref": "university", "deadline": "2026-10-31"}, "status": "moved"}
+{"id": "c089", "text": "bhai lai 100 USD pathau", "lang_style": "ne_latn", "persona": "anil", "intent": "send_money", "slots": {"amount": 10000, "currency": "USD", "payee_ref": "younger_brother"}, "status": "moved"}
+{"id": "c090", "text": "naya barsa bhanda agadi Ama lai 10 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1000000, "payee_ref": "mother", "deadline": "2027-04-14"}, "status": "moved"}
+{"id": "c091", "text": "chhath ko lagi 5 hajar Ama lai pathau", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 500000, "payee_ref": "mother", "deadline": "2026-11-15"}, "status": "moved"}
+{"id": "c092", "text": "Ama lai bis hazar pathau 🙏", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c093", "text": "ama lai paisa pathaunu xa 15 hajar", "lang_style": "ne_latn", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1500000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c094", "text": "send 20 hajar to Ama", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c095", "text": "Ama lai please 5k send gardeu", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 500000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c096", "text": "आमालाई send 20k", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 2000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c097", "text": "pls Suresh lai 30000 NPR pathau", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 3000000, "currency": "NPR", "payee_ref": "suresh"}, "status": "moved"}
+{"id": "c098", "text": "balance check gardeu pls", "lang_style": "mixed", "persona": "ramesh", "intent": "check_balance", "slots": {}, "status": "moved"}
+{"id": "c099", "text": "send 50k to dai before Dashain", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 5000000, "payee_ref": "elder_brother", "deadline": "2026-10-21"}, "status": "moved"}
+{"id": "c100", "text": "transfer 200 QAR har mahina to Ama", "lang_style": "mixed", "persona": "ramesh", "intent": "schedule_transfer", "slots": {"amount": 20000, "currency": "QAR", "payee_ref": "mother", "recurrence": "monthly"}, "status": "moved"}
+{"id": "c101", "text": "Ama ko khata ma 10 hajar transfer gardeu", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 1000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c102", "text": "tuition invoice pay gardeu please", "lang_style": "mixed", "persona": "priya", "intent": "pay_invoice", "slots": {}, "status": "moved"}
+{"id": "c103", "text": "cheapest route kun chha for 3000 AUD", "lang_style": "mixed", "persona": "priya", "intent": "compare_routes", "slots": {"amount": 300000, "currency": "AUD"}, "status": "moved"}
+{"id": "c104", "text": "mero balance show gardeu", "lang_style": "mixed", "persona": "ramesh", "intent": "check_balance", "slots": {}, "status": "moved"}
+{"id": "c105", "text": "send 1 lakh Ama lai after rent pugyo bhane matra", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 10000000, "payee_ref": "mother", "condition": "rent"}, "status": "moved"}
+{"id": "c106", "text": "आमालाई 50 hajar send", "lang_style": "mixed", "persona": "ramesh", "intent": "send_money", "slots": {"amount": 5000000, "payee_ref": "mother"}, "status": "moved"}
+{"id": "c107", "text": "pay university 6500 AUD by 31 oct", "lang_style": "mixed", "persona": "priya", "intent": "pay_invoice", "slots": {"amount": 650000, "currency": "AUD", "payee_ref": "university", "deadline": "2026-10-31"}, "status": "moved"}

@@ -1,0 +1,6 @@
+{
+  "valid": false,
+  "entries_checked": 6,
+  "first_broken_seq": 6,
+  "reason": "payload does not match payload_hash"
+}

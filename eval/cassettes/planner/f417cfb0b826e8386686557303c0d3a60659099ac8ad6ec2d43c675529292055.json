@@ -1,0 +1,1 @@
+{"key": "f417cfb0b826e8386686557303c0d3a60659099ac8ad6ec2d43c675529292055", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_0918b2beb1f247f6b0a93d18", "name": "get_payees", "arguments": {}}, {"id": "call_a00e27fccb0d40f4bf0e9f5c", "name": "get_balances", "arguments": {}}], "input_tokens": 2635, "output_tokens": 36, "usage_estimated": false}}

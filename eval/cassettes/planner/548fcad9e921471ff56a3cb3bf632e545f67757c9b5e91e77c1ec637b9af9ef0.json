@@ -1,0 +1,1 @@
+{"key": "548fcad9e921471ff56a3cb3bf632e545f67757c9b5e91e77c1ec637b9af9ef0", "role": "planner", "response": {"text": "I'll check your saved payees first, since the message says the bank details changed.", "tool_calls": [{"id": "call_072696d1769f4a46847d6918", "name": "get_payees", "arguments": {}}], "input_tokens": 1700, "output_tokens": 40, "usage_estimated": false}}

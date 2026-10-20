@@ -1,0 +1,1 @@
+{"key": "3eaaba6e1479d46c85f6b22fb70256207be661eb5b05f19156560adb7658998d", "role": "composer", "response": {"text": "{\"reply\": \"Today's AUD/NPR mid rate is 107.6, as of 2026-10-09. At that mid rate, AUD 200.00 would be NPR 21,530.00.\"}", "tool_calls": [], "input_tokens": 421, "output_tokens": 48, "usage_estimated": false}}

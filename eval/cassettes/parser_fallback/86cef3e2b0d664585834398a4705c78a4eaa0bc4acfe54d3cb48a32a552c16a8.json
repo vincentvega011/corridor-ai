@@ -1,0 +1,1 @@
+{"key": "86cef3e2b0d664585834398a4705c78a4eaa0bc4acfe54d3cb48a32a552c16a8", "role": "parser_fallback", "response": {"text": "{\"language\": \"en\", \"intent\": \"pay_invoice\", \"slots\": {\"payee_ref\": \"university\"}, \"missing_slots\": [\"amount\"], \"confidence_bps\": 8500}", "tool_calls": [], "input_tokens": 2154, "output_tokens": 45, "usage_estimated": false}}

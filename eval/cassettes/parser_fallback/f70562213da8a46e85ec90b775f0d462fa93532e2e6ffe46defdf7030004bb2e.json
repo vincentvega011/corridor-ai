@@ -1,0 +1,1 @@
+{"key": "f70562213da8a46e85ec90b775f0d462fa93532e2e6ffe46defdf7030004bb2e", "role": "parser_fallback", "response": {"text": "{\"language\": \"en\", \"intent\": \"compare_routes\", \"slots\": {\"currency\": \"NPR\"}, \"missing_slots\": [], \"confidence_bps\": 8500}", "tool_calls": [], "input_tokens": 2122, "output_tokens": 41, "usage_estimated": false}}

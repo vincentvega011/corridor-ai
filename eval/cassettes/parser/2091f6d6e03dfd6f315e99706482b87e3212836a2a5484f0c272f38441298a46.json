@@ -1,0 +1,1 @@
+{"key": "2091f6d6e03dfd6f315e99706482b87e3212836a2a5484f0c272f38441298a46", "role": "parser", "response": {"text": "{\"language\": \"en\", \"intent\": \"compare_routes\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2253, "output_tokens": 34, "usage_estimated": false}}

@@ -1,0 +1,1 @@
+{"key": "d240eebb8c80e5116af7e4016a35fa18026c377309999dc26f73939eeff90d6f", "role": "parser", "response": {"text": "{\"language\": \"ne\", \"intent\": \"pay_invoice\", \"slots\": {\"payee_ref\": \"विश्वविद्यालयको\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2199, "output_tokens": 55, "usage_estimated": false}}

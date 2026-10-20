@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corridor dev chat</title>
+<style>
+body{font:14px system-ui,sans-serif;margin:0;display:flex;flex-direction:column;height:100vh;background:#fafafa;color:#111}
+.banner{background:#b45309;color:#fff;padding:6px 12px;font-weight:600}
+.bar{display:flex;gap:8px;padding:8px 12px;border-bottom:1px solid #ddd;background:#fff}
+#log{flex:1;overflow:auto;padding:12px;font-family:ui-monospace,monospace;font-size:12px}
+.ev{border-left:3px solid #999;margin:4px 0;padding:2px 8px;white-space:pre-wrap;word-break:break-word}
+.ev.message{border-color:#15803d;background:#f0fdf4}.ev.confirm_request{border-color:#b45309;background:#fffbeb}
+.ev.policy_decision{border-color:#7c3aed;background:#f5f3ff}.ev.ledger_append{border-color:#6b7280;color:#6b7280}
+.ev.taint_flag{border-color:#b45309;background:#fffbeb}.ev.grounding{border-color:#0e7490}
+.ev.rejected,.ev.error{border-color:#b91c1c;background:#fef2f2}.ev.executed{border-color:#1d4ed8;background:#eff6ff}
+.user{color:#374151;font-weight:600;margin:8px 0}
+input[type=text]{flex:1;padding:6px}button{padding:6px 12px}
+#cmp{flex:1;display:none;gap:8px;padding:8px 12px;overflow:hidden}.col{flex:1;overflow:auto;border:1px solid #ddd;background:#fff;padding:6px;font-family:ui-monospace,monospace;font-size:12px}.col h4{margin:0 0 6px;font-family:system-ui}.col.left h4{color:#b91c1c}.col.right h4{color:#15803d}
+</style></head><body>
+<div class="banner">SANDBOX: no real money. Developer tool only.</div>
+<div class="bar"><select id="persona"></select><button id="new">New thread</button><span id="thread" style="align-self:center;color:#666"></span></div>
+<div id="log"></div>
+<div id="cmp"><div class="col left"><h4>LEFT: baseline, a naive agent (no taint, policy, grants or grounding)</h4><div id="logL"></div></div><div class="col right"><h4>RIGHT: Corridor AI</h4><div id="logR"></div></div></div>
+<div class="bar"><input type="file" id="file" accept="image/png,image/jpeg,application/pdf" title="UNTRUSTED document: read only by the quarantined reader"><span id="docs" style="align-self:center;color:#b45309"></span><textarea id="fwd" rows="1" cols="28" placeholder="forwarded message (untrusted, reader only)"></textarea></div>
+<div class="bar"><input type="text" id="msg" placeholder="Type a message, press Enter" autocomplete="off"><button id="send">Send</button><button id="cancel">Cancel</button><button id="compare" title="send the same input to the baseline (left) and Corridor AI (right)">Compare</button><input type="text" id="totp" placeholder="TOTP" size="7" autocomplete="off"><button id="devtotp" title="dev only: fills the current code of this persona">Fill code</button></div>
+<script>
+const TOKENS = __DEMO_TOKENS__;
+const personas = document.getElementById("persona");
+for (const u of Object.keys(TOKENS)) { const o = document.createElement("option"); o.value = u; o.textContent = u; personas.appendChild(o); }
+let thread = null;
+const log = document.getElementById("log");
+function add(cls, text, node) {
+  const d = document.createElement("div"); d.className = cls; d.textContent = text;
+  if (node) d.appendChild(node);
+  log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+}
+function setThread(t) { thread = t; document.getElementById("thread").textContent = t ? "thread " + t.slice(0, 8) : ""; }
+document.getElementById("new").onclick = () => { setThread(null); log.textContent = ""; };
+const auth = () => ({ "Authorization": "Bearer " + TOKENS[personas.value], "Content-Type": "application/json" });
+async function stream(url, body) {
+  const res = await fetch(url, { method: "POST", headers: auth(), body: body ? JSON.stringify(body) : undefined });
+  const th = res.headers.get("X-Thread-Id"); if (th) setThread(th);
+  if (!res.ok) { add("ev error", res.status + " " + await res.text()); return; }
+  const reader = res.body.getReader(), dec = new TextDecoder(); let buf = "";
+  for (;;) {
+    const { value, done } = await reader.read(); if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i; while ((i = buf.indexOf("\n\n")) >= 0) { const chunk = buf.slice(0, i); buf = buf.slice(i + 2); handle(chunk); }
+  }
+}
+function handle(chunk) {
+  const line = chunk.split("\n").find(l => l.startsWith("data: ")); if (!line) return;
+  const ev = JSON.parse(line.slice(6));
+  if (ev.data && ev.data.thread_id && ev.type !== "error") setThread(ev.data.thread_id);
+  let node = null;
+  if (ev.type === "confirm_request") {
+    const hash = ev.data.proposal_hash;
+    node = document.createElement("button"); node.textContent = "Confirm " + String(hash).slice(0, 10);
+    node.onclick = async () => { const code = document.getElementById("totp").value.trim(); await stream("/chat/" + thread + "/confirm", { proposal_hash: hash, totp: code || null }); };
+  }
+  if (ev.type === "policy_decision") add("ev policy_decision", "DECISION " + ev.data.decision.toUpperCase() + " (needs " + ev.data.required_level + ")  rules: " + ev.data.rule_ids.join(", ") + "\n" + ev.data.reasons.map(r => " - " + r).join("\n"));
+  add("ev " + ev.type, "#" + ev.seq + " " + ev.type + " " + JSON.stringify(ev.data, null, 1), node);
+}
+let docIds = [];
+document.getElementById("file").onchange = async (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = await fetch("/attachments", { method: "POST", headers: { "Authorization": auth().Authorization }, body: f });
+  if (!r.ok) { add("ev error", "upload refused: " + r.status + " " + await r.text()); e.target.value = ""; return; }
+  const j = await r.json(); docIds.push(j.doc_id);
+  document.getElementById("docs").textContent = docIds.length + " untrusted document(s) attached";
+  add("ev taint_flag", "UNTRUSTED DOCUMENT " + j.doc_id.slice(0, 8) + " (" + j.kind + ")\n" + j.summary + "\nsignals: " + (j.signals.join(", ") || "none"));
+  e.target.value = "";
+};
+async function send() {
+  const m = document.getElementById("msg"), fw = document.getElementById("fwd");
+  const text = m.value.trim(), forwarded = fw.value.trim();
+  if (!text && !docIds.length && !forwarded) return; m.value = ""; fw.value = "";
+  add("user", personas.value + ": " + text + (forwarded ? "  [+ forwarded message]" : "") + (docIds.length ? "  [+ " + docIds.length + " document(s)]" : ""));
+  const body = { message: text, thread_id: thread, attachments: docIds.map(d => ({ doc_id: d })), forwarded: forwarded || null };
+  docIds = []; document.getElementById("docs").textContent = "";
+  await stream("/chat", body);
+}
+let cmpThreads = { left: null, right: null };
+async function compare() {
+  const m = document.getElementById("msg"), fw = document.getElementById("fwd");
+  const text = m.value.trim(), forwarded = fw.value.trim();
+  if (!text && !docIds.length && !forwarded) return; m.value = ""; fw.value = "";
+  document.getElementById("log").style.display = "none"; document.getElementById("cmp").style.display = "flex";
+  const put = (side, cls, txt, node) => { const d = document.createElement("div"); d.className = cls; d.textContent = txt; if (node) d.appendChild(node); const col = document.getElementById(side === "left" ? "logL" : "logR"); col.appendChild(d); col.parentElement.scrollTop = col.parentElement.scrollHeight; };
+  for (const side of ["left", "right"]) put(side, "user", personas.value + ": " + text + (docIds.length ? "  [+ " + docIds.length + " document(s)]" : ""));
+  const body = { message: text, forwarded: forwarded || null, attachments: docIds, left_thread: cmpThreads.left, right_thread: cmpThreads.right };
+  docIds = []; document.getElementById("docs").textContent = "";
+  const res = await fetch("/compare", { method: "POST", headers: auth(), body: JSON.stringify(body) });
+  if (!res.ok) { put("right", "ev error", res.status + " " + await res.text()); return; }
+  const reader = res.body.getReader(), dec = new TextDecoder(); let buf = "";
+  for (;;) {
+    const { value, done } = await reader.read(); if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i; while ((i = buf.indexOf("\n\n")) >= 0) {
+      const chunk = buf.slice(0, i); buf = buf.slice(i + 2);
+      const line = chunk.split("\n").find(l => l.startsWith("data: ")); if (!line) continue;
+      const ev = JSON.parse(line.slice(6));
+      if (ev.data && ev.data.thread_id) cmpThreads[ev.side] = ev.data.thread_id;
+      let node = null;
+      if (ev.side === "right" && ev.type === "confirm_request") {
+        const hash = ev.data.proposal_hash; node = document.createElement("button"); node.textContent = "Confirm " + String(hash).slice(0, 10);
+        node.onclick = async () => { const code = document.getElementById("totp").value.trim(); const r = await fetch("/chat/" + cmpThreads.right + "/confirm", { method: "POST", headers: auth(), body: JSON.stringify({ proposal_hash: hash, totp: code || null }) }); put("right", "ev", "confirm: " + r.status + " " + (await r.text()).slice(0, 400)); };
+      }
+      put(ev.side, "ev " + ev.type, "#" + ev.seq + " " + ev.type + " " + JSON.stringify(ev.data, null, 1), node);
+    }
+  }
+}
+document.getElementById("compare").onclick = compare;
+document.getElementById("new").addEventListener("click", () => { cmpThreads = { left: null, right: null }; document.getElementById("logL").textContent = ""; document.getElementById("logR").textContent = ""; document.getElementById("cmp").style.display = "none"; document.getElementById("log").style.display = ""; });
+document.getElementById("send").onclick = send;
+document.getElementById("msg").onkeydown = e => { if (e.key === "Enter") send(); };
+document.getElementById("devtotp").onclick = async () => {
+  const r = await fetch("/dev/totp", { headers: auth() });
+  if (r.ok) { const j = await r.json(); document.getElementById("totp").value = j.code; add("ev", "dev TOTP for " + j.user_id + ": " + j.code + " (valid " + j.valid_for_seconds + " s)"); }
+  else add("ev error", "dev TOTP unavailable: " + r.status);
+};
+document.getElementById("cancel").onclick = () => { if (thread) stream("/chat/" + thread + "/cancel"); };
+</script></body></html>

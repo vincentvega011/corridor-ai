@@ -1,0 +1,1 @@
+{"key": "77a048c7c73ba8694324b37dd496fa6e85b4b128fa0bacc27aeb7f751e9411e5", "role": "composer", "response": {"text": "{\"reply\": \"Here are your current balances:\\n- AUD account ****9873: AUD 4,200.00\\n- NPR account ****6221: NPR 620,000.00\\nBoth accounts are active.\"}", "tool_calls": [], "input_tokens": 418, "output_tokens": 47, "usage_estimated": false}}

@@ -1,0 +1,1 @@
+{"key": "24546938f020194967cbf1cf756e91f58d087302a4f27216812ba270baee3a9f", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_5b9ef023f1904a65a2db4ff8", "name": "transfer", "arguments": {"payee_or_account": "pay_priya_parents", "amount": 200, "currency": "AUD"}}], "input_tokens": 3625, "output_tokens": 77, "usage_estimated": false}}

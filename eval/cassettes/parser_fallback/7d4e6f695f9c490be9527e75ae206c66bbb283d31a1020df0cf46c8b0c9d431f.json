@@ -1,0 +1,1 @@
+{"key": "7d4e6f695f9c490be9527e75ae206c66bbb283d31a1020df0cf46c8b0c9d431f", "role": "parser_fallback", "response": {"text": "{\"language\": \"en\", \"intent\": \"other\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 2000}", "tool_calls": [], "input_tokens": 2247, "output_tokens": 33, "usage_estimated": false}}

@@ -1,0 +1,20 @@
+cd backend && APP_ENV=test uv run pytest -q tests/properties tests/concurrency tests/integration/ledger \
+	  tests/integration/confirm tests/integration/executor tests/integration/agent/test_policy_wiring.py \
+	  tests/integration/reader tests/integration/agent/test_documents_flow.py \
+	  tests/integration/agent/test_grounding_flow.py tests/redteam_smoke \
+	  tests/unit/policy tests/unit/reader tests/unit/grounding tests/unit/test_import_boundaries.py \
+	  tests/integration/ablation tests/integration/baseline tests/unit/test_baseline_boundary.py tests/unit/eval
+........................................................................ [ 15%]
+........................................................................ [ 30%]
+........................................................................ [ 46%]
+........................................................................ [ 61%]
+........................................................................ [ 77%]
+........................................................................ [ 92%]
+..................................                                       [100%]
+=============================== warnings summary ===============================
+tests/unit/reader/test_upload.py::test_an_image_over_the_pixel_limit_is_refused_before_decoding
+  <repo>/backend/.venv/lib/python3.12/site-packages/PIL/Image.py:3578: DecompressionBombWarning: Image size (49000000 pixels) exceeds limit of 40000000 pixels, could be decompression bomb DOS attack.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+466 passed, 1 warning in 43.76s

@@ -1,0 +1,1 @@
+{"key": "96a92047e4625f493ec536a430275e40d1521510a84562c87617783d05826d1c", "role": "planner", "response": {"text": "I'll look up your invoices to find this one.", "tool_calls": [{"id": "call_887038f47a8f41a1bae5374a", "name": "list_invoices", "arguments": {}}], "input_tokens": 1742, "output_tokens": 32, "usage_estimated": false}}

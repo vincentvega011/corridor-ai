@@ -1,0 +1,292 @@
+[
+ {
+  "id": "replies.help",
+  "en": "I can show your balances, your recent transfers, compare routes, and send money to your saved payees or pay an open invoice. Every payment needs your confirmation.",
+  "zh": "我可以显示您的余额和最近的转账，比较汇款路线，向您已保存的收款人转账，或支付待付账单。每一笔付款都需要您确认。"
+ },
+ {
+  "id": "replies.unsupported_intent",
+  "en": "That is not available yet. For now I can show balances and history, compare routes, send to a saved payee and pay an open invoice.",
+  "zh": "这项功能暂未开放。目前我可以显示余额和记录、比较汇款路线、向已保存的收款人转账，以及支付待付账单。"
+ },
+ {
+  "id": "replies.unsupported_currency",
+  "en": "I cannot work with that currency. Supported: NPR, AUD, QAR, MYR, CNY, USD.",
+  "zh": "我无法处理该币种。支持的币种：NPR、AUD、QAR、MYR、CNY、USD。"
+ },
+ {
+  "id": "replies.attachments_unavailable",
+  "en": "Reading documents is not available yet. Please type your request instead.",
+  "zh": "暂不支持读取文件，请直接输入您的请求。"
+ },
+ {
+  "id": "replies.cancelled",
+  "en": "Cancelled. Nothing was sent.",
+  "zh": "已取消，没有转出任何款项。"
+ },
+ {
+  "id": "replies.hash_mismatch",
+  "en": "The confirmation did not match the proposal, so I stopped. Nothing was sent. Please start again.",
+  "zh": "确认内容与提案不一致，我已停止操作，没有转出任何款项。请重新开始。"
+ },
+ {
+  "id": "replies.executed",
+  "en": "Done. {amount} was sent to {payee}. Your new balance is {balance}.",
+  "zh": "已完成。已向 {payee} 转出 {amount}。您的最新余额为 {balance}。"
+ },
+ {
+  "id": "replies.insufficient_funds",
+  "en": "Your balance is too low: you have {balance} and this needs {needed}. Nothing was sent.",
+  "zh": "您的余额不足：当前为 {balance}，而此笔需要 {needed}。没有转出任何款项。"
+ },
+ {
+  "id": "replies.condition_not_met",
+  "en": "Your condition is not met: after keeping {reserve} for rent you would have {left}, but this needs {needed}. Nothing was sent.",
+  "zh": "您设定的条件未满足：留出 {reserve} 作房租后，您将剩余 {left}，而此笔需要 {needed}。没有转出任何款项。"
+ },
+ {
+  "id": "replies.condition_unknown",
+  "en": "I could not work out your rent amount from your history, so I cannot check your condition. Nothing was sent.",
+  "zh": "我无法从您的记录中得出房租金额，因此无法检查您的条件。没有转出任何款项。"
+ },
+ {
+  "id": "replies.no_route",
+  "en": "I cannot find a route for that amount: {reason}. Nothing was sent.",
+  "zh": "我找不到适合该金额的汇款路线：{reason}。没有转出任何款项。"
+ },
+ {
+  "id": "replies.planner_failed",
+  "en": "I could not put a safe plan together for that. Please try again or rephrase.",
+  "zh": "我无法为此制定安全的方案。请重试或换一种说法。"
+ },
+ {
+  "id": "replies.assistant_unavailable",
+  "en": "I cannot answer that right now. The Routes, Tuition, Payees, Family and Credit Passport buttons still work. Nothing was sent.",
+  "zh": "我现在无法回答这个问题。“汇款路线”“学费”“收款人”“家人”和“信用护照”按钮仍可使用。没有转出任何款项。"
+ },
+ {
+  "id": "replies.execution_failed",
+  "en": "I could not complete that safely ({reason}). Nothing was sent.",
+  "zh": "我无法安全地完成此操作（{reason}）。没有转出任何款项。"
+ },
+ {
+  "id": "replies.sensitive_content",
+  "en": "Please do not type account numbers or secrets in the chat. Use the secure add payee screen.",
+  "zh": "请不要在对话中输入账号或密码等机密信息，请使用安全的“添加收款人”页面。"
+ },
+ {
+  "id": "replies.no_open_invoice",
+  "en": "You have no open invoice to pay.",
+  "zh": "您没有待付账单。"
+ },
+ {
+  "id": "replies.passport_none",
+  "en": "You have no valid Credit Passport yet. Ask me to issue one first.",
+  "zh": "您还没有有效的信用护照，请先让我为您签发。"
+ },
+ {
+  "id": "replies.passport_issued",
+  "en": "Your Credit Passport is ready. It holds these separate claims: {claims}. Valid until {until}. You choose which to share; nothing was shared.",
+  "zh": "您的信用护照已就绪，包含以下独立声明：{claims}。有效期至 {until}。由您选择分享哪些，目前尚未分享任何内容。"
+ },
+ {
+  "id": "replies.passport_shared",
+  "en": "Done. The proof for {audience} contains only: {claims}. No amounts and no account numbers. Give them the presentation below; they can check the signature themselves.",
+  "zh": "已完成。给 {audience} 的证明只包含：{claims}。不含金额，也不含账号。请把下方的分享内容交给对方，对方可自行核验签名。"
+ },
+ {
+  "id": "replies.funding_infeasible",
+  "en": "I could not find a way to pay {owed} before {due}: your own accounts plus what your family can send do not cover it in time. Nothing was changed.",
+  "zh": "我找不到能在 {due} 前付清 {owed} 的办法：您自己的账户加上家人能汇来的款项，无法及时凑够。没有做任何更改。"
+ },
+ {
+  "id": "replies.funding_plan_step",
+  "en": "Step {n} of {total}: please check the details and confirm.",
+  "zh": "第 {n} 步，共 {total} 步：请核对详情并确认。"
+ },
+ {
+  "id": "replies.contribution_requested",
+  "en": "I asked for {amount} (it would arrive as {arrives}). They decide in their own account, nothing was taken from you.",
+  "zh": "我已请求 {amount}（将以 {arrives} 到账）。对方会在自己的账户中决定，没有从您这里扣款。"
+ },
+ {
+  "id": "replies.plan_done_waiting",
+  "en": "Paid so far: {paid}. Still to pay once your family's money arrives: {rest}, due {due}.",
+  "zh": "目前已支付：{paid}。家人的款项到账后仍需支付：{rest}，截止 {due}。"
+ },
+ {
+  "id": "replies.payee_saved_held",
+  "en": "Saved payee {account}. Name taken from the document, not verified: {name}. Nothing can be paid to it until {until}, and confirming does not change that.",
+  "zh": "已保存收款人 {account}。姓名取自文件，未经验证：{name}。在 {until} 之前不能向其付款，确认也不会改变这一点。"
+ },
+ {
+  "id": "replies.payee_saved_typed",
+  "en": "Saved payee {name} ({account}). Because it is new, it can receive at most the first payment cap until {until}. To pay more today, ask the bank to verify this payee.",
+  "zh": "已保存收款人 {name}（{account}）。因为是新收款人，在 {until} 之前最多只能收到首笔限额。若今天需要多付，请银行核实该收款人。"
+ },
+ {
+  "id": "replies.proposal_ready",
+  "en": "Please check the details and confirm to send.",
+  "zh": "请核对详情，并确认后发送。"
+ },
+ {
+  "id": "replies.read_result",
+  "en": "{lines}",
+  "zh": "{lines}"
+ },
+ {
+  "id": "replies.already_processed",
+  "en": "This payment may already have been made. Please check your transfers before trying again.",
+  "zh": "这笔付款可能已经完成。再次尝试前，请先查看您的转账记录。"
+ },
+ {
+  "id": "replies.executed_fallback",
+  "en": "The payment went through. I could not show the receipt, please check your transfers.",
+  "zh": "付款已完成，但我无法显示回执，请查看您的转账记录。"
+ },
+ {
+  "id": "replies.policy_denied",
+  "en": "I cannot do that. {reasons} Nothing was sent.",
+  "zh": "我无法执行此操作。{reasons} 没有转出任何款项。"
+ },
+ {
+  "id": "replies.grant_failed",
+  "en": "Your confirmation is no longer valid. Nothing was sent. Please ask again and confirm.",
+  "zh": "您的确认已失效，没有转出任何款项。请重新发起并确认。"
+ },
+ {
+  "id": "replies.mfa_required",
+  "en": "This payment needs your authenticator code. Please enter the 6 digit code.",
+  "zh": "这笔付款需要您的验证码，请输入 6 位数字验证码。"
+ },
+ {
+  "id": "replies.mfa_failed",
+  "en": "That code was not accepted. {left} attempts left before outgoing actions are locked.",
+  "zh": "该验证码未被接受。转出功能被锁定前还剩 {left} 次机会。"
+ },
+ {
+  "id": "replies.locked",
+  "en": "Outgoing actions are locked for your safety. Enter your authenticator code to unlock.",
+  "zh": "为了您的安全，转出操作已被锁定。请输入验证码解锁。"
+ },
+ {
+  "id": "replies.document_received",
+  "en": "I read your document. {line} What would you like me to do with it?",
+  "zh": "我已读取您的文件。{line} 您希望我如何处理它？"
+ },
+ {
+  "id": "replies.document_warning",
+  "en": "Warning: this document contains instructions or changed payment details. I will not follow them, and any payment from it needs extra checks.",
+  "zh": "警告：此文件包含指令或被改动过的付款信息。我不会照做，任何基于它的付款都需要额外核查。"
+ },
+ {
+  "id": "replies.document_not_found",
+  "en": "I could not find that document. Please upload it again.",
+  "zh": "我找不到该文件，请重新上传。"
+ },
+ {
+  "id": "replies.reader_failed",
+  "en": "I could not read that safely, so I did not use it. Nothing was sent.",
+  "zh": "我无法安全地读取它，因此没有使用。没有转出任何款项。"
+ },
+ {
+  "id": "replies.read_unavailable",
+  "en": "I cannot give exact figures for that. I can only state numbers from your accounts and the quotes I just looked up.",
+  "zh": "我无法给出确切数字。我只能陈述您账户中的数字和我刚查到的报价。"
+ },
+ {
+  "id": "clarify.amount",
+  "en": "How much would you like to send?",
+  "zh": "您想转多少？"
+ },
+ {
+  "id": "clarify.payee_ref",
+  "en": "Who should receive it?",
+  "zh": "收款人是谁？"
+ },
+ {
+  "id": "clarify.recurrence",
+  "en": "How often should this repeat (for example every month)?",
+  "zh": "需要多久重复一次（例如每月）？"
+ },
+ {
+  "id": "clarify.currency_ambiguous",
+  "en": "Which currency do you mean: {options}?",
+  "zh": "您指的是哪种币种：{options}？"
+ },
+ {
+  "id": "clarify.amount_ambiguous",
+  "en": "I found more than one amount ({options}). Which one should I use?",
+  "zh": "我发现不止一个金额（{options}），应该用哪一个？"
+ },
+ {
+  "id": "clarify.payee_ref_ambiguous",
+  "en": "Which recipient do you mean: {options}?",
+  "zh": "您指的是哪位收款人：{options}？"
+ },
+ {
+  "id": "clarify.currency",
+  "en": "Which currency?",
+  "zh": "哪种币种？"
+ },
+ {
+  "id": "clarify.deadline",
+  "en": "By when does it need to arrive?",
+  "zh": "最晚需要什么时候到账？"
+ },
+ {
+  "id": "clarify.deadline_ambiguous",
+  "en": "Which date do you mean: {options}?",
+  "zh": "您指的是哪个日期：{options}？"
+ },
+ {
+  "id": "clarify.payee_unknown",
+  "en": "Who is {name}? I could not find them in your saved payees. Please say who you mean or add them in Settings.",
+  "zh": "{name} 是谁？我在您已保存的收款人中找不到。请说明您指的是谁，或在设置中添加。"
+ },
+ {
+  "id": "clarify.payee_many",
+  "en": "Which one do you mean: {options}?",
+  "zh": "您指的是哪一位：{options}？"
+ },
+ {
+  "id": "clarify.deadline_past",
+  "en": "The date {date} has already passed or is today. Give a new date, or reply 'send now' (any reply without a date) and I will send it now with no deadline.",
+  "zh": "日期 {date} 已经过去或就是今天。请给出新日期，或回复“马上发送”（任何不带日期的回复均可），我将立即发送且不设截止日期。"
+ },
+ {
+  "id": "clarify.invoice_which",
+  "en": "Which invoice do you want to pay: {options}?",
+  "zh": "您想支付哪一张账单：{options}？"
+ },
+ {
+  "id": "clarify.generic",
+  "en": "Sorry, I did not understand. Could you say it again in other words?",
+  "zh": "抱歉，我没有听懂。可以换一种说法再说一遍吗？"
+ },
+ {
+  "id": "clarify.blocked_content",
+  "en": "Please do not type account numbers or secrets in the chat. Use the secure add payee screen.",
+  "zh": "请不要在对话中输入账号或密码等机密信息，请使用安全的“添加收款人”页面。"
+ },
+ {
+  "id": "clarify.passport_claim",
+  "en": "Which proof should I share: {options}? Name one, for example rent.",
+  "zh": "我应该分享哪一项证明：{options}？请说出其中一项，例如房租。"
+ },
+ {
+  "id": "clarify.paste_confirm",
+  "en": "Part of your message looks like it came from someone else, so I will not use the account or amount in it. Which saved payee do you mean: {options}? Please also type the amount yourself.",
+  "zh": "您消息的一部分似乎来自他人，因此我不会使用其中的账号或金额。您指的是哪位已保存的收款人：{options}？请同时自己输入金额。"
+ },
+ {
+  "id": "clarify.payee_account",
+  "en": "Please send the payee's name and account number together in one message, for example: add Okafor Property, account 062000771234. I will show you the details to confirm.",
+  "zh": "请把收款人的姓名和账号一起放在同一条消息里发送，例如：add Okafor Property, account 062000771234。我会把详情展示给您确认。"
+ },
+ {
+  "id": "clarify.payee_name",
+  "en": "What name should I save this payee under? Please type the name and the account number together.",
+  "zh": "这位收款人应以什么名字保存？请把姓名和账号一起输入。"
+ }
+]

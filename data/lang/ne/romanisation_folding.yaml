@@ -1,0 +1,19 @@
+# Ordered regex rules applied to LOWERCASED romanised (Latin script) tokens before lookup, on both
+# the lexicon and the input, so spelling variants collapse to one key. Pure data, per language.
+# Order matters: long vowels are folded BEFORE doubled letters are collapsed, otherwise "teen" (3)
+# would become "ten" (10). A test asserts that no two different number words fold to the same key.
+version: 1
+rules:
+  - ["aa", "a"]
+  - ["ee", "i"]
+  - ["ii", "i"]
+  - ["oo", "u"]
+  - ["uu", "u"]
+  - ["chh", "ch"]
+  - ["chch", "ch"]
+  - ["(.)\\1+", "\\1"]       # doubled letters: pachchis -> pachis, sattais -> satais
+  - ["z", "j"]
+  - ["w", "v"]
+  - ["sh", "s"]
+  - ["ph", "f"]
+  - ["ay$", "e"]

@@ -1,0 +1,49 @@
+import fs from "node:fs";
+import path from "node:path";
+import { expect, test } from "@playwright/test";
+import { ROOT, choosePersona, confirmOpenCard, officerToken, resetSandbox, say } from "./helpers";
+
+const OUT = "/tmp/docshots";
+fs.mkdirSync(OUT, { recursive: true });
+test.beforeEach(() => resetSandbox());
+
+test("housing scam panels", async ({ page }) => {
+  await choosePersona(page, "usr_priya");
+  await page.getByTestId("attach-input").setInputFiles(path.join(ROOT, "data", "fixtures", "rt", "rt_housing_deposit.pdf"));
+  await expect(page.getByTestId("attached-note")).toBeVisible();
+  await say(page, "Please pay this deposit for the room");
+  const card = page.getByTestId("proposal-card").last();
+  await expect(card.getByTestId("card-warnings")).toBeVisible();
+  await card.screenshot({ path: `${OUT}/card.png` });
+  await confirmOpenCard(page, "usr_priya", true);
+  const hold = page.getByTestId("hold-card");
+  await expect(hold).toBeVisible();
+  await hold.screenshot({ path: `${OUT}/hold.png` });
+  await page.goto("/payees");
+  const row = page.getByTestId("payee-row").filter({ hasText: "document" }).first();
+  await row.getByTestId("payee-pay-amount").fill("2000");
+  await row.getByTestId("payee-pay").click();
+  const reply = page.getByTestId("msg-assistant").last();
+  await expect(reply).toContainText("I cannot do that");
+  await page.screenshot({ path: `${OUT}/refusal_page.png`, fullPage: true });
+  await reply.screenshot({ path: `${OUT}/refusal.png` });
+  await row.getByTestId("payee-pay").click();
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: `${OUT}/refusal2_page.png`, fullPage: true });
+});
+
+test.describe("console", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+  test("side by side RT-026", async ({ page }) => {
+    await page.goto("/console/login");
+    await page.getByTestId("login-officer").selectOption("officer_asha");
+    await page.getByTestId("login-credential").fill(officerToken("officer_asha"));
+    await page.getByTestId("login-submit").click();
+    await expect(page.getByTestId("officer-id")).toHaveText("officer_asha");
+    await page.getByRole("link", { name: "Side by side" }).click();
+    await page.getByTestId("case-select").selectOption("RT-026");
+    await expect(page.getByTestId("side-baseline")).toBeVisible();
+    await expect(page.getByTestId("side-baseline")).toContainText("376,775");
+    await page.screenshot({ path: `${OUT}/side026.png`, fullPage: true });
+  });
+});

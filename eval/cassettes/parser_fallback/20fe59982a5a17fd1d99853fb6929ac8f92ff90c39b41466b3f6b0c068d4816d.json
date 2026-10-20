@@ -1,0 +1,1 @@
+{"key": "20fe59982a5a17fd1d99853fb6929ac8f92ff90c39b41466b3f6b0c068d4816d", "role": "parser_fallback", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"explain_decision\", \"slots\": {\"payee_ref\": \"Baba\"}, \"missing_slots\": [], \"confidence_bps\": 8500}", "tool_calls": [], "input_tokens": 2106, "output_tokens": 44, "usage_estimated": false}}

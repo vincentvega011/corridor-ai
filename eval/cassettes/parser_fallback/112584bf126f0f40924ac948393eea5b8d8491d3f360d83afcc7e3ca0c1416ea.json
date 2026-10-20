@@ -1,0 +1,1 @@
+{"key": "112584bf126f0f40924ac948393eea5b8d8491d3f360d83afcc7e3ca0c1416ea", "role": "parser_fallback", "response": {"text": "{\"language\": \"ne_latn\", \"intent\": \"send_money\", \"slots\": {\"payee_ref\": \"Dinesh dai\"}, \"missing_slots\": [\"amount\"], \"confidence_bps\": 8500}", "tool_calls": [], "input_tokens": 2152, "output_tokens": 50, "usage_estimated": false}}

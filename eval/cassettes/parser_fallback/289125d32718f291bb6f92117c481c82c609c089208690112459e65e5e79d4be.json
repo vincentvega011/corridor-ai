@@ -1,0 +1,1 @@
+{"key": "289125d32718f291bb6f92117c481c82c609c089208690112459e65e5e79d4be", "role": "parser_fallback", "response": {"text": "{\"language\": \"en\", \"intent\": \"send_money\", \"slots\": {\"amount\": 2000, \"currency\": \"AUD\"}, \"missing_slots\": [\"payee_ref\"], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2223, "output_tokens": 52, "usage_estimated": false}}

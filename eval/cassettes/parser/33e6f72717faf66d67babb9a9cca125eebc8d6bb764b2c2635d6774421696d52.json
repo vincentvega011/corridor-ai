@@ -1,0 +1,1 @@
+{"key": "33e6f72717faf66d67babb9a9cca125eebc8d6bb764b2c2635d6774421696d52", "role": "parser", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"credit_passport_issue\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2150, "output_tokens": 36, "usage_estimated": false}}

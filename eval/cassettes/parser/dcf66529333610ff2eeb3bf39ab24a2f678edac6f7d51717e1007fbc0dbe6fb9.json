@@ -1,0 +1,1 @@
+{"key": "dcf66529333610ff2eeb3bf39ab24a2f678edac6f7d51717e1007fbc0dbe6fb9", "role": "parser", "response": {"text": "{\"language\": \"en\", \"intent\": \"credit_passport_issue\", \"slots\": {\"payee_ref\": \"Okafor Property\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2185, "output_tokens": 46, "usage_estimated": false}}

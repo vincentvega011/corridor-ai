@@ -1,0 +1,161 @@
+# Reply templates (no LLM): used when the composer is unavailable, and for fixed system messages.
+# Styles: en, ne (Devanagari), ne_latn (romanised). Reviewed by a native speaker: NOT YET (draft wording).
+version: 1
+templates:
+  help:
+    en: "I can show your balances, your recent transfers, compare routes, and send money to your saved payees or pay an open invoice. Every payment needs your confirmation."
+    ne: "म तपाईंको ब्यालेन्स, भर्खरका ट्रान्सफर देखाउन, मार्ग तुलना गर्न, सुरक्षित प्राप्तकर्तालाई पैसा पठाउन वा खुला इनभ्वाइस तिर्न सक्छु। हरेक भुक्तानीमा तपाईंको पुष्टि चाहिन्छ।"
+    ne_latn: "Ma tapaiko balance, bhakharka transfer dekhauna, marga tulana garna, saved payee lai paisa pathauna wa khula invoice tirna sakchhu. Harek bhuktanima tapaiko pushti chahinchha."
+  unsupported_intent:
+    en: "That is not available yet. For now I can show balances and history, compare routes, send to a saved payee and pay an open invoice."
+    ne: "यो सुविधा अहिले उपलब्ध छैन। अहिले म ब्यालेन्स र इतिहास देखाउन, मार्ग तुलना गर्न, सुरक्षित प्राप्तकर्तालाई पठाउन र खुला इनभ्वाइस तिर्न सक्छु।"
+    ne_latn: "Yo suvidha ahile uplabdha chhaina. Ahile ma balance ra itihas dekhauna, marga tulana garna, saved payee lai pathauna ra khula invoice tirna sakchhu."
+  unsupported_currency:
+    en: "I cannot work with that currency. Supported: NPR, AUD, QAR, MYR, CNY, USD."
+    ne: "म त्यो मुद्रासँग काम गर्न सक्दिनँ। समर्थित: NPR, AUD, QAR, MYR, CNY, USD।"
+    ne_latn: "Ma tyo mudrasanga kaam garna sakdina. Samarthit: NPR, AUD, QAR, MYR, CNY, USD."
+  attachments_unavailable:
+    en: "Reading documents is not available yet. Please type your request instead."
+    ne: "कागजात पढ्ने सुविधा अहिले उपलब्ध छैन। कृपया आफ्नो अनुरोध टाइप गर्नुहोस्।"
+    ne_latn: "Kagajat padhne suvidha ahile uplabdha chhaina. Kripaya aafno anurodh type garnuhos."
+  cancelled:
+    en: "Cancelled. Nothing was sent."
+    ne: "रद्द गरियो। केही पठाइएन।"
+    ne_latn: "Radda gariyo. Kehi pathaiyena."
+  hash_mismatch:
+    en: "The confirmation did not match the proposal, so I stopped. Nothing was sent. Please start again."
+    ne: "पुष्टि प्रस्तावसँग मिलेन, त्यसैले रोकियो। केही पठाइएन। कृपया फेरि सुरु गर्नुहोस्।"
+    ne_latn: "Pushti prastavsanga milena, tyasaile rokiyo. Kehi pathaiyena. Kripaya pheri suru garnuhos."
+  executed:
+    en: "Done. {amount} was sent to {payee}. Your new balance is {balance}."
+    ne: "सम्पन्न। {payee} लाई {amount} पठाइयो। तपाईंको नयाँ ब्यालेन्स {balance} हो।"
+    ne_latn: "Sampanna. {payee} lai {amount} pathaiyo. Tapaiko naya balance {balance} ho."
+  insufficient_funds:
+    en: "Your balance is too low: you have {balance} and this needs {needed}. Nothing was sent."
+    ne: "तपाईंको ब्यालेन्स कम छ: तपाईंसँग {balance} छ र यसलाई {needed} चाहिन्छ। केही पठाइएन।"
+    ne_latn: "Tapaiko balance kam chha: tapaisanga {balance} chha ra yeslai {needed} chahinchha. Kehi pathaiyena."
+  condition_not_met:
+    en: "Your condition is not met: after keeping {reserve} for rent you would have {left}, but this needs {needed}. Nothing was sent."
+    ne: "तपाईंको सर्त पूरा भएन: भाडाका लागि {reserve} राखेपछि {left} बाँकी हुन्छ, तर यसलाई {needed} चाहिन्छ। केही पठाइएन।"
+    ne_latn: "Tapaiko sarta pura bhayena: bhadaka lagi {reserve} rakhepachhi {left} baki hunchha, tara yeslai {needed} chahinchha. Kehi pathaiyena."
+  condition_unknown:
+    en: "I could not work out your rent amount from your history, so I cannot check your condition. Nothing was sent."
+    ne: "तपाईंको इतिहासबाट भाडाको रकम पत्ता लागेन, त्यसैले सर्त जाँच्न सकिनँ। केही पठाइएन।"
+    ne_latn: "Tapaiko itihasbata bhadako rakam patta lagena, tyasaile sarta janchna sakina. Kehi pathaiyena."
+  no_route:
+    en: "I cannot find a route for that amount: {reason}. Nothing was sent."
+    ne: "त्यो रकमको लागि मार्ग भेटिएन: {reason}। केही पठाइएन।"
+    ne_latn: "Tyo rakamko lagi marga bhetiyena: {reason}. Kehi pathaiyena."
+  planner_failed:
+    en: "I could not put a safe plan together for that. Please try again or rephrase."
+    ne: "त्यसको लागि सुरक्षित योजना बनाउन सकिनँ। कृपया फेरि प्रयास गर्नुहोस् वा अर्को तरिकाले भन्नुहोस्।"
+    ne_latn: "Tyeslai surakshit yojana banauna sakina. Kripaya pheri prayas garnuhos wa arko tarikale bhannuhos."
+  assistant_unavailable:
+    en: "I cannot answer that right now. The Routes, Tuition, Payees, Family and Credit Passport buttons still work. Nothing was sent."
+    ne: "अहिले म त्यसको जवाफ दिन सक्दिनँ। पठाउने बाटो, ट्युसन, प्राप्तकर्ता, परिवार र क्रेडिट पासपोर्टका बटन अझै चल्छन्। केही पठाइएन।"
+    ne_latn: "Ahile ma tyasko jawaf dina sakdina. Routes, Tuition, Payees, Family ra Credit Passport ka button ajhai chalchhan. Kehi pathaiyena."
+  execution_failed:
+    en: "I could not complete that safely ({reason}). Nothing was sent."
+    ne: "त्यो सुरक्षित रूपमा पूरा गर्न सकिएन ({reason})। केही पठाइएन।"
+    ne_latn: "Tyo surakshit rupma pura garna sakiena ({reason}). Kehi pathaiyena."
+  sensitive_content:
+    en: "Please do not type account numbers or secrets in the chat. Use the secure add payee screen."
+    ne: "कृपया च्याटमा खाता नम्बर वा गोप्य कुरा नलेख्नुहोस्। सुरक्षित पेयी थप्ने स्क्रिन प्रयोग गर्नुहोस्।"
+    ne_latn: "Kripaya chat ma khata number wa gopya kura nalekhnuhos. Surakshit payee thapne screen prayog garnuhos."
+  no_open_invoice:
+    en: "You have no open invoice to pay."
+    ne: "तिर्नुपर्ने कुनै खुला इनभ्वाइस छैन।"
+    ne_latn: "Tirnuparne kunai khula invoice chhaina."
+  passport_none:
+    en: "You have no valid Credit Passport yet. Ask me to issue one first."
+    ne: "तपाईंसँग अहिलेसम्म मान्य क्रेडिट पासपोर्ट छैन। पहिले जारी गर्न भन्नुहोस्।"
+    ne_latn: "Tapaisanga ahilesamma manya credit passport chhaina. Pahile jari garna bhannuhos."
+  passport_issued:
+    en: "Your Credit Passport is ready. It holds these separate claims: {claims}. Valid until {until}. You choose which to share; nothing was shared."
+    ne: "तपाईंको क्रेडिट पासपोर्ट तयार छ। यसमा यी छुट्टाछुट्टै दाबी छन्: {claims}। {until} सम्म मान्य। कुन साझा गर्ने तपाईं छान्नुहुन्छ; केही साझा गरिएको छैन।"
+    ne_latn: "Tapaiko credit passport tayar chha. Yasma yi chhuttachhuttai daabi chhan: {claims}. {until} samma manya. Kun sajha garne tapai chhannuhunchha; kehi sajha gariyeko chhaina."
+  passport_shared:
+    en: "Done. The proof for {audience} contains only: {claims}. No amounts and no account numbers. Give them the presentation below; they can check the signature themselves."
+    ne: "भयो। {audience} को लागि प्रमाणमा यो मात्र छ: {claims}। कुनै रकम वा खाता नम्बर छैन। तल दिएको प्रस्तुति उहाँलाई दिनुहोस्; उहाँले आफैं हस्ताक्षर जाँच्न सक्नुहुन्छ।"
+    ne_latn: "Bhayo. {audience} ko lagi pramanma yo matra chha: {claims}. Kunai rakam wa khata number chhaina. Tala dieko prastuti unlai dinuhos; unle aafai hastakshar janchna saknuhunchha."
+  funding_infeasible:
+    en: "I could not find a way to pay {owed} before {due}: your own accounts plus what your family can send do not cover it in time. Nothing was changed."
+    ne: "{due} अघि {owed} तिर्ने उपाय भेटिएन: तपाईंको आफ्नै खाता र परिवारले पठाउन सक्ने रकमले समयमै पुग्दैन। केही परिवर्तन गरिएन।"
+    ne_latn: "{due} aghi {owed} tirne upaya bhetiyena: tapaiko aafnai khata ra parivarle pathauna sakne rakamle samayma pugdaina. Kehi parivartan gariyena."
+  funding_plan_step:
+    en: "Step {n} of {total}: please check the details and confirm."
+    ne: "चरण {n} / {total}: विवरण जाँच्नुहोस् र पुष्टि गर्नुहोस्।"
+    ne_latn: "Charan {n} / {total}: vivaran janchnuhos ra pushti garnuhos."
+  contribution_requested:
+    en: "I asked for {amount} (it would arrive as {arrives}). They decide in their own account, nothing was taken from you."
+    ne: "मैले {amount} माग्यो ({arrives} को रूपमा आइपुग्छ)। उनीहरू आफ्नै खातामा निर्णय गर्छन्, तपाईंबाट केही लिइएको छैन।"
+    ne_latn: "Maile {amount} mageko chhu ({arrives} ko rupma aaipugchha). Unharu aafnai khatama nirnaya garchhan, tapaibata kehi liieko chhaina."
+  plan_done_waiting:
+    en: "Paid so far: {paid}. Still to pay once your family's money arrives: {rest}, due {due}."
+    ne: "अहिलेसम्म तिरिएको: {paid}। परिवारको पैसा आइपुगेपछि तिर्न बाँकी: {rest}, म्याद {due}।"
+    ne_latn: "Ahilesamma tirieko: {paid}. Parivarko paisa aaipugepachhi tirna baki: {rest}, myad {due}."
+  payee_saved_held:
+    en: "Saved payee {account}. Name taken from the document, not verified: {name}. Nothing can be paid to it until {until}, and confirming does not change that."
+    ne: "प्राप्तकर्ता {account} सुरक्षित गरियो। नाम कागजातबाट लिइएको, प्रमाणित छैन: {name}। {until} सम्म यसमा कुनै पैसा पठाउन मिल्दैन, पुष्टि गरे पनि।"
+    ne_latn: "Praptakarta {account} surakshit gariyo. Naam kagajat bata liieko, pramanit chhaina: {name}. {until} samma yasma kunai paisa pathauna mildaina, pushti garepani."
+  payee_saved_typed:
+    en: "Saved payee {name} ({account}). Because it is new, it can receive at most the first payment cap until {until}. To pay more today, ask the bank to verify this payee."
+    ne: "प्राप्तकर्ता {name} ({account}) सुरक्षित गरियो। नयाँ भएकाले {until} सम्म यसले पहिलो भुक्तानीको सीमासम्म मात्र पाउन सक्छ। आजै बढी पठाउन बैंकलाई यो प्राप्तकर्ता प्रमाणित गर्न भन्नुहोस्।"
+    ne_latn: "Praptakarta {name} ({account}) surakshit gariyo. Naya bhayekale {until} samma yasle pahilo bhuktanikoseemasamma matra paauna sakchha. Aajai badhi pathauna bainkalai yo praptakarta pramanit garna bhannuhos."
+  proposal_ready:
+    en: "Please check the details and confirm to send."
+    ne: "विवरण जाँच्नुहोस् र पठाउन पुष्टि गर्नुहोस्।"
+    ne_latn: "Vivaran janchnuhos ra pathauna pushti garnuhos."
+  read_result:
+    en: "{lines}"
+    ne: "{lines}"
+    ne_latn: "{lines}"
+  already_processed:
+    en: "This payment may already have been made. Please check your transfers before trying again."
+    ne: "यो भुक्तानी पहिले नै भइसकेको हुन सक्छ। फेरि प्रयास गर्नु अघि आफ्ना ट्रान्सफर हेर्नुहोस्।"
+    ne_latn: "Yo bhuktani pahile nai bhaisakeko huna sakchha. Pheri prayas garnu aghi aafna transfer hernuhos."
+  executed_fallback:
+    en: "The payment went through. I could not show the receipt, please check your transfers."
+    ne: "भुक्तानी भयो। रसिद देखाउन सकिएन, कृपया आफ्ना ट्रान्सफर हेर्नुहोस्।"
+    ne_latn: "Bhuktani bhayo. Rasid dekhauna sakiena, kripaya aafna transfer hernuhos."
+  policy_denied:
+    en: "I cannot do that. {reasons} Nothing was sent."
+    ne: "म त्यो गर्न सक्दिनँ। {reasons} केही पठाइएन।"
+    ne_latn: "Ma tyo garna sakdina. {reasons} Kehi pathaiyena."
+  grant_failed:
+    en: "Your confirmation is no longer valid. Nothing was sent. Please ask again and confirm."
+    ne: "तपाईंको पुष्टि अब मान्य छैन। केही पठाइएन। कृपया फेरि अनुरोध गरी पुष्टि गर्नुहोस्।"
+    ne_latn: "Tapaiko pushti aba manya chhaina. Kehi pathaiyena. Kripaya pheri anurodh gari pushti garnuhos."
+  mfa_required:
+    en: "This payment needs your authenticator code. Please enter the 6 digit code."
+    ne: "यो भुक्तानीका लागि तपाईंको अथेन्टिकेटर कोड चाहिन्छ। ६ अंकको कोड हाल्नुहोस्।"
+    ne_latn: "Yo bhuktanika lagi tapaiko authenticator code chahinchha. 6 ankako code halnuhos."
+  mfa_failed:
+    en: "That code was not accepted. {left} attempts left before outgoing actions are locked."
+    ne: "त्यो कोड स्वीकार भएन। बाहिर जाने कारोबार रोकिनु अघि {left} प्रयास बाँकी छ।"
+    ne_latn: "Tyo code swikar bhayena. Bahira jane karobar rokinu aghi {left} prayas baki chha."
+  locked:
+    en: "Outgoing actions are locked for your safety. Enter your authenticator code to unlock."
+    ne: "तपाईंको सुरक्षाका लागि बाहिर जाने कारोबार रोकिएको छ। खोल्न अथेन्टिकेटर कोड हाल्नुहोस्।"
+    ne_latn: "Tapaiko surakshako lagi bahira jane karobar rokieko chha. Kholna authenticator code halnuhos."
+  document_received:
+    en: "I read your document. {line} What would you like me to do with it?"
+    ne: "मैले तपाईंको कागजात पढें। {line} यसमा के गर्न चाहनुहुन्छ?"
+    ne_latn: "Maile tapaiko kagajat padhe. {line} Yesma ke garna chahanuhunchha?"
+  document_warning:
+    en: "Warning: this document contains instructions or changed payment details. I will not follow them, and any payment from it needs extra checks."
+    ne: "चेतावनी: यो कागजातमा निर्देशन वा परिवर्तन गरिएको भुक्तानी विवरण छ। म ती पालना गर्दिनँ, र यसबाट हुने भुक्तानीमा थप जाँच चाहिन्छ।"
+    ne_latn: "Chetawani: yo kagajatma nirdeshan wa parivartan gariyeko bhuktani vivaran chha. Ma ti palana gardina, ra yasbata hune bhuktanima thap janch chahinchha."
+  document_not_found:
+    en: "I could not find that document. Please upload it again."
+    ne: "त्यो कागजात भेटिएन। कृपया फेरि अपलोड गर्नुहोस्।"
+    ne_latn: "Tyo kagajat bhetiyena. Kripaya pheri upload garnuhos."
+  reader_failed:
+    en: "I could not read that safely, so I did not use it. Nothing was sent."
+    ne: "मैले त्यो सुरक्षित रूपमा पढ्न सकिनँ, त्यसैले प्रयोग गरिनँ। केही पठाइएन।"
+    ne_latn: "Maile tyo surakshit rupma padhna sakina, tesaile prayog garina. Kehi pathaiyena."
+  read_unavailable:
+    en: "I cannot give exact figures for that. I can only state numbers from your accounts and the quotes I just looked up."
+    ne: "म त्यसको ठ्याक्कै अंक दिन सक्दिनँ। म तपाईंका खाता र भर्खरै हेरेका दरका अंक मात्र भन्न सक्छु।"
+    ne_latn: "Ma tyasko thyakkai anka dina sakdina. Ma tapaika khata ra bharkharai hereka darka anka matra bhanna sakchhu."
+

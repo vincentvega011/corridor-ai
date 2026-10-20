@@ -1,0 +1,1 @@
+{"key": "febf982fb8bc774063b2eed02e6f695e86d81ff9819ec69edff9ae7f0d2f2b46", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_c1b2a9380b514734b040078b", "name": "transfer", "arguments": {"payee_or_account": "pay_ramesh_ama", "amount": 20000, "currency": "NPR"}}], "input_tokens": 2318, "output_tokens": 78, "usage_estimated": false}}

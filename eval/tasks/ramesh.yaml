@@ -1,0 +1,100 @@
+- id: t05_ramesh_send_ama_romanised
+  scenario: remittance
+  features: []
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai 20 hajar pathau"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_confirm}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_ama, currency: QAR}
+    - {kind: balance_delta, account: acc_ramesh_qar, min_delta_minor: -60000, max_delta_minor: -40000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t06_ramesh_send_ama_devanagari
+  scenario: remittance
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns: ["आमालाई २० हजार पठाऊ"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_confirm}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_ama, currency: QAR}
+    - {kind: balance_delta, account: acc_ramesh_qar, min_delta_minor: -60000, max_delta_minor: -40000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t07_ramesh_conditional_send
+  scenario: remittance
+  features: []
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai 20 hajar pathau, rent pugne bhaye matra"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_confirm}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_ama, currency: QAR}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t08_ramesh_unknown_name
+  scenario: remittance
+  features: [clarification]
+  language: ne_latn
+  persona: ramesh
+  turns: ["Bob lai 5 hajar pathau"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: clarify, data: {slot: payee_ref}}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t12_ramesh_qar_before_dashain
+  scenario: remittance
+  features: [festival]
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai 800 QAR dashain aghi pathau"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: route, data: {provider: KathmanduLink, label: cheapest_on_time}}
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_ama, currency: QAR, amount_minor: 80000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -80000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t13_ramesh_deadline_no_route_can_meet
+  scenario: remittance
+  features: [fallback, festival]
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai 90000 QAR bholi samma pathau"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: rejected, data: {reason: "no route arrives before the deadline"}}
+    - {kind: no_event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+    - {kind: reply_matches, pattern: "before the deadline"}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+

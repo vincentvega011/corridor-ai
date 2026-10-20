@@ -1,0 +1,1 @@
+{"key": "37a18dd06a74801523575547d791914860b41100a4f5bcad89008e7ee2160757", "role": "parser", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"check_balance\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2202, "output_tokens": 34, "usage_estimated": false}}

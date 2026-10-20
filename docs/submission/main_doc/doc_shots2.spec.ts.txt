@@ -1,0 +1,30 @@
+import fs from "node:fs";
+import path from "node:path";
+import { expect, test } from "@playwright/test";
+import { ROOT, api, customerChat, officerToken, resetSandbox, tamperLedgerRow } from "./helpers";
+
+const OUT = "/tmp/docshots";
+fs.mkdirSync(OUT, { recursive: true });
+test.use({ viewport: { width: 1280, height: 800 } });
+
+test("scenario E and F console screens", async ({ page }) => {
+  resetSandbox();
+  await customerChat("usr_priya", "Please pay this deposit for the room", { file: path.join(ROOT, "data", "fixtures", "rt", "rt_housing_genuine.pdf"), confirm: true });
+  const pl = (await api("usr_priya", "GET", "/payees")).json?.payees as { payee_id: string; account_no: string }[];
+  const land = pl.find((p) => String(p.account_no).endsWith("6612"))!;
+  expect((await api("usr_priya", "POST", `/payees/${land.payee_id}/verification-request`, {})).status).toBe(200);
+  await page.goto("/console/login");
+  await page.getByTestId("login-officer").selectOption("officer_asha");
+  await page.getByTestId("login-credential").fill(officerToken("officer_asha"));
+  await page.getByTestId("login-submit").click();
+  await expect(page.getByTestId("officer-id")).toHaveText("officer_asha");
+  await page.goto("/console/queue");
+  await expect(page.getByText("Wattle Lane Property").first()).toBeVisible();
+  await page.screenshot({ path: `${OUT}/E_queue.png`, fullPage: true });
+  tamperLedgerRow(6);
+  await page.getByRole("link", { name: "Ledger" }).click();
+  await page.getByRole("button", { name: /Verify chain/ }).click();
+  await expect(page.getByTestId("chain-result")).toHaveAttribute("data-valid", "no");
+  await page.screenshot({ path: `${OUT}/F_chain.png`, fullPage: true });
+  await page.getByTestId("chain-result").screenshot({ path: `${OUT}/F_banner.png` });
+});

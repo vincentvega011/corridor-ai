@@ -1,0 +1,1 @@
+{"key": "41b78a5dca0b7732396d5a844338cb3e194849ebb3fc9379ad623f4acebb078a", "role": "parser_fallback", "response": {"text": "{\"language\": \"ne\", \"intent\": \"pay_invoice\", \"slots\": {\"payee_ref\": \"बिजकको\"}, \"missing_slots\": [], \"confidence_bps\": 9000}", "tool_calls": [], "input_tokens": 2152, "output_tokens": 46, "usage_estimated": false}}

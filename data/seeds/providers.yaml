@@ -1,0 +1,48 @@
+# Fictional remittance providers, 4 per corridor. ALL VALUES ARE ILLUSTRATIVE ASSUMPTIONS.
+#
+# Ranges are informed by the shape of World Bank "Remittance Prices Worldwide" data (total cost of
+# sending roughly 2 to 7 percent for small amounts, made of a fee plus an exchange rate margin), see
+# docs/assumptions.md. They are not quotes from any real company. Provider names are fictional.
+# `daily` is the most a user may send through the provider in one day (assumed 2 x max, docs/assumptions.md).
+# Money is integer minor units of the SOURCE currency. cost = fixed + (fee_pct_bps + fx_margin_bps)/10000 * amount.
+#
+# The AUD to NPR corridor is built so that for a large send (for example AUD 5,000) splitting across
+# two providers beats every single provider that can carry the whole amount:
+#   single BankWire AUD 5,000: 2000 + 80 bps  = AUD 60.00      single SwiftHome: 500 + 150 bps = AUD 80.00
+#   split PeakRemit 3,000 + KathmanduLink 2,000: 18.00 + 21.00 = AUD 39.00  (PeakRemit and KathmanduLink cap at AUD 3,000)
+version: 1
+providers:
+  # ---- AUD -> NPR
+  - {id: prov_peakremit_aud_npr,      name: PeakRemit,     from: AUD, to: NPR, fixed: 0,     pct_bps: 40,  margin_bps: 20,  min: 5000,    max: 300000,    daily: 600000, eta_hours: 24, active: true}
+  - {id: prov_kathmandulink_aud_npr,  name: KathmanduLink, from: AUD, to: NPR, fixed: 300,   pct_bps: 0,   margin_bps: 90,  min: 2000,    max: 300000,    daily: 600000, eta_hours: 48, active: true}
+  - {id: prov_swifthome_aud_npr,      name: SwiftHome,     from: AUD, to: NPR, fixed: 500,   pct_bps: 50,  margin_bps: 100, min: 1000,    max: 2000000,   daily: 4000000, eta_hours: 2,  active: true}
+  - {id: prov_bankwire_aud_npr,       name: BankWire,      from: AUD, to: NPR, fixed: 2000,  pct_bps: 0,   margin_bps: 80,  min: 50000,   max: 5000000,   daily: 10000000, eta_hours: 72, active: true}
+  # ---- QAR -> NPR
+  - {id: prov_peakremit_qar_npr,      name: PeakRemit,     from: QAR, to: NPR, fixed: 1500,  pct_bps: 0,   margin_bps: 70,  min: 20000,   max: 5000000,   daily: 10000000, eta_hours: 24, active: true}
+  - {id: prov_kathmandulink_qar_npr,  name: KathmanduLink, from: QAR, to: NPR, fixed: 1000,  pct_bps: 0,   margin_bps: 110, min: 10000,   max: 2000000,   daily: 4000000, eta_hours: 4,  active: true}
+  - {id: prov_swifthome_qar_npr,      name: SwiftHome,     from: QAR, to: NPR, fixed: 0,     pct_bps: 150, margin_bps: 150, min: 5000,    max: 1000000,   daily: 2000000, eta_hours: 1,  active: true}
+  - {id: prov_bankwire_qar_npr,       name: BankWire,      from: QAR, to: NPR, fixed: 2500,  pct_bps: 0,   margin_bps: 60,  min: 100000,  max: 10000000,  daily: 20000000, eta_hours: 48, active: true}
+  # ---- MYR -> NPR
+  - {id: prov_peakremit_myr_npr,      name: PeakRemit,     from: MYR, to: NPR, fixed: 800,   pct_bps: 30,  margin_bps: 60,  min: 10000,   max: 1500000,   daily: 3000000, eta_hours: 24, active: true}
+  - {id: prov_kathmandulink_myr_npr,  name: KathmanduLink, from: MYR, to: NPR, fixed: 1200,  pct_bps: 0,   margin_bps: 85,  min: 5000,    max: 1000000,   daily: 2000000, eta_hours: 12, active: true}
+  - {id: prov_swifthome_myr_npr,      name: SwiftHome,     from: MYR, to: NPR, fixed: 0,     pct_bps: 120, margin_bps: 130, min: 3000,    max: 800000,    daily: 1600000, eta_hours: 1,  active: true}
+  - {id: prov_bankwire_myr_npr,       name: BankWire,      from: MYR, to: NPR, fixed: 3000,  pct_bps: 0,   margin_bps: 55,  min: 50000,   max: 6000000,   daily: 12000000, eta_hours: 72, active: true}
+  # ---- NPR -> CNY (money in NPR paisa; parents in Nepal fund a student in China)
+  - {id: prov_peakremit_npr_cny,      name: PeakRemit,     from: NPR, to: CNY, fixed: 15000, pct_bps: 40,  margin_bps: 90,  min: 500000,  max: 30000000,  daily: 60000000, eta_hours: 24, active: true}
+  - {id: prov_kathmandulink_npr_cny,  name: KathmanduLink, from: NPR, to: CNY, fixed: 10000, pct_bps: 0,   margin_bps: 130, min: 300000,  max: 20000000,  daily: 40000000, eta_hours: 36, active: true}
+  - {id: prov_swifthome_npr_cny,      name: SwiftHome,     from: NPR, to: CNY, fixed: 0,     pct_bps: 100, margin_bps: 160, min: 100000,  max: 10000000,  daily: 20000000, eta_hours: 4,  active: true}
+  - {id: prov_bankwire_npr_cny,       name: BankWire,      from: NPR, to: CNY, fixed: 50000, pct_bps: 0,   margin_bps: 75,  min: 2000000, max: 100000000, daily: 200000000, eta_hours: 72, active: true}
+  # ---- CNY -> NPR (a Nepali student or worker in China sending home; money in CNY fen)
+  - {id: prov_peakremit_cny_npr,      name: PeakRemit,     from: CNY, to: NPR, fixed: 600,   pct_bps: 30,  margin_bps: 70,  min: 10000,   max: 3000000,   daily: 6000000,   eta_hours: 24, active: true}
+  - {id: prov_kathmandulink_cny_npr,  name: KathmanduLink, from: CNY, to: NPR, fixed: 400,   pct_bps: 0,   margin_bps: 100, min: 5000,    max: 2000000,   daily: 4000000,   eta_hours: 6,  active: true}
+  - {id: prov_swifthome_cny_npr,      name: SwiftHome,     from: CNY, to: NPR, fixed: 0,     pct_bps: 120, margin_bps: 140, min: 2000,    max: 1000000,   daily: 2000000,   eta_hours: 1,  active: true}
+  - {id: prov_bankwire_cny_npr,       name: BankWire,      from: CNY, to: NPR, fixed: 1500,  pct_bps: 0,   margin_bps: 50,  min: 50000,   max: 8000000,   daily: 16000000,  eta_hours: 72, active: true}
+  # ---- QAR -> AUD (a family contribution from Qatar to a student in Australia; money in QAR dirhams)
+  - {id: prov_peakremit_qar_aud,      name: PeakRemit,     from: QAR, to: AUD, fixed: 1200,  pct_bps: 20,  margin_bps: 60,  min: 10000,   max: 2000000,   daily: 4000000,   eta_hours: 24, active: true}
+  - {id: prov_swifthome_qar_aud,      name: SwiftHome,     from: QAR, to: AUD, fixed: 0,     pct_bps: 100, margin_bps: 120, min: 5000,    max: 500000,    daily: 1000000,   eta_hours: 2,  active: true}
+  - {id: prov_bankwire_qar_aud,       name: BankWire,      from: QAR, to: AUD, fixed: 3000,  pct_bps: 0,   margin_bps: 40,  min: 100000,  max: 8000000,   daily: 16000000,  eta_hours: 72, active: true}
+  # ---- USD -> NPR
+  - {id: prov_peakremit_usd_npr,      name: PeakRemit,     from: USD, to: NPR, fixed: 200,   pct_bps: 30,  margin_bps: 50,  min: 2000,    max: 500000,    daily: 1000000, eta_hours: 24, active: true}
+  - {id: prov_kathmandulink_usd_npr,  name: KathmanduLink, from: USD, to: NPR, fixed: 300,   pct_bps: 0,   margin_bps: 80,  min: 1000,    max: 300000,    daily: 600000, eta_hours: 12, active: true}
+  - {id: prov_swifthome_usd_npr,      name: SwiftHome,     from: USD, to: NPR, fixed: 0,     pct_bps: 100, margin_bps: 120, min: 500,     max: 250000,    daily: 500000, eta_hours: 1,  active: true}
+  - {id: prov_bankwire_usd_npr,       name: BankWire,      from: USD, to: NPR, fixed: 1500,  pct_bps: 0,   margin_bps: 45,  min: 20000,   max: 5000000,   daily: 10000000, eta_hours: 72, active: true}

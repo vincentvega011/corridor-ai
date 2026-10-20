@@ -1,0 +1,1 @@
+{"key": "aa9ce8dcc311a8becd2af9ad847aa54cc46ee5772b9e83d90f88892b25b99e0f", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_c1ceae7bc72545cea98f11c5", "name": "get_payees", "arguments": {}}, {"id": "call_ed34d644548f44c8807fcde4", "name": "get_history", "arguments": {"days": 90}}], "input_tokens": 1896, "output_tokens": 51, "usage_estimated": false}}

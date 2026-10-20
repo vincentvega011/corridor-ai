@@ -1,0 +1,1 @@
+{"key": "00c3234406c8134490741eb5405db1f238adac7c770768d3b471d82592b307d8", "role": "parser", "response": {"text": "{\"language\": \"en\", \"intent\": \"pay_invoice\", \"slots\": {\"payee_ref\": \"Summarise\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2147, "output_tokens": 43, "usage_estimated": false}}

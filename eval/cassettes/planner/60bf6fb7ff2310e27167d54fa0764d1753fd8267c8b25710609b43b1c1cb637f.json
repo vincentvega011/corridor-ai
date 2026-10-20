@@ -1,0 +1,1 @@
+{"key": "60bf6fb7ff2310e27167d54fa0764d1753fd8267c8b25710609b43b1c1cb637f", "role": "planner", "response": {"text": "Ama is a saved payee (NPR). Your NPR balance is NPR 45,000, so NPR 20,000 is fine.\n\nJust to confirm: send **NPR 20,000 to Ama** now? Reply \"yes\" and I'll send it.", "tool_calls": [], "input_tokens": 2199, "output_tokens": 58, "usage_estimated": false}}

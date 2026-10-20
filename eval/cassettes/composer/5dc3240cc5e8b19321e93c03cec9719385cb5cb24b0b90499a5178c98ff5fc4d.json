@@ -1,0 +1,1 @@
+{"key": "5dc3240cc5e8b19321e93c03cec9719385cb5cb24b0b90499a5178c98ff5fc4d", "role": "composer", "response": {"text": "{\"reply\": \"तपाईंको खातामा QAR मुद्राको खाता भेटिएन। उपलब्ध खाताहरू: AUD 4,200.00 (****9873) र NPR 620,000.00 (****6221)।\"}", "tool_calls": [], "input_tokens": 439, "output_tokens": 66, "usage_estimated": false}}

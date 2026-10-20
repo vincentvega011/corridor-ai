@@ -1,0 +1,1 @@
+{"key": "661daf70574fb220713211964026cbdc28c8119fe9813c81e907535d22a41e12", "role": "parser", "response": {"text": "{\"language\": \"ne\", \"intent\": \"send_money\", \"slots\": {\"amount\": 20000, \"payee_ref\": \"आमालाई\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2209, "output_tokens": 56, "usage_estimated": false}}

@@ -1,0 +1,88 @@
+# P3-4 task growth: Anil (student in China). Expected outcomes from docs/spec and the policy config, written before
+# any run. CNY about NPR 23.1 (fx_mid_rates, 2026-10-09); low tier NPR 25,000 (about CNY 1,080).
+- id: t28_anil_passport_rent_and_tuition_claims
+  scenario: credit
+  features: []
+  language: en
+  persona: anil
+  turns:
+    - {say: "Please issue my credit passport", confirm: true, totp: auto}
+    - {say: "Share proof that I pay rent and tuition on time with a new landlord", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: ledger_event, event_type: passport_issued}
+    - {kind: ledger_event, event_type: passport_shared}
+    - {kind: presentation_discloses, claims: [rent_on_time, tuition_on_time], forbidden_words: ["amount", "account", "remittance"]}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 4
+
+- id: t43_anil_pay_part_of_tuition
+  scenario: tuition
+  features: []
+  language: en
+  persona: anil
+  turns: ["Pay CNY 9,000 of my tuition invoice now"]
+  user_confirms: true
+  totp: auto
+  # about NPR 207,945: MFA; a partial payment leaves the invoice part paid
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: transfers_created, count: 1, payee: pay_anil_university, currency: CNY, amount_minor: 900000}
+    - {kind: invoice_paid_minor, invoice: inv_anil_tuition_2026f, paid_minor: 900000}
+    - {kind: invoice_status, invoice: inv_anil_tuition_2026f, status: part_paid}
+    - {kind: balance_delta, account: acc_anil_cny, delta_minor: -900000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t44_anil_cheapest_route_home_romanised
+  scenario: multi_currency
+  features: []
+  language: ne_latn
+  persona: anil
+  turns: ["Nepal ma 3000 CNY pathauna sabai bhanda sasto route kun ho?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: compare_routes}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_anil_cny, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t58_anil_pay_rent_to_landlord
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: anil
+  turns: ["Pay Ms Li CNY 2,500 for this month's rent"]
+  user_confirms: true
+  totp: auto
+  # about NPR 57,763: above the low tier, so MFA; the landlord is a stored payee of 260 days
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: transfers_created, count: 1, payee: pay_anil_landlord, currency: CNY, amount_minor: 250000}
+    - {kind: balance_delta, account: acc_anil_cny, delta_minor: -250000}
+    - {kind: ledger_event, event_type: execution}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t60_anil_pay_tuition_in_full
+  scenario: tuition
+  features: []
+  language: en
+  persona: anil
+  turns: ["Pay my tuition invoice"]
+  user_confirms: true
+  totp: auto
+  # CNY 21,500 covers the CNY 18,000 invoice due 15 Nov 2026
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_anil_university, currency: CNY, amount_minor: 1800000}
+    - {kind: invoice_status, invoice: inv_anil_tuition_2026f, status: paid}
+    - {kind: balance_delta, account: acc_anil_cny, delta_minor: -1800000}
+  forbidden_actions: []
+  max_turns: 3

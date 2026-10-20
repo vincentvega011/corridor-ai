@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" font-family="Helvetica,Arial,sans-serif">
+<rect width="1100" height="560" fill="white"/>
+<text x="70" y="32" font-size="20" font-weight="bold">Attack success rate (fooled_user), full minus each defence</text>
+<line x1="70" y1="410.0" x2="1070" y2="410.0" stroke="#e5e7eb"/><text x="62" y="414.0" font-size="12" text-anchor="end">0%</text>
+<line x1="70" y1="342.0" x2="1070" y2="342.0" stroke="#e5e7eb"/><text x="62" y="346.0" font-size="12" text-anchor="end">20%</text>
+<line x1="70" y1="274.0" x2="1070" y2="274.0" stroke="#e5e7eb"/><text x="62" y="278.0" font-size="12" text-anchor="end">40%</text>
+<line x1="70" y1="206.0" x2="1070" y2="206.0" stroke="#e5e7eb"/><text x="62" y="210.0" font-size="12" text-anchor="end">60%</text>
+<line x1="70" y1="138.0" x2="1070" y2="138.0" stroke="#e5e7eb"/><text x="62" y="142.0" font-size="12" text-anchor="end">80%</text>
+<line x1="70" y1="70.0" x2="1070" y2="70.0" stroke="#e5e7eb"/><text x="62" y="74.0" font-size="12" text-anchor="end">100%</text>
+<rect x="80.0" y="408.5" width="8.0" height="1.5" fill="#b3261e"/>
+<text x="85.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="90.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="95.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="100.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="105.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="110.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="115.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="120.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="125.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="130.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="135.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="140.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="145.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="150.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="155.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="120.0" y="424" font-size="12" transform="rotate(35 120.0 424)">direct_injection</text>
+<rect x="180.0" y="334.4" width="8.0" height="75.6" fill="#b3261e"/>
+<text x="185.0" y="330.4" font-size="11" text-anchor="middle">22</text>
+<rect x="190.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="195.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="200.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="205.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="210.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="215.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="220.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="225.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="230.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="235.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="240.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="245.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="250.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="255.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="220.0" y="424" font-size="12" transform="rotate(35 220.0 424)">indirect_injection_document</text>
+<rect x="280.0" y="376.0" width="8.0" height="34.0" fill="#b3261e"/>
+<text x="285.0" y="372.0" font-size="11" text-anchor="middle">10</text>
+<rect x="290.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="295.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="300.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="305.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="310.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="315.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="320.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="325.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="330.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="335.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="340.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="345.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="350.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="355.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="320.0" y="424" font-size="12" transform="rotate(35 320.0 424)">indirect_injection_image</text>
+<rect x="380.0" y="342.0" width="8.0" height="68.0" fill="#b3261e"/>
+<text x="385.0" y="338.0" font-size="11" text-anchor="middle">20</text>
+<rect x="390.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="395.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="400.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="405.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="410.0" y="296.7" width="8.0" height="113.3" fill="#d97706"/>
+<text x="415.0" y="292.7" font-size="11" text-anchor="middle">33</text>
+<rect x="420.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="425.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="430.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="435.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="440.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="445.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="450.0" y="325.0" width="8.0" height="85.0" fill="#be185d"/>
+<text x="455.0" y="321.0" font-size="11" text-anchor="middle">25</text>
+<text x="420.0" y="424" font-size="12" transform="rotate(35 420.0 424)">induced_transfer_social_engineering</text>
+<rect x="480.0" y="408.5" width="8.0" height="1.5" fill="#b3261e"/>
+<text x="485.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="490.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="495.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="500.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="505.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="510.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="515.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="520.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="525.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="530.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="535.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="540.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="545.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="550.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="555.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="520.0" y="424" font-size="12" transform="rotate(35 520.0 424)">data_extraction</text>
+<rect x="580.0" y="408.5" width="8.0" height="1.5" fill="#b3261e"/>
+<text x="585.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="590.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="595.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="600.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="605.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="610.0" y="183.3" width="8.0" height="226.7" fill="#d97706"/>
+<text x="615.0" y="179.3" font-size="11" text-anchor="middle">67</text>
+<rect x="620.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="625.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="630.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="635.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="640.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="645.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="650.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="655.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="620.0" y="424" font-size="12" transform="rotate(35 620.0 424)">privilege_escalation</text>
+<rect x="680.0" y="408.5" width="8.0" height="1.5" fill="#b3261e"/>
+<text x="685.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="690.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="695.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="700.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="705.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="710.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="715.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="720.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="725.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="730.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="735.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="740.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="745.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="750.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="755.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="720.0" y="424" font-size="12" transform="rotate(35 720.0 424)">hallucination</text>
+<rect x="780.0" y="408.5" width="8.0" height="1.5" fill="#b3261e"/>
+<text x="785.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="790.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="795.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="800.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="805.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="810.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="815.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="820.0" y="408.5" width="8.0" height="1.5" fill="#2f855a"/>
+<text x="825.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="830.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="835.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="840.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="845.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="850.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="855.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="820.0" y="424" font-size="12" transform="rotate(35 820.0 424)">replay_duplicate</text>
+<rect x="880.0" y="408.5" width="8.0" height="1.5" fill="#b3261e"/>
+<text x="885.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="890.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="895.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="900.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="905.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="910.0" y="408.5" width="8.0" height="1.5" fill="#d97706"/>
+<text x="915.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="920.0" y="206.0" width="8.0" height="204.0" fill="#2f855a"/>
+<text x="925.0" y="202.0" font-size="11" text-anchor="middle">60</text>
+<rect x="930.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="935.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="940.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="945.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="950.0" y="408.5" width="8.0" height="1.5" fill="#be185d"/>
+<text x="955.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="920.0" y="424" font-size="12" transform="rotate(35 920.0 424)">confirmation_swap</text>
+<rect x="980.0" y="381.7" width="8.0" height="28.3" fill="#b3261e"/>
+<text x="985.0" y="377.7" font-size="11" text-anchor="middle">8</text>
+<rect x="990.0" y="408.5" width="8.0" height="1.5" fill="#1b6ca8"/>
+<text x="995.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="1000.0" y="408.5" width="8.0" height="1.5" fill="#6b7280"/>
+<text x="1005.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="1010.0" y="360.7" width="8.0" height="49.3" fill="#d97706"/>
+<text x="1015.0" y="356.7" font-size="11" text-anchor="middle">14</text>
+<rect x="1020.0" y="395.2" width="8.0" height="14.8" fill="#2f855a"/>
+<text x="1025.0" y="391.2" font-size="11" text-anchor="middle">4</text>
+<rect x="1030.0" y="408.5" width="8.0" height="1.5" fill="#7c3aed"/>
+<text x="1035.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="1040.0" y="408.5" width="8.0" height="1.5" fill="#0891b2"/>
+<text x="1045.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="1050.0" y="395.2" width="8.0" height="14.8" fill="#be185d"/>
+<text x="1055.0" y="391.2" font-size="11" text-anchor="middle">4</text>
+<text x="1020.0" y="424" font-size="12" transform="rotate(35 1020.0 424)">overall</text>
+<rect x="70" y="532" width="14" height="14" fill="#b3261e"/><text x="90" y="544" font-size="13">full</text>
+<rect x="260" y="532" width="14" height="14" fill="#1b6ca8"/><text x="280" y="544" font-size="13">no_quarantine</text>
+<rect x="450" y="532" width="14" height="14" fill="#6b7280"/><text x="470" y="544" font-size="13">no_taint</text>
+<rect x="640" y="532" width="14" height="14" fill="#d97706"/><text x="660" y="544" font-size="13">no_policy</text>
+<rect x="830" y="532" width="14" height="14" fill="#2f855a"/><text x="850" y="544" font-size="13">no_grants</text>
+<rect x="1020" y="532" width="14" height="14" fill="#7c3aed"/><text x="1040" y="544" font-size="13">no_grounding</text>
+<rect x="1210" y="532" width="14" height="14" fill="#0891b2"/><text x="1230" y="544" font-size="13">no_risk</text>
+<rect x="1400" y="532" width="14" height="14" fill="#be185d"/><text x="1420" y="544" font-size="13">no_cooloff</text>
+<text x="70" y="518" font-size="12" fill="#555">P2-8 preview: baseline and full on every case; ablation rows STALE (P2-4 code)</text>
+</svg>

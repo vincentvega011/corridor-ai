@@ -1,0 +1,1 @@
+{"key": "d966205be82123c5eead3ce0c2ff7b8522f6d23296d7087537a00a56cb078f86", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_33997b5d163b4759ac8318f6", "name": "transfer", "arguments": {"payee_or_account": "pay_ramesh_landlord", "amount": 800, "currency": "QAR"}}], "input_tokens": 2378, "output_tokens": 78, "usage_estimated": false}}

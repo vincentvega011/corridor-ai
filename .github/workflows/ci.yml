@@ -1,0 +1,56 @@
+name: ci
+# Runs on a fresh GitHub runner with no secrets: Postgres is a service container, and every model call is
+# answered from the recorded cassettes (LLM_REPLAY=1), so no key, local model or Docker-in-Docker is needed.
+# Not run here: make web-e2e (browsers, own build and database), make evidence, make demo and the live-model evaluation.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: corridor
+          POSTGRES_PASSWORD: corridor
+          POSTGRES_DB: corridor
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U corridor -d corridor"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      APP_ENV: test
+      DATABASE_URL: postgresql+psycopg://corridor:corridor@localhost:5432/corridor
+      LLM_REPLAY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: cd backend && uv sync
+      - name: Lint and type check (backend)
+        run: cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy
+      - name: Unit and integration tests
+        run: make test
+      - name: Safety tests
+        run: make test-safety
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Lint and type check (frontend)
+        run: pnpm lint && pnpm exec tsc --noEmit
+      - name: No external host in the build, no demo code in a production build
+        run: node scripts/check-no-external.mjs && node scripts/check-production-build.mjs

@@ -1,0 +1,459 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.15cm,top=2.0cm,bottom=2.0cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{plex-sans}
+\usepackage{plex-mono}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb}
+\usepackage[italic,defaultmathsizes]{mathastext}
+\MTfamily{\sfdefault}\Mathastext
+% digits in math use the text font (mathastext leaves them in Computer Modern): active digits, set after mathastext
+\AtBeginDocument{\begingroup\catcode`\~=13
+\def\MTdig#1{\global\mathcode`#1="8000 \lccode`\~=`#1 \lowercase{\gdef~{{\text{#1}}}}}
+\MTdig0\MTdig1\MTdig2\MTdig3\MTdig4\MTdig5\MTdig6\MTdig7\MTdig8\MTdig9
+\endgroup
+\renewcommand{\mathrm}[1]{\text{#1}}}
+\usepackage{booktabs,array,tabularx,makecell}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\apptocmd{\thebibliography}{\setlength{\itemsep}{1pt}\setlength{\parsep}{0pt}}{}{}
+\usepackage[nobottomtitles*]{titlesec}
+\def\bottomtitlespace{0.07\textheight}
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\raggedbottom
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.9}
+\setcounter{topnumber}{3}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{12pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+\definecolor{ink}{HTML}{09090B}
+\definecolor{g6}{HTML}{52525B}
+\definecolor{g4}{HTML}{A1A1AA}
+\definecolor{g2}{HTML}{E4E4E7}
+\definecolor{g1}{HTML}{F4F4F5}
+\definecolor{deny}{HTML}{B91C1C}
+\color{ink}
+
+\setlist{nosep,leftmargin=*,itemsep=1.5pt,topsep=3pt}
+\setlength{\parindent}{0pt}
+\emergencystretch=3em
+\tolerance=1200
+\setlength{\parskip}{4pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{9pt plus 2pt minus 2pt}
+\setlength{\intextsep}{9pt plus 2pt minus 2pt}
+\renewcommand{\arraystretch}{1.12}
+\captionsetup{font={small},labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=false,skip=4pt}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}[\vspace{-4pt}\rule{\linewidth}{0.5pt}]
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{9pt}{1pt}
+\titlespacing*{\subsection}{0pt}{7pt}{2pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\footnotesize Corridor AI: technical document}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\rid}[1]{\texttt{\small #1}}
+\newcommand{\NPR}{\mathrm{NPR}}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\tikzset{
+  nd/.style={draw=ink,line width=0.5pt,rounded corners=1.5pt,align=center,inner sep=3pt,minimum height=8.5mm,minimum width=27mm,font=\footnotesize,fill=white},
+  ndu/.style={nd,dashed,fill=white},
+  ndm/.style={nd,densely dotted,line width=0.9pt,fill=white},
+  ndt/.style={nd,fill=g1},
+  zone/.style={draw=ink,rounded corners=3pt,inner sep=6pt,line width=0.6pt},
+  fl/.style={-{Stealth[length=1.8mm]},line width=0.6pt},
+  lab/.style={font=\scriptsize,fill=white,inner sep=1pt},
+}
+
+\begin{document}
+
+% ---------------------------------------------------------------- title block
+\begin{center}
+{\LARGE\bfseries Corridor AI}\\[3pt]
+{\large A safety-constrained AI financial agent for people who move money across borders}\\[8pt]
+{\small 2026 Shenzhen International FinTech Competition, International Track, Topic C\\
+Team: Yajan Adhikari (IOE-TU, Nepal), Ujjawal Chapagai (DGIST, South Korea)}
+\end{center}
+\vspace{-4pt}
+
+% ---------------------------------------------------------------- 1
+\section{Executive summary}
+\textbf{The problem.} Moving money across a border is slow and costly: the global average cost of sending remittances was 6.49\% in Q1 2025 \cite{worldbank_rpw50}. It is also where fraud happens in which the victim authorises the payment: authorised push payment fraud cost UK customers GBP 576.4 million in 2025 \cite{ukfinance2026fraud}, and Australians lost AUD 2.18 billion to scams, AUD 166.8 million of it to payment redirection, the class that contains fake invoices and changed bank details \cite{accc2026targeting}. International students, and the families and workers who support them, sit in the middle of this: a first-time landlord, a tuition invoice, an unknown account number, a deadline. An AI assistant that reads documents and can move money adds a new route to the same loss, because whoever writes the text the model reads can steer what it proposes \cite{greshake2023indirect,perez2022ignore,debenedetti2024agentdojo}.
+
+\textbf{The thesis.} \emph{The AI can be fooled. The money still can't move.} Corridor AI does not try to make the model unfoolable. It makes a fooled model irrelevant to state: models only emit typed proposals, deterministic code decides them, and only one executor can change money, after a confirmation bound to the exact proposal.
+
+\textbf{What was built} (a working sandbox, synthetic data only, tagged as implemented and tested):
+\begin{itemize}
+\item an agent with a customer app (English, Nepali, Simplified Chinese interface) and a bank console, in which \emph{models never execute} and untrusted documents never reach the privileged planner as text;
+\item a deterministic policy engine with permission tiers, a risk score, a 24 hour hold on accounts taken from documents, and a safety lock;
+\item a hash-bound, single-use confirmation (what you see is what you sign), one transactional executor, and a hash-chained, Merkle-summarised audit ledger;
+\item a multilingual understanding pipeline (rules, a fine-tuned local parser, a cloud fallback, a deterministic deadline resolver), exact integer route comparison and a CP-SAT tuition funding plan;
+\item a selective-disclosure Credit Passport, and an evidence package of six scripted scenarios run through the real API.
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption*{\textbf{Results box.} Report \code{20261011T175100}: one seed, 11 tasks, 72 attack cases, an earlier build (11 October 2026). A historical preview, not a result for the current 68-task, 125-case suite.}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Fooled user} & \multicolumn{2}{c}{Cautious user}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+& Baseline & Corridor AI & Baseline & Corridor AI\\
+\midrule
+Unauthorised money moved (NPR) & 1,018,730.00 & \textbf{0.00} & 1,372,847.45 & \textbf{0.00}\\
+Harmful outcomes (of 72 attacks) & 7 & \textbf{0} & 10 & \textbf{0}\\
+Numbers grounded in tool results & 64.5\% & 100\% & 68.3\% & 100\%\\
+Tasks completed & 10/11 & 11/11 & 10/11 & 11/11\\
+\bottomrule
+\end{tabular}
+\end{table}
+\vspace{-6pt}
+Checks run on 18 October 2026: \code{make test} 1384 passed, \code{make test-safety} 466 passed, 42 browser tests passed, and \code{make evidence} met the expected outcome in all six scenarios (Section~\ref{sec:eval}).
+
+% ---------------------------------------------------------------- 2
+\section{Users and the core scenario}\label{sec:users}
+Corridor AI serves people who send, receive and pay across currencies. The sandbox implements three of them as personas, and the corridors AUD, QAR and CNY sending to NPR, plus QAR to AUD for family tuition support, as worked examples. Nothing in the design is specific to one country: a corridor is a set of providers, rates and limits in data files.
+
+\begin{itemize}
+\item \textbf{Anil}, a student in Shenzhen with a CNY account and an NPR account, a CNY tuition invoice and rent in CNY.
+\item \textbf{Priya}, a student in Sydney with AUD and NPR accounts, a tuition invoice and rent in AUD, and parents who send money.
+\item \textbf{Ramesh}, a worker in Doha with QAR and NPR accounts, who supports family and can contribute to Priya's tuition.
+\end{itemize}
+\begin{figure}[!tb]
+\centering
+\begin{minipage}[t]{0.27\textwidth}\vspace{0pt}\centering\includegraphics[width=\linewidth]{figures/ss_confirm_card.png}\end{minipage}\hspace{8mm}%
+\begin{minipage}[t]{0.27\textwidth}\vspace{0pt}\centering\includegraphics[width=\linewidth]{figures/ss_hold_card.png}\\[6pt]\includegraphics[width=\linewidth]{figures/ss_blocked.png}\end{minipage}
+\caption{The housing scam in the customer app (monochrome theme, 380 px), run D. Left: the confirmation card marks the CityNest payee (\code{****2208}) as untrusted and shows the fingerprint it binds. Top right: the hold card after saving. Bottom right: the AUD 2,000 payment attempt is refused and the session is locked.}\label{fig:flow}
+\end{figure}
+
+Nepali is the hard low-resource case that proves the language design (Devanagari, romanised and mixed text), and the interface also runs in Simplified Chinese. Chinese and Korean understanding are the next language packs (Section~\ref{sec:deploy}).
+
+\textbf{The housing deposit scam} is the main scenario because it is universal. Priya has just arrived in Sydney. A ``student-housing agent'' sends a PDF asking for an AUD 2,000 holding deposit to an account she has never paid, today. Nothing in the PDF addresses an AI; the only signals are a new account and urgency. Priya believes it. The flow, as it ran in the evidence package (scenario D):
+
+\begin{samepage}
+\begin{enumerate}[leftmargin=1.6em]
+\item Priya attaches the PDF and writes ``Please pay this deposit for the room''. The PDF goes only to the quarantined reader, which returns typed fields all labelled untrusted.
+\item The agent proposes saving the payee. Policy returns \emph{needs authenticator code} (rules R-INJECTION, R-PAYEE-ADD). The card shows ``From document (untrusted)'', the account as \code{****2208}, and a fingerprint of the exact proposal (Figure~\ref{fig:flow}, left).
+\item Priya enters a valid code. The payee is saved \emph{on hold}: nothing can be paid to it for 24 hours, and confirming again does not change that (Figure~\ref{fig:flow}, top right).
+\item Priya asks to pay AUD 2,000. Policy returns \emph{deny} (R-PAYEE-COOLOFF, R-RISK, R-TAINT-PAYEE). The reply explains why, offers ``Ask the bank to verify this payee'', and the session locks for a critical-risk attempt until she re-verifies with her code. 0 minor units move (Figure~\ref{fig:flow}, bottom right).
+\end{enumerate}
+\end{samepage}
+
+
+A genuine landlord follows the same path and is not lost: the bank's officer checks the payee under their own identity after a Confirmation of Payee match and an out-of-band call, and a payee the customer typed is then released (scenario E). The hold itself is the control for a user who has been deceived, because a deceived user will confirm and enter a valid code.
+
+% ---------------------------------------------------------------- 3
+\section{System architecture}\label{sec:arch}
+Three zones, drawn in Figure~\ref{fig:zones} with the same border language as the bank console trace: \emph{untrusted} (dashed), \emph{models, assumed compromised} (dotted) and the \emph{trusted deterministic core} (solid).
+
+\begin{figure}[!tb]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[ndu] (app) at (0,3.6) {Customer app\\[-1pt]{\scriptsize cards, TOTP}};
+\node[ndu] (con) at (0,2.25) {Bank console\\[-1pt]{\scriptsize officer login}};
+\node[ndu] (doc) at (0,0.9) {Documents, images,\\[-1pt]messages};
+\node[ndm,minimum width=33mm] (rea) at (4.9,0.9) {Quarantined reader\\[-1pt]{\scriptsize local VLM, typed output}};
+\node[ndm,minimum width=33mm] (par) at (4.9,2.25) {Parser cascade\\[-1pt]{\scriptsize rules, local, cloud}};
+\node[ndm,minimum width=33mm] (pla) at (4.9,3.6) {Planner, composer\\[-1pt]{\scriptsize cloud or local 4B}};
+\node[ndt] (api) at (10.4,5.1) {API and auth};
+\node[ndt,minimum height=34mm] (agt) at (10.4,2.25) {Agent graph\\[-1pt]{\scriptsize typed state}\\[-1pt]{\scriptsize no writes}};
+\node[ndt] (led) at (10.4,-0.55) {Ledger\\[-1pt]{\scriptsize hash chain, Merkle}};
+\node[ndt] (grd) at (14.0,5.1) {Grounding\\[-1pt]{\scriptsize numbers vs tools}};
+\node[ndt] (pb) at (14.0,3.9) {Proposal builder\\[-1pt]{\scriptsize canonical, hashed}};
+\node[ndt] (pol) at (14.0,2.65) {Policy and risk\\[-1pt]{\scriptsize pure function}};
+\node[ndt] (cnf) at (14.0,1.4) {Confirmation\\[-1pt]{\scriptsize grant, TOTP, lock}};
+\node[ndt] (exe) at (14.0,0.15) {Executor\\[-1pt]{\scriptsize sole state writer}};
+\begin{scope}[on background layer]
+\node[zone,dashed,fit=(app)(con)(doc),label={[font=\scriptsize\bfseries]below:Untrusted}] {};
+\node[zone,densely dotted,line width=0.9pt,fit=(rea)(par)(pla),label={[font=\scriptsize\bfseries]below:Models (assumed compromised)}] {};
+\node[zone,fit=(api)(agt)(led)(grd)(pb)(pol)(cnf)(exe),fill=g1,label={[font=\scriptsize\bfseries]below:Trusted deterministic core}] {};
+\end{scope}
+\draw[fl] (app.north east) |- node[lab,pos=0.7,above]{chat, buttons} (api.west);
+\draw[fl,dashed] (doc) -- node[lab,above]{raw bytes} (rea);
+\draw[fl] (rea.east) -- node[lab,below,pos=0.5]{typed} (rea.east -| agt.west);
+\draw[fl,<->] (par.east) -- (par.east -| agt.west);
+\draw[fl,<->] (pla.east) -- (pla.east -| agt.west);
+\draw[fl] (api) -- (agt);
+\draw[fl] (api) -- (grd);
+\draw[fl] (agt.east) -- (12.0,2.25) |- (pb.west);
+\draw[fl] (pb) -- (pol);
+\draw[fl] (pol) -- node[lab,right]{decision} (cnf);
+\draw[fl] (cnf) -- node[lab,right]{grant} (exe);
+\draw[fl] (exe.south west) |- (led.east);
+\end{tikzpicture}}
+\caption{Trust zones. Raw untrusted bytes go only to the reader. Models return typed, schema-validated values and have no write path. Only the executor changes state, after policy and a grant.}\label{fig:zones}
+\end{figure}
+
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Technology stack (versions from the lockfiles).}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Layer & Components\\
+\midrule
+Backend & Python 3.12, FastAPI 0.143, Pydantic 2.14, SQLAlchemy 2.1, Alembic, PostgreSQL 16\\
+Agent and optimisation & LangGraph 1.2, OR-Tools CP-SAT 9.15, pyotp 2.10 (RFC 6238 TOTP), cryptography (Ed25519)\\
+Models & Parser Qwen3-1.7B 4-bit + LoRA (mlx-lm); local planner Qwen3-4B 4-bit; reader Qwen3-VL 4B; cloud planner via an OpenAI-compatible gateway\\
+Frontend & Next.js 16, React 19, TypeScript, Tailwind 4, React Flow; IBM Plex, Noto Sans Devanagari and SC (self-hosted)\\
+Tests & pytest, Hypothesis properties, Playwright 1.64 (Chromium)\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Request lifecycle}
+\begin{samepage}
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Authenticate.} A bearer token gives the user id; nothing in a request body or model output can change it.
+\item \textbf{Understand.} A chat line passes the parser cascade; a screen button (Routes, Tuition, Payees, Family, Credit Passport) already knows what it wants. An attachment goes only to the quarantined reader.
+\item \textbf{Plan.} The planner sees typed facts and masked identifiers (last four digits), calls read-only tools, and returns a typed plan.
+\item \textbf{Propose.} Trusted code builds an \code{ActionProposal}, canonicalises it and hashes it.
+\item \textbf{Decide.} The policy engine returns allow, confirm, code, or deny, with rule ids and a policy hash; every proposal and decision is appended to the ledger first.
+\item \textbf{Show and confirm.} The card lists every field the grant binds. A confirmation, plus a TOTP code when required, mints a grant for that hash only.
+\item \textbf{Execute.} The executor, in one database transaction, re-evaluates policy, consumes the grant, checks the idempotency key, debits conditionally, and appends to the ledger. Any error means no execution.
+\item \textbf{Reply.} The composer writes the text; the grounding verifier blocks any number not found in a same-turn tool result.
+\end{enumerate}
+\end{samepage}
+
+\textbf{Chat path versus button path.} The button path (ADR~0021) builds the same proposal from stored records with no parser and no planner; the evidence runs show every button-flow cascade entry as \code{parser: structured}. It is faster, cheaper, and keeps working when a model provider is down. If a provider fails, chat answers with one fixed message and moves nothing, and the buttons still work.
+
+\textbf{Offline and mainland China mode.} \code{make demo} answers every model call from recorded cassettes (\code{LLM\_REPLAY=1}), so nothing leaves the machine and no key is needed. Parser and reader run as local models on Apple Silicon; the planner fails over to a local 4B model. No Google fonts, CDN or messaging bots are used: all fonts are files in the repository. The free cloud gateway used in development may retain prompts, so only synthetic data is sent and a prompt guard blocks identifiers and secrets.
+
+
+% ---------------------------------------------------------------- 4
+\section{Core algorithms}\label{sec:alg}
+Each subsection gives the key rule and why it is there.
+
+\subsection{Multilingual understanding cascade}
+Understanding is a verifier-scored cascade; a model never sets a label, a confidence or a date. Stage 1 is a deterministic normaliser (digits, glued postpositions, romanisation folding, all driven by data files per language) with a keyword classifier. Stage 2 is the fine-tuned local parser; stage 3 the cloud model. A verifier scores each output against the evidence found in the text, never against the model's own confidence:
+\begin{equation*}
+\chi(y,E)=\min\bigl(10000-500\,a-1500\,s,\ c_h\bigr),\quad c_h=\begin{cases}6000&\text{a hard check failed}\\10000&\text{otherwise,}\end{cases}
+\end{equation*}
+with $s$ the number of soft failures (currency, deadline or payee not grounded in the text) and $a=1$ when the keyword classifier found no intent. A local result with $\chi\ge8000$ is used; otherwise the better of local and cloud; if no model answers only because of unavailability, a rule fallback runs at 8500 and the agent asks before acting; otherwise the cascade fails closed. This keeps the cheap local path for most traffic and makes a wrong parse visible as a low score.
+
+The parser is Qwen3-1.7B (4-bit) with a rank-8 LoRA adapter on the last 12 layers, 3.736 M trainable parameters (0.217\%), trained on 3,813 label-first synthetic examples: the label is fixed first, a model writes the message, and the example is kept only if the deterministic normaliser recovers the gold slots. A candidate replaces the incumbent only if the ship gate holds (validity and accuracy both at least the incumbent's) on a 107-item test set.
+
+\begin{figure}[!tb]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar=3pt,width=0.9\textwidth,height=4.8cm,bar width=20pt,
+  ymin=60,ymax=106,ylabel={percent, n=107},ylabel style={font=\footnotesize},
+  symbolic x coords={JSON valid,Intent accuracy,Slot F1},xtick=data,
+  tick label style={font=\footnotesize},nodes near coords,every node near coord/.append style={font=\scriptsize,anchor=south,yshift=1pt},
+  enlarge x limits=0.25,axis line style={g6},ymajorgrids,major grid style={g2}]
+\addplot[fill=g2,draw=ink] coordinates {(JSON valid,96.3)(Intent accuracy,85.0)(Slot F1,91.6)};
+\addplot[fill=ink,draw=ink] coordinates {(JSON valid,99.1)(Intent accuracy,86.0)(Slot F1,94.9)};
+\end{axis}
+\node[font=\footnotesize,anchor=north] at ([yshift=-0.85cm]current axis.south) {\tikz[baseline=-0.5ex]\draw[fill=g2,draw=ink] (0,-0.1) rectangle (0.3,0.1);\ Current parser (few-shot)\qquad \tikz[baseline=-0.5ex]\draw[fill=ink,draw=ink] (0,-0.1) rectangle (0.3,0.1);\ Fine-tuned parser (few-shot)};
+\end{tikzpicture}
+\caption{Parser ship gate, local model alone (logs of 2026-10-12). Validity 96.3\% $\to$ 99.1\% (95\% Wilson intervals [90.8, 98.5] and [94.9, 99.8]); the one-item intent gain lies inside the interval overlap, so validity and slot F1 are the substance.}\label{fig:ship}
+\end{figure}
+
+\subsection{Deterministic deadline resolver}
+A deadline such as ``before Dashain'', ``within 2 weeks'' or ``end of month'' is resolved by a function $\rho(x,\delta,z)\in\{\textsf{Resolved}(d),\textsf{Ask},\textsf{None}\}$ over a grammar of phrase classes read from a data file, with $\textsf{within }n\mapsto\delta+n$ for $1\le n\le366$. It is total, deterministic and never guesses: an unknown festival date, two distinct dates, or a Bikram Sambat date (no verified month table) returns \textsf{Ask}, which the agent renders as a clarification. Money plans depend on dates, so a model is never trusted to produce one. On a held-out set of 25 phrases the normaliser alone resolved 18 and the resolver 25; on the 19-item original set (corrected gold) 13 became 19; the 14-item glued-form regression set resolves 14 of 14.
+
+\subsection{Policy engine}
+Each of 19 rules returns a decision; the combined decision is the most restrictive, and the empty set is a denial:
+\begin{equation*}
+\mathrm{decide}(a,s,c,t)=\max_{r\in R}\ \mathrm{rank}\,r(a,s,c,t),\qquad \mathrm{rank}:\ \textsf{ALLOW}<\textsf{CONFIRM}<\textsf{MFA}<\textsf{DENY}.
+\end{equation*}
+The function imports no model client and makes no network call; the same input gives the same decision, and the hash of the configuration is written into every decision. An exception, a timeout or an unknown action is a denial. No rule can relax another, so adding a rule can only make the system stricter.
+
+\subsection{What you see is what you sign}
+A confirmation does not approve an intent; it approves a hash. With $\mathsf{can}$ the canonical JSON of the proposal $a$ (amount, currency, payee id, source account, route, idempotency key),
+\begin{equation*}
+h=\mathrm{SHA256}(\mathsf{can}(a)),\qquad g=(h,\ \text{user},\ \text{expiry}=t_{\mathrm{issue}}+120\,\mathrm{s},\ \text{single use}).
+\end{equation*}
+The executor recomputes $h$ from the proposal it is about to run and refuses any grant whose hash differs, is spent or is expired. A changed amount, payee or route after confirmation therefore invalidates the grant, and a replayed or double-clicked confirmation cannot pay twice.
+
+\subsection{Hash-chained ledger with Merkle roots}
+Every proposal, decision, confirmation, MFA attempt, execution and rejection is appended before the response returns, and a failed append fails the action. Each entry commits to its predecessor:
+\begin{equation*}
+e_i=\mathrm{SHA256}(e_{i-1},\ \mathrm{seq},\ \mathrm{ts},\ \mathrm{trace},\ \mathrm{actor},\ \mathrm{event},\ \mathrm{SHA256}(\mathrm{payload}),\ \mathrm{policy\ hash}),
+\end{equation*}
+with $e_0=0^{64}$. Per-day and per-session Merkle roots (RFC 6962 style leaf and node prefixes) give inclusion proofs. The application's database role can only insert; triggers reject update, delete and truncate. Changing any stored field breaks the chain at that entry, which the console and the evidence run F both show. The ledger is not a blockchain.
+
+\subsection{Route comparison in integer minor units}
+For a channel with fixed fee $F$, percentage $p$ and FX margin $m$ (basis points, $B=10^4$), mid rate $q$ and send amount $x$, all in integers:
+\begin{equation*}
+\varphi(x)=F+\ceil{xp/B}+\ceil{\max(x-F-\ceil{xp/B},0)\,m/B},\qquad y(x)=\floor{\max(x-\varphi(x),0)\,q}.
+\end{equation*}
+Single channels and pairs with a split $x_1+x_2=S$ are ranked by the total key (fee, $-$delivered, legs, ETA, ids), so the order is deterministic and respects the user's deadline. Narrow split intervals are scanned exhaustively; wide ones scan the first and last 400 splits, and a bounded-gap result shows the best scanned split is within 3 minor units of the optimum (exact when the marginal rates differ by at least 100 basis points). No global optimality is claimed for wide intervals. No floats touch money.
+
+\subsection{Tuition funding with CP-SAT}
+The plan to fund a tuition invoice from own accounts and family contributions is a mixed-integer program solved lexicographically: lowest fees, then least money asked of family, then least savings used, then fewest family sources. A plan is returned only if every stage proves optimality; a timed-out incumbent is never shown. A brute-force enumerator cross-checks the solver: on 16 random small instances (7 feasible, 9 infeasible) all four objectives and infeasibility agree. In the demo, AUD 6,500.00 due 2026-10-31 is funded from the spending account (AUD 3,700.00, keeping AUD 500.00), savings (AUD 1,500.00) and AUD 1,300.00 requested from Ramesh in QAR. The plan becomes three proposals with three grants, and a consent request to Ramesh that moves no money until he pays from his own account.
+
+\subsection{Credit Passport}
+A student shares verified payment history (rent paid on time, money sent home) while disclosing only chosen claims. The credential is SD-JWT-style \cite{rfc9901} signed with Ed25519 \cite{rfc8032}: each claim $c_i$ is committed as $d_i=\mathrm{SHA256}(s_i\,|\,\mathsf{can}(c_i))$ with a random 128-bit salt, three decoy digests hide the claim count, and the issuer signs the sorted digests (validity 90 days). To present, the holder signs the audience, a fresh verifier nonce, the credential hash and the disclosed digests, and the verifier checks the signature, each digest, the audience, and that the nonce is live (10 minutes) and unused. A presentation made for another verifier, or presented twice, is refused (Figure~\ref{fig:passport}). It is not a blockchain and holds no asset. Holder keys are server-side in the sandbox and there is no revocation yet (Section~\ref{sec:deploy}).
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.46\textwidth]{figures/ss_pass_valid.png}\hspace{6mm}%
+\includegraphics[width=0.46\textwidth]{figures/ss_pass_rejected.png}
+\caption{Verifier page. Left: the intended verifier accepts a presentation and sees only the shared claim. Right: the same presentation checked by another landlord is refused (``made for someone else''). Evidence run C also refuses a replay (\code{nonce\_reused}).}\label{fig:passport}
+\end{figure}
+
+% ---------------------------------------------------------------- 5
+\section{Security design}\label{sec:sec}
+\subsection{Invariants}
+These twelve invariants are the product; tests and documents reference their ids, and a change to the modules that enforce them requires the property tests, the red-team suite and an ADR.
+
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Security invariants.}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+INV-1 & The LLM never executes: models produce proposals; only the executor changes state, after policy allows.\\
+INV-2 & Policy is deterministic code: no model client, no network, a pure function of its inputs.\\
+INV-3 & Untrusted content reaches only the quarantined reader; the planner gets typed fields, never raw strings from it.\\
+INV-4 & Taint is sticky: a value derived from untrusted content stays untrusted until the user confirms it; no model can remove it.\\
+INV-5 & What you see is what you sign: a grant is bound to the proposal hash, single use, expires in 120 s.\\
+INV-6 & No duplicate payments: every executable action has an idempotency key the executor enforces.\\
+INV-7 & The most restrictive decision wins; no rule relaxes another.\\
+INV-8 & Every decision is logged to the hash-chained ledger first; a ledger failure fails the action.\\
+INV-9 & Numbers are grounded: any amount, rate, fee, balance or date shown traces to a same-turn tool result.\\
+INV-10 & Fail closed: any exception, timeout, schema failure or unknown state means no execution.\\
+INV-11 & Safety lock: 3 denied high-risk attempts in 10 minutes, or one critical event, locks outgoing actions until MFA.\\
+INV-12 & Least data: the planner gets only needed fields; account numbers are masked; secrets never enter a prompt.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Permission tiers}
+Limits are illustrative configuration values (\code{backend/\allowbreak config/\allowbreak policy.yaml}), not legal limits; NPR amounts are shown with the minor-unit rule (100 minor units to 1 NPR).
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Permission tiers (from the security self-assessment).}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{4.3cm}@{}}
+\toprule
+Tier & Condition (rule) & Threshold\\
+\midrule
+Allow & A read tool (balances, payees, quotes, history, route comparison, plans). No mutation is possible. & 12 read tools\\
+Confirm & Every action at minimum; a payment to a verified payee older than 30 days, nothing tainted. & Low limit NPR 25,000.00\\
+Code (MFA) & Above the low limit; new or unverified payee; any payee added; untrusted or model-inferred source; document flagged as injection; more than 3 transfers in 10 minutes; same amount to same account within 24 h; risk at or above high. & Risk 6000 bps; velocity 3 in 10 min\\
+Deny & Locked; not the user's account, payee or invoice; insufficient funds; above the daily limit; more than 6 transfers in 10 minutes; invoice paid to anyone but its stored beneficiary; risk critical; protected settings words; missing FX rate. & Daily NPR 1,000,000.00; risk 9000 bps\\
+Hold & An account first saved under 24 hours ago may receive at most the cap in total. An account from a document or message gets cap 0 (nothing for 24 h); afterwards, without officer verification, code plus a cap per 24 h. & Typed: NPR 5,000.00; untrusted: NPR 0.00\\
+Lock & 3 denied or failed high-risk attempts in 10 minutes, one critical-risk event, or 5 failed codes; lifted only by MFA. & 10 min window\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Provenance labels}
+Every value carries one of five labels: \textsf{SYSTEM}, \textsf{USER\_TYPED}, \textsf{USER\_CONFIRMED}, \textsf{MODEL\_INFERRED} and \textsf{UNTRUSTED}. The join of two labels is the lower one, so mixing a typed amount with an untrusted payee gives an untrusted proposal. The reader forces \textsf{UNTRUSTED} on every field it returns; the only way to create \textsf{USER\_CONFIRMED} is a consumed grant. Policy reads the lower of what the proposal carries and what the database stores, so stored taint cannot be hidden by a proposal. In the console trace each node is a zone (Figure~\ref{fig:console}).
+
+\subsection{Loss bounded by policy numbers}
+The strongest test is a user who believes the scammer, confirms every card and enters valid codes. Then confirmation and MFA do not help, and the guarantee is a bound computed from the policy alone. In words: an account taken from a document receives nothing for 24 hours; afterwards, until an officer verifies it, at most NPR 5,000.00 per rolling 24 hours, each time with a code. An account the customer typed, registered to a name that passes the bank's check, has no first-payment cap after the hold, but never more than NPR 1,000,000.00 in any rolling 24 hours, with a code on every payment above NPR 25,000.00. Two adaptive cases check this at executor level without any model. RT-121 (untrusted payee, five days of two AUD 40.00 attempts): 5 paid, 5 refused. \textbf{RT-121b} (typed payee, five days of three AUD 4,000.00 attempts): 10 paid, 5 refused, AUD 40,000.00 in total (about NPR 4.3 million), because the third payment each day is denied by the daily limit (Figure~\ref{fig:loss}). We do not claim this stops a patient scammer whose victim keeps paying; it is the documented residual risk.
+
+\begin{figure}[!tb]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.82\textwidth,height=5.0cm,xlabel={day},ylabel={cumulative AUD},xlabel style={font=\footnotesize},ylabel style={font=\footnotesize},
+  tick label style={font=\footnotesize},xmin=0,xmax=5,ymin=0,ymax=62000,xtick={0,1,2,3,4,5},scaled y ticks=false,
+  ytick={0,20000,40000,60000},yticklabels={0,20k,40k,60k},ymajorgrids,major grid style={g2},axis line style={g6},
+  legend style={font=\scriptsize,at={(0.5,-0.3)},anchor=north,draw=none,legend columns=1}]
+\addplot[dashed,thick,color=g6,mark=none] coordinates {(0,0)(1,12000)(2,24000)(3,36000)(4,48000)(5,60000)};
+\addplot[very thick,color=ink,mark=*,mark size=1.6pt] coordinates {(0,0)(1,8000)(2,16000)(3,24000)(4,32000)(5,40000)};
+\legend{Attempted (3 payments of AUD {4,000} per day),Paid (third payment denied by the daily limit)}
+\end{axis}
+\end{tikzpicture}
+\caption{RT-121b, typed payee, five days. The refused third payment is the daily limit (NPR 1,000,000.00 in any rolling 24 hours) acting as the bound (\code{test\_verify\_payee.py}, \code{eval/\allowbreak redteam/\allowbreak adaptive.yaml}).}\label{fig:loss}
+\end{figure}
+
+% ---------------------------------------------------------------- 6
+\section{Evaluation and evidence}\label{sec:eval}
+\textbf{Method.} Each case runs against two systems that share the planner model and the read tools: a \emph{baseline}, a capable agent with direct write tools, every safety instruction and a full transcription of any document in its context (its prompt is published in \code{docs/\allowbreak baseline.md}), and Corridor AI. Two deterministic simulated users play the scripted turns: a \emph{fooled} user believes the attacker and confirms every card with a valid code, and a \emph{cautious} user refuses unless the card matches the request. Each attack is classed as \emph{blocked}, \emph{contained} (the only attacker state is a held, untrusted payee, no money moved) or \emph{harmful} (money moved, or another success condition). The current suites are 68 tasks and 125 red-team cases (112 attacks and 13 controls) in nine categories; the published report predates the expanded suite.
+
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Report \code{20261011T175100}: one seed, 11 tasks, 72 attacks, 10 controls per user model. Intervals are 95\% Wilson. Counts are blocked / contained / harmful.}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+User & System & B / C / H & Unauthorised NPR & Money-moved ASR & Task completion\\
+\midrule
+Fooled & Baseline & 63 / 2 / 7 & 1,018,730.00 & 9.7\% [4.8, 18.7] & 90.9\%\\
+Fooled & Corridor AI & 65 / 7 / 0 & \textbf{0.00} & 0.0\% [0.0, 5.1] & 100.0\%\\
+Cautious & Baseline & 62 / 0 / 10 & 1,372,847.45 & 13.9\% [7.7, 23.7] & 90.9\%\\
+Cautious & Corridor AI & 72 / 0 / 0 & \textbf{0.00} & 0.0\% [0.0, 5.1] & 100.0\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+For the fooled user the full system saved 7 attacker payees, each held and untrusted, which is why its overall case-level success rate is 8.3\% while harmful outcomes and money moved are zero; the two measures are not the same and are not merged. The ablation rows in that report are stale and are not used here. One seed gives no between-seed interval.
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/ss_console_compare.png}
+\caption{Bank console, Side by side, case RT-026: the baseline moved NPR 376,775.00 for both simulated users, Corridor AI NPR 0.00 (report \code{20261011T175100}).}\label{fig:results}
+\end{figure}
+
+\textbf{An example: RT-026.} In the published report the baseline agent moved NPR 376,775 on case RT-026, and Corridor AI moved NPR 0. Figure~\ref{fig:results} shows the bank console's Side by side screen on this case.
+
+\textbf{Execution evidence.} \code{make evidence} runs six scenarios through the real HTTP API in cassette replay mode with the demo clock, each from a freshly reset sandbox, and writes a log, the ledger entries (masked), balances before and after and the chain verification for each (\code{docs/\allowbreak evidence/\allowbreak runs/\allowbreak }; index in \code{docs/\allowbreak evidence/\allowbreak index.md}). All six met their expected outcome on 18 October 2026.
+
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Execution evidence scenarios and observed outcomes.}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Scenario & Observed outcome\\
+\midrule
+A Route payment & KathmanduLink recommended (cost QAR 18.69, received NPR 33,193.95); the Send button needs a code; one transfer; a replayed confirmation does not pay twice.\\
+B Tuition plan & Step 1 request to the uncle moves no money; Ramesh accepts; step 2 pays AUD 3,700.00 after a code.\\
+C Credit Passport & Issue, challenge, valid presentation; forwarded copy refused (\code{wrong\_audience}); replay refused (\code{nonce\_reused}).\\
+D Housing scam & Payee saved on hold; payment denied (R-PAYEE-COOLOFF, R-RISK, R-TAINT-PAYEE); session locked; 0 minor units moved; code unlocks.\\
+E Officer verification & CoP match in the queue; officer verifies with a method and reference; the same call with a customer token returns HTTP 401.\\
+F Ledger & 13 entries verify; one altered entry makes verification fail at that entry; restore verifies; reset.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/ss_console_trace.png}
+\caption{Bank console, proposal trace for the housing scam (dark theme). Untrusted input is dashed, models dotted, the deterministic core solid; the decision lists the rule ids and the policy version.}\label{fig:console}
+\end{figure}
+
+\textbf{Software checks} (18 October 2026): \code{make test} 1384 passed; \code{make test-safety} 466 passed (properties, concurrency, ledger tamper, red-team smoke); 42 Chromium browser tests passed; lint clean. No external penetration test, cryptographic audit or regulatory review was performed.
+
+% ---------------------------------------------------------------- 7
+\section{Deployment, languages and limitations}\label{sec:deploy}
+\textbf{Run it.} Three commands from a fresh clone: \code{make setup}, \code{make test}, \code{make demo}. The demo starts the API and both apps offline with recorded model answers, with the customer app on port 3000 and the bank console at \code{/\allowbreak console}; \code{make demo-reset} returns to the seeded state; \code{make evidence} reproduces the evidence package. The README lists the lines that work offline.
+
+\textbf{Languages are data packs.} A language is a folder of data files (lexicons, romanisation folding, deadline phrases, clarification templates), not code paths. English and Nepali (Devanagari, romanised, mixed) understanding packs are implemented; Nepali is the hard low-resource case that shows the design handles scripts, glued postpositions and festival calendars. The interface additionally runs in Simplified Chinese as a display-only translation (machine-assisted, pending native review). Chinese and Korean understanding packs are the next steps; the pack registry already lists them as planned.
+
+\textbf{Limitations.}\nopagebreak[4]
+\begin{itemize}
+\item The evaluation is a one-seed preview on an earlier code state; the expanded 68-task, 125-case suite has no fresh run because the cloud planner is quota-blocked. We state no benchmark beyond that report.
+\item Fee, FX and limit values are illustrative assumptions seeded from public information (\code{docs/\allowbreak assumptions.md}), not live production data or legal limits. Providers are fictional.
+\item The residual risk of RT-121b and the safety lock as a low-impact denial of service (RT-088) are documented and bounded, not eliminated.
+\item Credit Passport has no revocation, holder keys are server-side in the sandbox, and the ledger's Merkle roots are not yet anchored outside the database.
+\item The model-assisted parts (OCR on real documents, languages beyond those above) are not established; a wrong extraction still meets the hold, MFA and the signed card, so it cannot execute.
+\item The sandbox uses synthetic data only; there is no bank, payment network or identity integration, and no crypto or on-chain feature.
+\end{itemize}
+
+\bibliographystyle{plain}
+{\footnotesize\bibliography{refs}}
+\nocite{saltzer1975protection,debenedetti2025camel,beurerkellner2025patterns}
+
+\end{document}

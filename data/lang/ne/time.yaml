@@ -1,0 +1,53 @@
+version: 1
+relative_days:     # word -> day offset from today
+  deva: {आज: 0, भोलि: 1, भोलिपल्ट: 2, पर्सि: 2, हिजो: -1}
+  latn: {aaja: 0, aja: 0, bholi: 1, parsi: 2, hijo: -1}
+relative_periods:  # phrase tokens -> period
+  deva:
+    - {tokens: [यो, हप्ता], period: this_week}
+    - {tokens: [अर्को, हप्ता], period: next_week}
+    - {tokens: [यो, महिना], period: this_month}
+    - {tokens: [अर्को, महिना], period: next_month}
+  latn:
+    - {tokens: [yo, hapta], period: this_week}
+    - {tokens: [arko, hapta], period: next_week}
+    - {tokens: [yo, mahina], period: this_month}
+    - {tokens: [arko, mahina], period: next_month}
+weekdays:          # Python weekday number: Monday 0 ... Sunday 6
+  deva: {आइतबार: 6, सोमबार: 0, मङ्गलबार: 1, बुधबार: 2, बिहीबार: 3, शुक्रबार: 4, शनिबार: 5}
+  latn: {aitabar: 6, aitbar: 6, sombar: 0, mangalbar: 1, mangal: 1, budhabar: 2, budhbar: 2, bihibar: 3, bihi: 3, sukrabar: 4, sukrabar_: 4, shukrabar: 4, sanibar: 5, shanibar: 5}
+weekday_next_markers: {deva: [अर्को], latn: [arko]}
+months:
+  deva: {जनवरी: 1, फेब्रुअरी: 2, मार्च: 3, अप्रिल: 4, मे: 5, जुन: 6, जुलाई: 7, अगस्ट: 8, सेप्टेम्बर: 9, अक्टोबर: 10, नोभेम्बर: 11, डिसेम्बर: 12}
+  latn: {}
+deadline_before_markers:      # "before X", "by X"
+  deva: [अगाडि, अघि, पहिले, भन्दा अगाडि, भन्दा पहिले, सम्म, सम्मा]
+  latn: [agadi, aghi, pahile, pahilai, sammai, samma, bhanda]
+deadline_after_markers:       # "after X" is not a deadline: no deadline is built, the customer is asked
+  deva: [पछि, पछिसम्म]
+  latn: [pachhi, pachi]
+glued_postpositions:          # written glued to the time word: हिजोसम्म, दशैंअघि, तिहारभित्र, dashainaghi, bholisamma
+  deva: [सम्मा, सम्म, अगाडि, अघि, भित्र, पछि, पहिले]    # split off only when what is left is a known time word or festival name
+  latn: [sammai, samma, agadi, aghi, bhitra, pachhi, pachi, pahile]
+deadline_for_markers:         # "for X"
+  deva: [को लागि, लागि, मा]
+  latn: [ko lagi, lagi, ma, ko]
+recurrence:
+  deva:
+    - {tokens: [हरेक, महिना], freq: monthly}
+    - {tokens: [प्रत्येक, महिना], freq: monthly}
+    - {tokens: [महिना, महिना], freq: monthly}
+    - {tokens: [हर, महिना], freq: monthly}
+    - {tokens: [हरेक, हप्ता], freq: weekly}
+    - {tokens: [हर, हप्ता], freq: weekly}
+  latn:
+    - {tokens: [har, mahina], freq: monthly}
+    - {tokens: [harek, mahina], freq: monthly}
+    - {tokens: [pratyek, mahina], freq: monthly}
+    - {tokens: [mahina, mahina], freq: monthly}
+    - {tokens: [har, hapta], freq: weekly}
+    - {tokens: [harek, hapta], freq: weekly}
+    - {tokens: [hapta, hapta], freq: weekly}
+duration_units:               # a number followed by these is not an amount
+  deva: [दिन, हप्ता, महिना, वर्ष, घण्टा, मिनेट, प्रतिशत, बजे]
+  latn: [din, hapta, mahina, barsa, varsa, ghanta, minet, pratisat, baje, bajey, percent]

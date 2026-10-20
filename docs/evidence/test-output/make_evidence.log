@@ -1,0 +1,8 @@
+cd backend && uv run python ../scripts/evidence_run.py
+[PASS] a-route-payment: A. Route comparison and a confirmed route payment with TOTP (6 ledger entries)
+[PASS] b-tuition-plan: B. Tuition plan: request to the uncle, he accepts, step 2 paid with TOTP (13 ledger entries)
+[PASS] c-credit-passport: C. Credit Passport: issue, verifier challenge, valid presentation, forwarded copy rejected (9 ledger entries)
+[PASS] d-housing-scam: D. Housing scam: poisoned PDF, payee saved and held, payment denied, session locked (14 ledger entries)
+[PASS] e-officer-verification: E. Officer verifies the genuine landlord (CoP match and out-of-band method) (13 ledger entries)
+[PASS] f-ledger-tamper: F. Ledger chain verification, tamper detection, restore, reset (13 ledger entries)
+evidence: all scenarios met their expected outcome

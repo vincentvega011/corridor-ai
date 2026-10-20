@@ -1,0 +1,35 @@
+version: 1
+# Signals that a chat message contains PASTED or FORWARDED third party content (docs/spec/modules.md 5.5, P2-2 part C).
+# header_prefixes and quote_prefixes mark explicit structure (certain). voice_markers are phrases in
+# another person's voice (uncertain). imperative_markers combined with an account number or a URL also
+# count as another person's voice.
+header_prefixes:
+  - "from:"
+  - "fwd:"
+  - "fw:"
+  - "forwarded message"
+  - "---------- forwarded"
+  - "begin forwarded"
+  - "sms:"
+  - "message from"
+  - "text message:"
+  - "sent from my"
+  - "subject:"
+quote_prefixes: [">", "|"]
+voice_markers:
+  - dear customer
+  - dear sir
+  - dear account holder
+  - send me
+  - please send me
+  - transfer me
+  - your account has been
+  - click here
+  - verify your account
+  - you have won
+  - urgent
+imperative_markers:
+  - send
+  - transfer
+  - pay
+  - deposit

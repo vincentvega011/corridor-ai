@@ -1,0 +1,1 @@
+{"key": "49a9ddf5f2b860f5e3b3810a167db29df822f3aa29e2e7608ca29e3ea3297afd", "role": "planner", "response": {"text": "I'll help you send 300 AUD to Mr Chen. Let me check your payees first.", "tool_calls": [{"id": "call_440974c595ee413eaaf09c5c", "name": "get_payees", "arguments": {}}], "input_tokens": 1652, "output_tokens": 42, "usage_estimated": false}}

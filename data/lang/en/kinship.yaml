@@ -1,0 +1,18 @@
+version: 1
+relations:
+  mother:          {latn: [mother, mom, mum, mommy, mummy, mama]}
+  father:          {latn: [father, dad, daddy, papa]}
+  elder_brother:   {latn: [brother]}
+  elder_sister:    {latn: [sister]}
+  paternal_uncle:  {latn: [uncle]}
+  paternal_aunt:   {latn: [aunt, auntie]}
+  grandmother:     {latn: [grandmother, grandma]}
+  grandfather:     {latn: [grandfather, grandpa]}
+  wife:            {latn: [wife]}
+  husband:         {latn: [husband]}
+  son:             {latn: [son]}
+  daughter:        {latn: [daughter]}
+  friend:          {latn: [friend]}
+  landlord:        {latn: [landlord, landlady]}
+  university:      {latn: [university, college, school]}
+  self:            {latn: [myself]}

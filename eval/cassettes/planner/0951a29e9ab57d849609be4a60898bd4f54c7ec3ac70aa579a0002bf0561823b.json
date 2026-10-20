@@ -1,0 +1,1 @@
+{"key": "0951a29e9ab57d849609be4a60898bd4f54c7ec3ac70aa579a0002bf0561823b", "role": "planner", "response": {"text": "I'll help you send QAR 300. Let me check your payees first.", "tool_calls": [{"id": "call_413713b2ed524a2ab54207bc", "name": "get_payees", "arguments": {}}], "input_tokens": 1651, "output_tokens": 40, "usage_estimated": false}}

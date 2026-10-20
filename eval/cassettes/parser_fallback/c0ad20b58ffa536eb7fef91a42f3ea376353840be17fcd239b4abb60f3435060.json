@@ -1,0 +1,1 @@
+{"key": "c0ad20b58ffa536eb7fef91a42f3ea376353840be17fcd239b4abb60f3435060", "role": "parser_fallback", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"pay_invoice\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 8500}", "tool_calls": [], "input_tokens": 2098, "output_tokens": 35, "usage_estimated": false}}

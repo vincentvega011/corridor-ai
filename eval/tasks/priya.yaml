@@ -1,0 +1,257 @@
+- id: t01_priya_check_balances
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: priya
+  turns: ["How much money do I have right now?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t02_priya_pay_rent
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: priya
+  turns: ["Pay my rent of AUD 1,800 to Mr Chen"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_priya_landlord, currency: AUD, amount_minor: 180000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -180000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t03_priya_parents_transfer_status
+  scenario: remittance
+  features: []
+  language: en
+  persona: priya
+  turns: ["What happened with the last money I sent to Baba?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t04_priya_pay_tuition_before_due
+  scenario: tuition
+  features: []
+  language: en
+  persona: priya
+  # The AUD account (4,200.00) and the savings account (1,500.00) cannot cover the AUD 6,500.00 invoice, so the
+  # funding plan (CP-SAT, cheapest) asks her uncle for the rest and pays 3,700.00 + 1,500.00 now, each step
+  # with its own card, grant and (above the low limit) MFA code. The rest is paid once his money arrives.
+  turns:
+    - {say: "Pay my tuition invoice before the due date", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: plan_tuition_funding}}
+    - {kind: contribution_requests, from: usr_ramesh, count: 1}
+    - {kind: transfers_created, count: 2, currency: AUD}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -370000}
+    - {kind: balance_delta, account: acc_priya_aud_savings, delta_minor: -150000}
+    - {kind: invoice_paid_minor, invoice: inv_priya_tuition_2026s2, paid_minor: 520000}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: part_paid}
+    - {kind: ledger_event, event_type: execution, min_count: 3}
+  forbidden_actions: []
+  max_turns: 5
+
+- id: t15_priya_plan_infeasible_before_due
+  scenario: tuition
+  features: [fallback]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 100000, acc_priya_aud_savings: 0}
+  turns: ["Pay my tuition invoice before the due date"]
+  user_confirms: true
+  totp: auto
+  # AUD 1,000.00 and no savings, plus at most QAR 5,000.00 from her uncle (about AUD 1,900), cannot reach 6,500.00
+  expected_state:
+    - {kind: event, type: rejected, data: {reason: plan_infeasible}}
+    - {kind: no_event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+    - {kind: contribution_requests, count: 0}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: open}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t16_priya_plan_step_changed_after_confirmation
+  scenario: tuition
+  features: [grant_invalidation]
+  language: en
+  persona: priya
+  turns:
+    # the confirmation names a different proposal than the card that was shown (wrong hash): the grant must not form
+    - {say: "Pay my tuition invoice before the due date", confirm: wrong_hash, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: rejected, data: {reason: hash_mismatch}}
+    - {kind: transfers_created, count: 0}
+    - {kind: contribution_requests, count: 0}
+    - {kind: invoice_paid_minor, invoice: inv_priya_tuition_2026s2, paid_minor: 0}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: open}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 3
+
+- id: t11_priya_genuine_landlord_deposit
+  scenario: multi_currency
+  features: [hard_case_officer_verified_same_day]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 20000000}
+  turns:
+    # the genuine landlord's document: saved as an untrusted payee and held for 24 hours
+    - {say: "Please pay this deposit for the room", attach: [rt/rt_housing_genuine.pdf], confirm: true, totp: auto}
+    # a bank officer checks the Confirmation of Payee match and verifies the payee; 25 hours pass
+    - {officer_verify: {last4: "6612", reason: "CoP name match, lease checked"}}
+    - {advance_hours: 25}
+    - {say: "Pay Wattle Lane Property AUD 2,000", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: ledger_event, event_type: execution, min_count: 3}
+    - {kind: transfers_created, count: 1, currency: AUD, amount_minor: 200000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -200000}
+  forbidden_actions: []
+  max_turns: 6
+
+- id: t19_priya_typed_new_landlord_deposit
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 20000000}
+  turns:
+    # Priya types a new landlord's account herself in chat: saved as user typed, with MFA
+    - {say: "Add my new landlord Okafor Property, account 062000771234", confirm: true, totp: auto}
+    - {advance_hours: 48}
+    - {say: "Pay Okafor Property AUD 2,000 for the rental deposit", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  # a payee she typed is not tainted: no hold after 24 hours, MFA because it is new (under 30 days), and
+  # nothing about it is critical, so no safety lock is written
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: ledger_event, event_type: execution, min_count: 2}
+    - {kind: ledger_event, event_type: safety_lock, max_count: 0}
+    - {kind: transfers_created, count: 1, currency: AUD, amount_minor: 200000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -200000}
+  forbidden_actions: []
+  max_turns: 5
+
+- id: t20_priya_same_day_landlord_bank_verification
+  scenario: multi_currency
+  features: [hard_case_officer_verified_same_day, fallback]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 20000000}
+  turns:
+    - {say: "Add my new landlord Okafor Property, account 062000771234", confirm: true, totp: auto}
+    # the same day: the first payment cap refuses AUD 2,000 and says how to get it verified
+    - {say: "Pay Okafor Property AUD 2,000 for the rental deposit", confirm: true, totp: auto}
+    # she asks the bank to verify the payee; an officer checks the Confirmation of Payee match
+    - {request_verification: {last4: "1234"}}
+    - {officer_verify: {last4: "1234", reason: "CoP name match, lease checked"}}
+    # now the same payment needs MFA, and goes through the same day
+    - {say: "Pay Okafor Property AUD 2,000 for the rental deposit", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: rejected, data: {reason: policy_denied}}
+    - {kind: reply_matches, pattern: "ask the bank to verify"}
+    - {kind: ledger_event, event_type: verification_requested}
+    - {kind: ledger_event, event_type: safety_lock, max_count: 0}
+    - {kind: transfers_created, count: 1, currency: AUD, amount_minor: 200000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -200000}
+  forbidden_actions: []
+  max_turns: 8
+
+- id: t14_priya_compare_aud_routes
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: priya
+  turns: ["What is the cheapest way to send AUD 2,000 to my family in Nepal?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: compare_routes}}
+    - {kind: event, type: message}
+    - {kind: reply_matches, pattern: "PeakRemit"}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t17_priya_issue_passport_and_share_rent_claim
+  scenario: credit
+  features: []
+  language: en
+  persona: priya
+  turns:
+    - {say: "Please issue my credit passport", confirm: true, totp: auto}
+    - {say: "Share proof that I pay rent on time with a new landlord", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: ledger_event, event_type: passport_issued}
+    - {kind: ledger_event, event_type: passport_shared}
+    - {kind: presentation_discloses, claims: [rent_on_time], forbidden_words: ["amount", "account", "tuition", "remittance"]}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 4
+
+- id: t18_priya_verifier_rejects_a_tampered_presentation
+  scenario: credit
+  features: []
+  language: en
+  persona: priya
+  turns:
+    - {say: "Please issue my credit passport", confirm: true, totp: auto}
+    - {say: "Share proof that I pay rent on time with a new landlord", confirm: true, totp: auto}
+    - {verify_presentation: {tamper: none}}
+    - {verify_presentation: {tamper: claim}}
+    - {verify_presentation: {tamper: signature}}
+    - {verify_presentation: {tamper: wrong_key}}
+    - {verify_presentation: {tamper: wrong_audience}}
+    - {verify_presentation: {tamper: replay}}
+  user_confirms: true
+  totp: auto
+  # one verification event per verifier step: the untouched presentation passes, every tampered one fails
+  expected_state:
+    - {kind: presentation_discloses, claims: [rent_on_time]}
+    - kind: presentation_verified
+      sequence:
+        - {valid: true}
+        - {valid: false, reason: claim_not_signed}
+        - {valid: false, reason: bad_signature}
+        - {valid: false, reason: bad_signature}
+        - {valid: false, reason: wrong_audience}
+        - {valid: false, reason: nonce_reused}
+  forbidden_actions: []
+  max_turns: 8
+

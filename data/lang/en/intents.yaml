@@ -1,0 +1,47 @@
+version: 1
+intents:
+  send_money:
+    latn: [send, transfer, remit, wire, pay]
+  schedule_transfer:
+    latn: [every month, each month, monthly, every week, weekly, recurring, standing order]
+    requires_any_of: [send_money]
+  cancel_schedule:
+    latn: [cancel, stop, remove schedule, cancel schedule]
+  pay_invoice:
+    latn: [invoice, tuition, fee, fees, pay the invoice, bill]
+  check_balance:
+    latn: [balance, how much do i have, how much money, show my accounts]
+  convert_currency:
+    latn: [convert, exchange, swap, change to]
+  compare_routes:
+    latn: [cheapest, compare, best way, lowest fee, which provider, cheaper]
+  set_budget:
+    latn: [budget]
+  spending_summary:
+    latn: [spending, spent, how much did i spend, expenses]
+  add_payee:
+    latn: [add payee, new payee, add beneficiary, add recipient, add a new payee, save payee, add my new landlord, add my landlord, add new landlord, add a landlord, add landlord, save my landlord]
+  credit_passport_issue:
+    latn: [credit passport, issue passport, create passport, issue my credit passport]
+  credit_passport_share:
+    latn: [share passport, share my passport, send passport, share proof, proof that i, prove that i, proof i pay, show proof]
+  explain_decision:
+    latn: [why was, why is it blocked, why blocked, explain, why did you block, why denied]
+  help:
+    latn: [help, what can you do, how do i]
+# A short imperative with an attached document means pay_invoice for that document (decided in code, never by a model).
+# The WHOLE message must be one of these phrases (filler words such as please are ignored).
+attachment_imperatives:
+  deva: []
+  latn: [pay this, pay it, pay that, pay this one, pay now, pay]
+  fillers: [please, plz, pls, kindly, now]
+
+# Common misspellings of key words, corrected before the keyword classifier looks at the text (display and amounts are not
+# touched). canonical: [variants]. Data only; add a variant here, not in code.
+misspellings:
+  tuition: [tutition, tution, tuiton, tuishon, tuision, tution, tuitoin, tuiton]
+  invoice: [invoise, invioce, invoce, invice, inovice, invoic]
+  remittance: [remitance, remitence, remittence, remitanse, remmitance]
+  payee: [paye, payye, payeee, payi, payeei, payeee]
+  balance: [balence, ballance, balanse, balnce]
+  fee: [fees]

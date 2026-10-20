@@ -1,0 +1,1 @@
+{"key": "3256e22f83833f3c1b6ed2f7bde5123d88ac38db0117fcc42ee7edb9a7a560ca", "role": "planner", "response": {"text": "I'll help you send AUD 200 to your father. Let me check your saved payees first.", "tool_calls": [{"id": "call_9fdeafcc3a8249edb8615772", "name": "get_payees", "arguments": {}}], "input_tokens": 1660, "output_tokens": 43, "usage_estimated": false}}

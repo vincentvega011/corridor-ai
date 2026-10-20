@@ -1,0 +1,25 @@
+{"id": "h01", "text": "send 20k to Ama before Dashain", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "2026-10-21"}, "held_out": true, "reviewed": true}
+{"id": "h02", "text": "Ama lai 25 hajar dashain aghi pathau", "lang_style": "ne_latn", "persona": "ramesh", "slots": {"deadline": "2026-10-21"}, "held_out": true, "reviewed": true}
+{"id": "h03", "text": "दशैँ अगाडि आमालाई २० हजार पठाउ", "lang_style": "ne_deva", "persona": "ramesh", "slots": {"deadline": "2026-10-21"}, "held_out": true, "reviewed": true}
+{"id": "h04", "text": "send 15000 to dad before Dashain starts", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "2026-10-11"}, "held_out": true, "reviewed": true}
+{"id": "h05", "text": "ghatasthapana aghi Ama lai 10 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "slots": {"deadline": "2026-10-11"}, "held_out": true, "reviewed": true}
+{"id": "h06", "text": "send 30k to bahini before Tihar", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "2026-11-08"}, "held_out": true, "reviewed": true}
+{"id": "h07", "text": "तिहार अगाडि दाइलाई ४० हजार पठाउ", "lang_style": "ne_deva", "persona": "ramesh", "slots": {"deadline": "2026-11-08"}, "held_out": true, "reviewed": true}
+{"id": "h08", "text": "tihar bhanda agadi Ama lai 12 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "slots": {"deadline": "2026-11-08"}, "held_out": true, "reviewed": true}
+{"id": "h09", "text": "pay 500 AUD to Priya by next Friday", "lang_style": "en", "persona": "priya", "slots": {"deadline": "2026-10-23"}, "held_out": true, "reviewed": true, "note": "next Friday = the Friday of next Monday-to-Sunday week; today is Saturday 2026-10-10"}
+{"id": "h10", "text": "next friday samma 300 AUD pathau", "lang_style": "ne_latn", "persona": "priya", "slots": {"deadline": "2026-10-23"}, "held_out": true, "reviewed": true}
+{"id": "h11", "text": "send 800 QAR to Ama by this Friday", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "2026-10-16"}, "held_out": true, "reviewed": true}
+{"id": "h12", "text": "pay the 1200 AUD rent by end of the month", "lang_style": "en", "persona": "priya", "slots": {"deadline": "2026-10-31"}, "held_out": true, "reviewed": true}
+{"id": "h13", "text": "mahina ko ant samma Ama lai 20 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "slots": {"deadline": "2026-10-31"}, "held_out": true, "reviewed": true}
+{"id": "h14", "text": "महिनाको अन्तसम्म आमालाई १५ हजार पठाउ", "lang_style": "ne_deva", "persona": "ramesh", "slots": {"deadline": "2026-10-31"}, "held_out": true, "reviewed": true}
+{"id": "h15", "text": "send 50k to dai within 3 days", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "2026-10-13"}, "held_out": true, "reviewed": true}
+{"id": "h16", "text": "3 din bhitra Ama lai 8 hajar pathau", "lang_style": "ne_latn", "persona": "ramesh", "slots": {"deadline": "2026-10-13"}, "held_out": true, "reviewed": true}
+{"id": "h17", "text": "pay 6500 AUD to the university before semester starts", "lang_style": "en", "persona": "priya", "slots": {"deadline": "2027-02-22"}, "held_out": true, "reviewed": true, "note": "next semester start 2027-02-22 from the illustrative university calendar (data/calendar/university.yaml, added with the resolver)"}
+{"id": "h18", "text": "semester suru hunu agadi 6500 AUD university lai tirnu", "lang_style": "ne_latn", "persona": "priya", "slots": {"deadline": "2027-02-22"}, "held_out": true, "reviewed": true, "note": "next semester start 2027-02-22 from the illustrative university calendar (data/calendar/university.yaml, added with the resolver)"}
+{"id": "h19", "text": "send 25k to Ama by 2083-07-01 BS", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "NEEDS_CLARIFICATION"}, "held_out": true, "reviewed": true, "note": "Bikram Sambat dates are not supported (no verified month-length table); must ask, never guess"}
+{"id": "h20", "text": "२०८३ कार्तिक १ सम्म आमालाई १० हजार पठाउ", "lang_style": "ne_deva", "persona": "ramesh", "slots": {"deadline": "NEEDS_CLARIFICATION"}, "held_out": true, "reviewed": true, "note": "Bikram Sambat dates are not supported (no verified month-length table); must ask, never guess"}
+{"id": "h21", "text": "pay 6500 AUD by 15 Nov", "lang_style": "en", "persona": "priya", "slots": {"deadline": "2026-11-15"}, "held_out": true, "reviewed": true}
+{"id": "h22", "text": "send money to Ama by 20/10/2026", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "2026-10-20"}, "held_out": true, "reviewed": true}
+{"id": "h23", "text": "send 10k to Ama before the festival", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "NEEDS_CLARIFICATION"}, "held_out": true, "reviewed": true}
+{"id": "h24", "text": "send 10k to Ama before the holidays", "lang_style": "en", "persona": "ramesh", "slots": {"deadline": "NEEDS_CLARIFICATION"}, "held_out": true, "reviewed": true}
+{"id": "h25", "text": "send 500 AUD to Priya by 04/05", "lang_style": "en", "persona": "priya", "slots": {"deadline": "NEEDS_CLARIFICATION"}, "held_out": true, "reviewed": true, "note": "04/05 is 4 May or 5 April: ambiguous, ask"}

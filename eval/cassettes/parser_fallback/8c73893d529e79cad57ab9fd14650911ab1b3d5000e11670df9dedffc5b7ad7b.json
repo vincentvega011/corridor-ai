@@ -1,0 +1,1 @@
+{"key": "8c73893d529e79cad57ab9fd14650911ab1b3d5000e11670df9dedffc5b7ad7b", "role": "parser_fallback", "response": {"text": "{\"language\": \"en\", \"intent\": \"convert_currency\", \"slots\": {\"amount\": 200, \"currency\": \"AUD\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2249, "output_tokens": 47, "usage_estimated": false}}

@@ -1,0 +1,12 @@
+# Conditions such as "only if rent is covered" become structured, never free text.
+version: 1
+markers:         # words that introduce a condition
+  deva: [भने, भने मात्र, यदि, भए, मात्र]
+  latn: [bhane, matra, yedi, yadi, bhaye, bhaya]
+reserve_words:   # what must stay covered
+  rent:    {deva: [भाडा, घरभाडा], latn: [bhada, gharbhada, ghar bhada, rent]}
+  tuition: {deva: [शुल्क, फि], latn: [shulka, fee, fees, tuition]}
+  bill:    {deva: [बिल], latn: [bill, bills]}
+cover_triggers:  # "is covered"
+  deva: [पुग्यो, पुग्छ, पुगेको, तिरेपछि, तिरेको, बाँकी]
+  latn: [pugyo, pugchha, pugcha, pugne, tireko, tirepachi, tirepachhi, paxi, pachi, pugeko, covered, paid, after]

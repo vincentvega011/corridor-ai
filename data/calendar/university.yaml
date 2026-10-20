@@ -1,0 +1,8 @@
+# Illustrative academic calendar for the fictional Harbourview University (Priya's university).
+# ASSUMPTION, not live data: the dates are invented for the sandbox and listed in docs/assumptions.md.
+# A university with no entry here, or no start after today, gives "needs clarification".
+version: 1
+universities:
+  harbourview:
+    default: true
+    semester_starts: [2026-07-27, 2027-02-22, 2027-07-26]

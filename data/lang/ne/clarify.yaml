@@ -1,0 +1,80 @@
+# Templated clarification questions, no LLM. Styles: en, ne (Devanagari), ne_latn (romanised).
+# {options} is replaced by the candidates, for example "AUD or USD".
+version: 1
+templates:
+  amount:
+    en: "How much would you like to send?"
+    ne: "कति रकम पठाउने हो?"
+    ne_latn: "Kati rakam pathaune ho?"
+  payee_ref:
+    en: "Who should receive it?"
+    ne: "कसलाई पठाउने हो?"
+    ne_latn: "Kasalai pathaune ho?"
+  recurrence:
+    en: "How often should this repeat (for example every month)?"
+    ne: "कति कति समयमा दोहोर्याउने हो (जस्तै हरेक महिना)?"
+    ne_latn: "Kati kati samayma doharyaune ho (jastai harek mahina)?"
+  currency_ambiguous:
+    en: "Which currency do you mean: {options}?"
+    ne: "कुन मुद्रा भन्न खोज्नुभएको हो: {options}?"
+    ne_latn: "Kun mudra bhanna khojnubhako ho: {options}?"
+  amount_ambiguous:
+    en: "I found more than one amount ({options}). Which one should I use?"
+    ne: "एकभन्दा बढी रकम भेटिए ({options})। कुन प्रयोग गर्ने?"
+    ne_latn: "Ekbhanda badhi rakam bhetiyo ({options}). Kun prayog garne?"
+  payee_ref_ambiguous:
+    en: "Which recipient do you mean: {options}?"
+    ne: "कुन प्राप्तकर्ता भन्न खोज्नुभएको हो: {options}?"
+    ne_latn: "Kun praptakarta bhanna khojnubhako ho: {options}?"
+  currency:
+    en: "Which currency?"
+    ne: "कुन मुद्रा?"
+    ne_latn: "Kun mudra?"
+  deadline:
+    en: "By when does it need to arrive?"
+    ne: "कहिलेसम्म पुग्नुपर्छ?"
+    ne_latn: "Kahilesamma pugnuparchha?"
+  deadline_ambiguous:
+    en: "Which date do you mean: {options}?"
+    ne: "कुन मिति भन्न खोज्नुभएको हो: {options}?"
+    ne_latn: "Kun miti bhanna khojnubhako ho: {options}?"
+  payee_unknown:
+    en: "Who is {name}? I could not find them in your saved payees. Please say who you mean or add them in Settings."
+    ne: "{name} को हो? तपाईंको सुरक्षित प्राप्तकर्ताहरूमा भेटिएन। को हो भन्नुहोस् वा सेटिङमा थप्नुहोस्।"
+    ne_latn: "{name} ko ho? Tapaiko saved payee ma bhetiyena. Ko ho bhannuhos wa Settings ma thapnuhos."
+  payee_many:
+    en: "Which one do you mean: {options}?"
+    ne: "कुन चाहिँ हो: {options}?"
+    ne_latn: "Kun chahi ho: {options}?"
+  deadline_past:
+    en: "The date {date} has already passed or is today. Give a new date, or reply 'send now' (any reply without a date) and I will send it now with no deadline."
+    ne: "{date} आज वा बितिसकेको मिति हो। नयाँ मिति भन्नुहोस्, वा मिति नभनी 'अहिले पठाऊ' भन्नुहोस्, म अहिले नै पठाउने तयारी गर्छु।"
+    ne_latn: "{date} aaja wa bitisakeko miti ho (date passed). Naya miti bhannuhos, wa miti nabhani 'send now' bhannuhos, ma ahile nai pathauchhu."
+  invoice_which:
+    en: "Which invoice do you want to pay: {options}?"
+    ne: "कुन इनभ्वाइस तिर्ने हो: {options}?"
+    ne_latn: "Kun invoice tirne ho: {options}?"
+  generic:
+    en: "Sorry, I did not understand. Could you say it again in other words?"
+    ne: "माफ गर्नुहोस्, बुझिनँ। अर्को तरिकाले भन्नुहुन्छ?"
+    ne_latn: "Maaf garnuhos, bujhina. Arko tarikale bhannuhunchha?"
+  blocked_content:
+    en: "Please do not type account numbers or secrets in the chat. Use the secure add payee screen."
+    ne: "कृपया च्याटमा खाता नम्बर वा गोप्य कुरा नलेख्नुहोस्। सुरक्षित पेयी थप्ने स्क्रिन प्रयोग गर्नुहोस्।"
+    ne_latn: "Kripaya chat ma khata number wa gopya kura nalekhnuhos. Surakshit payee thapne screen prayog garnuhos."
+  passport_claim:
+    en: "Which proof should I share: {options}? Name one, for example rent."
+    ne: "कुन प्रमाण साझा गरौं: {options}? एउटा भन्नुहोस्, जस्तै भाडा।"
+    ne_latn: "Kun praman sajha garaun: {options}? Euta bhannuhos, jastai bhada."
+  paste_confirm:
+    en: "Part of your message looks like it came from someone else, so I will not use the account or amount in it. Which saved payee do you mean: {options}? Please also type the amount yourself."
+    ne: "तपाईंको सन्देशको केही भाग अरू कसैबाट आएजस्तो देखिन्छ, त्यसैले त्यसमा भएको खाता वा रकम प्रयोग गर्दिनँ। कुन सुरक्षित प्राप्तकर्ता हो: {options}? रकम पनि आफैं टाइप गर्नुहोस्।"
+    ne_latn: "Tapaiko sandeshko kehi bhag aru kasaibata aayejasto dekhinchha, tesaile tyasma bhayeko khata wa rakam prayog gardina. Kun surakshit praptakarta ho: {options}? Rakam pani aafai type garnuhos."
+  payee_account:
+    en: "Please send the payee's name and account number together in one message, for example: add Okafor Property, account 062000771234. I will show you the details to confirm."
+    ne: "कृपया प्राप्तकर्ताको नाम र खाता नम्बर एउटै सन्देशमा पठाउनुहोस्। म पुष्टि गर्न विवरण देखाउनेछु।"
+    ne_latn: "Kripaya praptakartako naam ra khata number euta sandeshma pathaunuhos. Ma pushti garna vivaran dekhaunechhu."
+  payee_name:
+    en: "What name should I save this payee under? Please type the name and the account number together."
+    ne: "यो प्राप्तकर्तालाई कुन नाममा सुरक्षित गरूँ? कृपया नाम र खाता नम्बर सँगै लेख्नुहोस्।"
+    ne_latn: "Yo praptakartalai kun naamma surakshit garun? Kripaya naam ra khata number sangai lekhnuhos."

@@ -1,0 +1,1 @@
+{"key": "87ce80535deb8ee2886d8906165740d19458beaf8df615fa4331487257eb71ce", "role": "composer", "response": {"text": "{\"reply\": \"Your CNY account (****1355) has a balance of CNY 21,500.00 and is active.\"}", "tool_calls": [], "input_tokens": 415, "output_tokens": 28, "usage_estimated": false}}

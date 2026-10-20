@@ -1,0 +1,105 @@
+[project]
+name = "corridor"
+version = "0.1.0"
+description = "Corridor AI: a safety-constrained multi-agent cross-border finance assistant (sandbox only)"
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic>=2",
+  "pydantic-settings",
+  "sqlalchemy>=2",
+  "alembic",
+  "psycopg[binary]>=3",
+  "langgraph",
+  "langgraph-checkpoint-postgres",
+  "langgraph-checkpoint-sqlite",
+  "openai",
+  "ortools",
+  "lightgbm",
+  "shap",
+  "cryptography",
+  "pyotp",
+  "structlog",
+  "slowapi",
+  "pyyaml",
+  "python-multipart",
+  "httpx",
+  "pypdfium2>=5.14.0",
+  "pillow>=12.3.0",
+  "tzdata",  # IANA time zones for zoneinfo: the offline demo (no system tz database, as on a clean machine in China) needs it
+]
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "pytest-asyncio",
+  "hypothesis",
+  "pytest-cov",
+  "ruff",
+  "mypy",
+  "types-pyyaml",
+  "pillow>=12.3.0",
+  "reportlab>=5.0.1",
+]
+local = [
+  "mlx-lm",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/corridor"]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = ["src", "tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "S", "RUF"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "B", "E501", "RUF001", "RUF059", "SIM115"]
+"alembic/versions/*" = ["E501", "I001", "UP", "RUF012"]
+"src/corridor/sandbox/seed.py" = ["E501", "S311"]
+"src/corridor/sandbox/read_tools.py" = ["E501"]
+"src/corridor/nlu/*" = ["E501"]
+"src/corridor/agent/*" = ["E501"]
+"src/corridor/api/*" = ["E501"]
+"src/corridor/reader/*" = ["E501"]
+"src/corridor/grounding/*" = ["E501"]
+"src/corridor/ablation*.py" = ["E501"]
+"src/corridor/baseline/*" = ["E501"]
+"src/corridor/config.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+packages = ["corridor"]
+plugins = ["pydantic.mypy"]
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+  "corridor.policy.*",
+  "corridor.taint.*",
+  "corridor.confirm.*",
+  "corridor.executor.*",
+  "corridor.ledger.*",
+  "corridor.contracts.*",
+]
+strict = true

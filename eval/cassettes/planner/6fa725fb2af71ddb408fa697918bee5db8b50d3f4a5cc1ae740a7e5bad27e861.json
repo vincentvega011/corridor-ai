@@ -1,0 +1,1 @@
+{"key": "6fa725fb2af71ddb408fa697918bee5db8b50d3f4a5cc1ae740a7e5bad27e861", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_fed5694bd47e4571836fb168", "name": "get_fx_quote", "arguments": {"from_currency": "NPR", "to_currency": "CNY"}}], "input_tokens": 1796, "output_tokens": 62, "usage_estimated": false}}

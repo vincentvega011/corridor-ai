@@ -1,0 +1,1 @@
+{"key": "005b81384b0c74e4077c1039ca94d6ed692097cb10746dccfd98aacafbaca40d", "role": "planner", "response": {"text": "I'll look up your open invoices to find the tuition one.", "tool_calls": [{"id": "call_0dfd90d8374d491892dca6d2", "name": "list_invoices", "arguments": {}}], "input_tokens": 1649, "output_tokens": 34, "usage_estimated": false}}

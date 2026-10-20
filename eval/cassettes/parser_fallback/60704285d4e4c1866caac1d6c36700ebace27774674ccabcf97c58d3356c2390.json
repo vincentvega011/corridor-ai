@@ -1,0 +1,1 @@
+{"key": "60704285d4e4c1866caac1d6c36700ebace27774674ccabcf97c58d3356c2390", "role": "parser_fallback", "response": {"text": "{\"language\": \"ne_latn\", \"intent\": \"convert_currency\", \"slots\": {\"amount\": 1, \"currency\": \"QAR\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2242, "output_tokens": 50, "usage_estimated": false}}

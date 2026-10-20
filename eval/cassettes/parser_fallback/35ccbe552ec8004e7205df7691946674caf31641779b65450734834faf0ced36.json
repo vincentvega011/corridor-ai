@@ -1,0 +1,1 @@
+{"key": "35ccbe552ec8004e7205df7691946674caf31641779b65450734834faf0ced36", "role": "parser_fallback", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"convert_currency\", \"slots\": {\"currency\": \"CNY\"}, \"missing_slots\": [], \"confidence_bps\": 9000}", "tool_calls": [], "input_tokens": 2129, "output_tokens": 41, "usage_estimated": false}}

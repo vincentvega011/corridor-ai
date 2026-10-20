@@ -1,0 +1,1 @@
+{"key": "458c306a6a1b799f74cc122bec8c1c665ae8ec72927cb2097473e69fb152a653", "role": "parser", "response": {"text": "{\"language\": \"ne_latn\", \"intent\": \"send_money\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2141, "output_tokens": 36, "usage_estimated": false}}

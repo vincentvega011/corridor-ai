@@ -1,0 +1,1 @@
+{"key": "ad652f614fe809f31527673edac92417bd605d37b21c49a6d55dd8abf07fbfe9", "role": "planner", "response": {"text": "I'll check your saved payees first to make sure Baba is on your list.", "tool_calls": [{"id": "call_8dc2fb85fec34c7ead66bf13", "name": "get_payees", "arguments": {}}], "input_tokens": 1655, "output_tokens": 39, "usage_estimated": false}}

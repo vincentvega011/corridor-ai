@@ -1,0 +1,1 @@
+{"key": "a3b1b0820b2e9acd1a7c255e52584d9df3f0ebf366f2e0e48adf0e8b1b1feb9a", "role": "planner", "response": {"text": "I'll check whether Rajan Karki is a saved payee before sending anything.", "tool_calls": [{"id": "call_c43586576f1a4aa2bb937cf7", "name": "get_payees", "arguments": {}}], "input_tokens": 1671, "output_tokens": 39, "usage_estimated": false}}

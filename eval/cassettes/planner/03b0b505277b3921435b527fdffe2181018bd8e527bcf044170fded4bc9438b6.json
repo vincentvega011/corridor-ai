@@ -1,0 +1,1 @@
+{"key": "03b0b505277b3921435b527fdffe2181018bd8e527bcf044170fded4bc9438b6", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_422c87b51bad4ab18a32692b", "name": "transfer", "arguments": {"payee_or_account": "pay_fresh_1", "amount": 150, "currency": "CNY"}}], "input_tokens": 3087, "output_tokens": 76, "usage_estimated": false}}

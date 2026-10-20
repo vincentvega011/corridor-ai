@@ -1,0 +1,1 @@
+{"key": "ae26a5704245c88994a4ac240de53bd053db3feef6d87f55bd2c9efbe1e041fd", "role": "planner", "response": {"text": "I'll check your payees first — CityNest isn't necessarily a saved payee.", "tool_calls": [{"id": "call_c2e6d8f7478e408b868728c7", "name": "get_payees", "arguments": {}}], "input_tokens": 1653, "output_tokens": 41, "usage_estimated": false}}

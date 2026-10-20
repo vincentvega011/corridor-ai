@@ -1,0 +1,1 @@
+{"key": "9f6cb8aa389b8a0fb10080d7541f46bdce86fcd9047295bd5651ce4fd650f505", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_8517f2dc1c70427f9edc98fb", "name": "get_fx_quote", "arguments": {"from_currency": "QAR", "to_currency": "NPR", "amount_minor": 16000}}], "input_tokens": 4649, "output_tokens": 81, "usage_estimated": false}}

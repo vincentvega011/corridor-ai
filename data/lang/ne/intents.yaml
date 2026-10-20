@@ -1,0 +1,64 @@
+# Keyword classifier input (a deterministic cross check for the parser, never the only signal).
+# Each intent has keyword lists per script. Matching uses folded tokens. Highest unique score wins.
+version: 1
+intents:
+  send_money:
+    deva: [पठाउ, पठाउनु, पठाइदेउ, पठाइदिनु, पठाई, पैसा पठाउ, ट्रान्सफर]
+    latn: [pathau, pathaideu, pathaidinu, pathaunu, pathaune, pathaera, pathayera, remit, pathaideu]
+  schedule_transfer:
+    deva: [हरेक महिना, प्रत्येक महिना, महिना महिना, हर महिना]
+    latn: [har mahina, harek mahina, mahina mahina, pratyek mahina, har hapta]
+    requires_any_of: [send_money]
+  cancel_schedule:
+    deva: [रोक, बन्द, रद्द]
+    latn: [rok, roknu, band garnu, band gara, radda, cancel]
+  pay_invoice:
+    deva: [इनभ्वाइस, शुल्क तिर, फि तिर, ट्युसन]
+    latn: [invoice, shulka tir, fee tir, fee tirnu, tuition tir, fee tira, tirnu parne]
+  check_balance:
+    deva: [ब्यालेन्स, बाँकी, कति छ]
+    latn: [balance, baki, bachat, kati chha, kati cha, paisa kati]
+  convert_currency:
+    deva: [साट्, बदल]
+    latn: [convert, exchange, sat, badal, badli]
+  compare_routes:
+    deva: [सस्तो, कुन राम्रो, तुलना]
+    latn: [sasto, kun ramro, compare, tulana, cheapest, kun sasto]
+  set_budget:
+    deva: [बजेट]
+    latn: [budget, bajet]
+  spending_summary:
+    deva: [खर्च कति, खर्चा कति]
+    latn: [kharcha kati, kharch kati, spending, kati kharcha, kharcha dekha]
+  add_payee:
+    deva: [नयाँ प्राप्तकर्ता, पेयी थप, नयाँ पेयी]
+    latn: [naya payee, payee thap, payee add, naya khata, add payee]
+  credit_passport_issue:
+    deva: [क्रेडिट प्यासपोर्ट, प्यासपोर्ट बनाउ]
+    latn: [credit passport, passport banau, passport banaideu, passport issue]
+  credit_passport_share:
+    deva: [प्यासपोर्ट सेयर]
+    latn: [passport share, passport pathau, passport dekhau]
+  explain_decision:
+    deva: [किन रोकियो, किन ब्लक, किन भएन]
+    latn: [kina rokiyo, kina block, kina bhayena, explain, why blocked, kina hudaina]
+  help:
+    deva: [मद्दत, सहयोग]
+    latn: [help, maddat, sahayog, kasari]
+# A short imperative with an attached document means pay_invoice for that document (decided in code, never by a model).
+# The WHOLE message must be one of these phrases (filler words such as please are ignored).
+attachment_imperatives:
+  deva: [यो तिर्नुहोस्, यो तिर्नु, इसलाई तिर्नु, यो तिरिदेउ, यो तिरिदिनु, तिरिदेउ, यो पे गर्नुहोस्]
+  latn: [yo tirdeu, yo tirdinu, yo tirdinus, yo tirnu, yo tira, yo pay gardeu, yo pay gardinu, yo pay garnu, tirdeu, ya tirdeu]
+  fillers: [hajur, kripaya, please, kindly, कृपया, हजुर]
+
+# Romanised Nepali forms of the same key words (and common misspellings of them). canonical: [variants]
+misspellings:
+  tuition: [tutition, tution, tuishan, tyusan, tusan, tuishon, tuiton]
+  invoice: [invoise, inbhoice, invoyes, inwoice, invoic, invois]
+  fee: [fi, phi, fees]
+  shulka: [sulka, shulkaa, sulkaa, shulk]
+  remit: [remitt, remite, rimit]
+  payee: [paye, payi, payeei, peyi, peyee]
+  pathau: [pathaw, pathao, pathaun, patau, patthau]
+  balance: [balence, balans, ballance, balnce]

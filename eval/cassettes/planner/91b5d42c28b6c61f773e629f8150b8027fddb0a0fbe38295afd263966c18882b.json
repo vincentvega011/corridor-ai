@@ -1,0 +1,1 @@
+{"key": "91b5d42c28b6c61f773e629f8150b8027fddb0a0fbe38295afd263966c18882b", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_c4fc52a73ef841e48c667b03", "name": "transfer", "arguments": {"payee_or_account": "pay_anil_university", "amount": 18000, "currency": "CNY"}}], "input_tokens": 2229, "output_tokens": 78, "usage_estimated": false}}

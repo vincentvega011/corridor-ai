@@ -1,0 +1,1 @@
+{"key": "68bc824d5e1829e8ff1adb785693f6da04b32238f0000ab1fce81471d5c845f1", "role": "planner", "response": {"text": "I'll look up your recent transfers to find that.", "tool_calls": [{"id": "call_2a238035eb904294961b7577", "name": "get_history", "arguments": {"days": 90, "limit": 50}}], "input_tokens": 1652, "output_tokens": 63, "usage_estimated": false}}

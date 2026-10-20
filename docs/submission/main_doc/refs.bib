@@ -1,0 +1,430 @@
+% Corridor AI technical paper bibliography.
+% Every entry was checked against a primary record (publisher, DOI via Crossref,
+% arXiv, RFC Editor, ACL Anthology, NeurIPS/ICLR proceedings, or the issuing
+% organisation). See refs_verification.md for the URL or DOI used per entry.
+% ASCII only.
+
+% ---------------------------------------------------------------------------
+% Prompt injection and agent security
+% ---------------------------------------------------------------------------
+
+@misc{debenedetti2025camel,
+  author        = {Debenedetti, Edoardo and Shumailov, Ilia and Fan, Tianqi and Hayes, Jamie and Carlini, Nicholas and Fabian, Daniel and Kern, Christoph and Shi, Chongyang and Terzis, Andreas and Tram{\`e}r, Florian},
+  title         = {Defeating Prompt Injections by Design},
+  year          = {2025},
+  eprint        = {2503.18813},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  doi           = {10.48550/arXiv.2503.18813}
+}
+
+@inproceedings{greshake2023indirect,
+  author    = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  title     = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
+  booktitle = {Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security (AISec '23)},
+  pages     = {79--90},
+  year      = {2023},
+  publisher = {ACM},
+  doi       = {10.1145/3605764.3623985}
+}
+
+@misc{perez2022ignore,
+  author        = {Perez, F{\'a}bio and Ribeiro, Ian},
+  title         = {Ignore Previous Prompt: Attack Techniques For Language Models},
+  year          = {2022},
+  eprint        = {2211.09527},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  note          = {NeurIPS 2022 ML Safety Workshop}
+}
+
+@inproceedings{debenedetti2024agentdojo,
+  author    = {Debenedetti, Edoardo and Zhang, Jie and Balunovi{\'c}, Mislav and Beurer-Kellner, Luca and Fischer, Marc and Tram{\`e}r, Florian},
+  title     = {{AgentDojo}: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for {LLM} Agents},
+  booktitle = {Advances in Neural Information Processing Systems 37 (NeurIPS 2024), Datasets and Benchmarks Track},
+  year      = {2024},
+  note      = {arXiv:2406.13352}
+}
+
+@misc{beurerkellner2025patterns,
+  author        = {Beurer-Kellner, Luca and Buesser, Beat and Cre{\c{t}}u, Ana-Maria and Debenedetti, Edoardo and Dobos, Daniel and Fabian, Daniel and Fischer, Marc and Froelicher, David and Grosse, Kathrin and Naeff, Daniel and Ozoani, Ezinwanne and Paverd, Andrew and Tram{\`e}r, Florian and Volhejn, V{\'a}clav},
+  title         = {Design Patterns for Securing {LLM} Agents against Prompt Injections},
+  year          = {2025},
+  eprint        = {2506.08837},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG}
+}
+
+@misc{willison2023dualllm,
+  author       = {Willison, Simon},
+  title        = {The Dual {LLM} Pattern for Building {AI} Assistants That Can Resist Prompt Injection},
+  howpublished = {Blog post, \url{https://simonwillison.net/2023/Apr/25/dual-llm-pattern/}},
+  year         = {2023},
+  month        = apr,
+  note         = {Accessed 16 October 2026}
+}
+
+@inproceedings{yao2023react,
+  author    = {Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+  title     = {{ReAct}: Synergizing Reasoning and Acting in Language Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  note      = {arXiv:2210.03629}
+}
+
+% ---------------------------------------------------------------------------
+% Information flow, protection, least privilege
+% ---------------------------------------------------------------------------
+
+@article{denning1976lattice,
+  author  = {Denning, Dorothy E.},
+  title   = {A Lattice Model of Secure Information Flow},
+  journal = {Communications of the ACM},
+  volume  = {19},
+  number  = {5},
+  pages   = {236--243},
+  year    = {1976},
+  doi     = {10.1145/360051.360056}
+}
+
+@article{sabelfeld2003language,
+  author  = {Sabelfeld, Andrei and Myers, Andrew C.},
+  title   = {Language-Based Information-Flow Security},
+  journal = {IEEE Journal on Selected Areas in Communications},
+  volume  = {21},
+  number  = {1},
+  pages   = {5--19},
+  year    = {2003},
+  doi     = {10.1109/JSAC.2002.806121}
+}
+
+@inproceedings{myers1997decentralized,
+  author    = {Myers, Andrew C. and Liskov, Barbara},
+  title     = {A Decentralized Model for Information Flow Control},
+  booktitle = {Proceedings of the 16th ACM Symposium on Operating Systems Principles (SOSP)},
+  pages     = {129--142},
+  year      = {1997},
+  publisher = {ACM},
+  doi       = {10.1145/268998.266669}
+}
+
+@article{saltzer1975protection,
+  author  = {Saltzer, Jerome H. and Schroeder, Michael D.},
+  title   = {The Protection of Information in Computer Systems},
+  journal = {Proceedings of the IEEE},
+  volume  = {63},
+  number  = {9},
+  pages   = {1278--1308},
+  year    = {1975},
+  doi     = {10.1109/PROC.1975.9939}
+}
+
+% ---------------------------------------------------------------------------
+% Tamper-evident logging and hash structures
+% ---------------------------------------------------------------------------
+
+@inproceedings{crosby2009tamper,
+  author    = {Crosby, Scott A. and Wallach, Dan S.},
+  title     = {Efficient Data Structures for Tamper-Evident Logging},
+  booktitle = {Proceedings of the 18th USENIX Security Symposium},
+  pages     = {317--334},
+  year      = {2009},
+  publisher = {USENIX Association}
+}
+
+@article{schneier1999audit,
+  author  = {Schneier, Bruce and Kelsey, John},
+  title   = {Secure Audit Logs to Support Computer Forensics},
+  journal = {ACM Transactions on Information and System Security},
+  volume  = {2},
+  number  = {2},
+  pages   = {159--176},
+  year    = {1999},
+  doi     = {10.1145/317087.317089}
+}
+
+@misc{rfc6962,
+  author       = {Laurie, Ben and Langley, Adam and Kasper, Emilia},
+  title        = {Certificate Transparency},
+  howpublished = {RFC 6962 (Experimental)},
+  publisher    = {RFC Editor},
+  year         = {2013},
+  month        = jun,
+  doi          = {10.17487/RFC6962},
+  note         = {Obsoleted by RFC 9162}
+}
+
+@inproceedings{merkle1987signature,
+  author    = {Merkle, Ralph C.},
+  title     = {A Digital Signature Based on a Conventional Encryption Function},
+  booktitle = {Advances in Cryptology -- CRYPTO '87},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {293},
+  pages     = {369--378},
+  publisher = {Springer},
+  year      = {1988},
+  doi       = {10.1007/3-540-48184-2_32}
+}
+
+@techreport{fips1804,
+  author      = {{National Institute of Standards and Technology}},
+  title       = {Secure Hash Standard ({SHS})},
+  institution = {U.S. Department of Commerce},
+  type        = {Federal Information Processing Standards Publication},
+  number      = {FIPS PUB 180-4},
+  year        = {2015},
+  month       = aug,
+  doi         = {10.6028/NIST.FIPS.180-4}
+}
+
+% ---------------------------------------------------------------------------
+% Signatures, tokens, canonical encoding
+% ---------------------------------------------------------------------------
+
+@misc{rfc8032,
+  author       = {Josefsson, Simon and Liusvaara, Ilari},
+  title        = {Edwards-Curve Digital Signature Algorithm ({EdDSA})},
+  howpublished = {RFC 8032 (Informational)},
+  publisher    = {RFC Editor},
+  year         = {2017},
+  month        = jan,
+  doi          = {10.17487/RFC8032}
+}
+
+@article{bernstein2012ed25519,
+  author  = {Bernstein, Daniel J. and Duif, Niels and Lange, Tanja and Schwabe, Peter and Yang, Bo-Yin},
+  title   = {High-Speed High-Security Signatures},
+  journal = {Journal of Cryptographic Engineering},
+  volume  = {2},
+  number  = {2},
+  pages   = {77--89},
+  year    = {2012},
+  doi     = {10.1007/s13389-012-0027-1}
+}
+
+@article{goldwasser1988gmr,
+  author  = {Goldwasser, Shafi and Micali, Silvio and Rivest, Ronald L.},
+  title   = {A Digital Signature Scheme Secure Against Adaptive Chosen-Message Attacks},
+  journal = {SIAM Journal on Computing},
+  volume  = {17},
+  number  = {2},
+  pages   = {281--308},
+  year    = {1988},
+  doi     = {10.1137/0217017}
+}
+
+@misc{rfc6238,
+  author       = {M'Raihi, David and Machani, Salah and Pei, Mingliang and Rydell, Johan},
+  title        = {{TOTP}: Time-Based One-Time Password Algorithm},
+  howpublished = {RFC 6238 (Informational)},
+  publisher    = {RFC Editor},
+  year         = {2011},
+  month        = may,
+  doi          = {10.17487/RFC6238}
+}
+
+@misc{rfc4226,
+  author       = {M'Raihi, David and Bellare, Mihir and Hoornaert, Frank and Naccache, David and Ranen, Ohad},
+  title        = {{HOTP}: An {HMAC}-Based One-Time Password Algorithm},
+  howpublished = {RFC 4226 (Informational)},
+  publisher    = {RFC Editor},
+  year         = {2005},
+  month        = dec,
+  doi          = {10.17487/RFC4226}
+}
+
+@misc{rfc9901,
+  author       = {Fett, Daniel and Yasuda, Kristina and Campbell, Brian},
+  title        = {Selective Disclosure for {JSON} Web Tokens},
+  howpublished = {RFC 9901 (Proposed Standard)},
+  publisher    = {RFC Editor},
+  year         = {2025},
+  month        = nov,
+  doi          = {10.17487/RFC9901}
+}
+
+@misc{rfc7519,
+  author       = {Jones, Michael B. and Bradley, John and Sakimura, Nat},
+  title        = {{JSON} Web Token ({JWT})},
+  howpublished = {RFC 7519 (Proposed Standard)},
+  publisher    = {RFC Editor},
+  year         = {2015},
+  month        = may,
+  doi          = {10.17487/RFC7519}
+}
+
+@misc{rfc8785,
+  author       = {Rundgren, Anders and Jordan, Bret and Erdtman, Samuel},
+  title        = {{JSON} Canonicalization Scheme ({JCS})},
+  howpublished = {RFC 8785 (Informational)},
+  publisher    = {RFC Editor},
+  year         = {2020},
+  month        = jun,
+  doi          = {10.17487/RFC8785}
+}
+
+% ---------------------------------------------------------------------------
+% Models and fine-tuning
+% ---------------------------------------------------------------------------
+
+@inproceedings{hu2022lora,
+  author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  note      = {arXiv:2106.09685}
+}
+
+@inproceedings{dettmers2023qlora,
+  author    = {Dettmers, Tim and Pagnoni, Artidoro and Holtzman, Ari and Zettlemoyer, Luke},
+  title     = {{QLoRA}: Efficient Finetuning of Quantized {LLMs}},
+  booktitle = {Advances in Neural Information Processing Systems 36 (NeurIPS 2023)},
+  year      = {2023},
+  note      = {arXiv:2305.14314}
+}
+
+@misc{qwen3report,
+  author        = {{Qwen Team} and Yang, An and others},
+  title         = {{Qwen3} Technical Report},
+  year          = {2025},
+  eprint        = {2505.09388},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}
+
+% ---------------------------------------------------------------------------
+% Nepali NLP
+% ---------------------------------------------------------------------------
+
+@inproceedings{timilsina2022nepberta,
+  author    = {Timilsina, Sulav and Gautam, Milan and Bhattarai, Binod},
+  title     = {{NepBERTa}: {N}epali Language Model Trained in a Large Corpus},
+  booktitle = {Proceedings of the 2nd Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics and the 12th International Joint Conference on Natural Language Processing (Volume 2: Short Papers)},
+  pages     = {273--284},
+  year      = {2022},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2022.aacl-short.34}
+}
+
+@inproceedings{patel2026nepalixlit,
+  author    = {Patel, Suraj and Dhami, Kashish Kumari and Sherpa, Norden and Khadka, Supriya},
+  title     = {From Romanized to {D}evanagari: Enhancing {N}epali Sentiment Analysis with {NepaliXlit}},
+  booktitle = {Proceedings of the Second Workshop on Challenges in Processing South Asian Languages (CHiPSAL 2026)},
+  pages     = {115--126},
+  year      = {2026},
+  month     = may,
+  address   = {Palma de Mallorca, Spain},
+  publisher = {ELRA Language Resources Association},
+  doi       = {10.63317/5j8kkeb2myf6},
+  url       = {https://aclanthology.org/2026.chipsal-1.12/}
+}
+
+% ---------------------------------------------------------------------------
+% Statistics and optimisation
+% ---------------------------------------------------------------------------
+
+@article{wilson1927probable,
+  author  = {Wilson, Edwin B.},
+  title   = {Probable Inference, the Law of Succession, and Statistical Inference},
+  journal = {Journal of the American Statistical Association},
+  volume  = {22},
+  number  = {158},
+  pages   = {209--212},
+  year    = {1927},
+  doi     = {10.1080/01621459.1927.10502953}
+}
+
+@article{brown2001interval,
+  author  = {Brown, Lawrence D. and Cai, T. Tony and DasGupta, Anirban},
+  title   = {Interval Estimation for a Binomial Proportion},
+  journal = {Statistical Science},
+  volume  = {16},
+  number  = {2},
+  pages   = {101--133},
+  year    = {2001},
+  doi     = {10.1214/ss/1009213286}
+}
+
+@article{efron1979bootstrap,
+  author  = {Efron, Bradley},
+  title   = {Bootstrap Methods: Another Look at the Jackknife},
+  journal = {The Annals of Statistics},
+  volume  = {7},
+  number  = {1},
+  pages   = {1--26},
+  year    = {1979},
+  doi     = {10.1214/aos/1176344552}
+}
+
+@misc{ortools_cpsat,
+  author       = {Perron, Laurent and Didier, Fr{\'e}d{\'e}ric},
+  title        = {{CP-SAT}},
+  howpublished = {Google OR-Tools, version 9.15 (\url{https://developers.google.com/optimization/cp/cp_solver/})},
+  year         = {2025},
+  note         = {Software}
+}
+
+% ---------------------------------------------------------------------------
+% Remittance, migration and fraud context (statistics sources)
+% ---------------------------------------------------------------------------
+
+@techreport{worldbank_rpw54,
+  author      = {{World Bank}},
+  title       = {Remittance Prices Worldwide, Issue 54},
+  institution = {World Bank},
+  year        = {2025},
+  month       = sep,
+  note        = {Q3 2025 data. \url{https://remittanceprices.worldbank.org/}}
+}
+
+@misc{worldbank_wdi_remit_gdp,
+  author       = {{World Bank}},
+  title        = {Personal Remittances, Received (\% of {GDP}) -- {Nepal} [{BX.TRF.PWKR.DT.GD.ZS}]},
+  howpublished = {World Development Indicators, \url{https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS?locations=NP}},
+  year         = {2026},
+  note         = {Database last updated 2026-10-08; accessed 16 October 2026}
+}
+
+@misc{unesco_uis_outbound,
+  author       = {{UNESCO Institute for Statistics}},
+  title        = {Total Outbound Internationally Mobile Tertiary Students Studying Abroad, All Countries, Both Sexes ({UIS} estimate) [{OE.5T8.40510}] -- {Nepal}},
+  howpublished = {UIS Data Browser, \url{https://databrowser.uis.unesco.org/}},
+  year         = {2026},
+  note         = {February 2026 data release; accessed 16 October 2026}
+}
+
+@techreport{ukfinance2026fraud,
+  author      = {{UK Finance}},
+  title       = {Annual Fraud Report 2026},
+  institution = {UK Finance},
+  year        = {2026},
+  month       = jun,
+  note        = {Covers calendar year 2025. \url{https://www.ukfinance.org.uk/system/files/2026-06/UK\%20Finance\%20Fraud\%20Report\%202026.pdf}}
+}
+
+@techreport{accc2026targeting,
+  author      = {{National Anti-Scam Centre}},
+  title       = {Targeting Scams Report 2025 (figures read from the 30 {M}arch 2026 media release)},
+  institution = {Australian Competition and Consumer Commission},
+  year        = {2026},
+  month       = mar,
+  note        = {\url{https://www.nasc.gov.au/system/files/targeting-scams-report-2025.pdf}}
+}
+
+@inproceedings{bellare1993random,
+  title     = {Random Oracles Are Practical: A Paradigm for Designing Efficient Protocols},
+  author    = {Bellare, Mihir and Rogaway, Phillip},
+  booktitle = {Proceedings of the 1st ACM Conference on Computer and Communications Security (CCS '93)},
+  pages     = {62--73},
+  year      = {1993},
+  doi       = {10.1145/168588.168596}
+}
+
+@techreport{worldbank_rpw50,
+  author      = {{World Bank}},
+  title       = {Remittance Prices Worldwide: Main Report and Annex, {Q}1 2025},
+  institution = {World Bank},
+  year        = {2025},
+  note        = {\url{https://remittanceprices.worldbank.org/sites/default/files/rpw_main_report_and_annex_q125_1_0.pdf}}
+}
+}

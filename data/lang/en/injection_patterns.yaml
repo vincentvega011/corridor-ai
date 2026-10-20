@@ -1,0 +1,65 @@
+version: 1
+# Phrases that signal instruction-like content or a payment redirection inside a DOCUMENT or a pasted message
+# (docs/spec/modules.md 5.5). Matching is done on text with case, spaces and punctuation removed, so spacing tricks and
+# tiny scanned text do not hide a phrase. A hit never blocks by itself: it sets injection_suspected, which
+# makes the policy engine ask for MFA (R-INJECTION) and warn the user. Add phrases freely; false positives
+# only add caution.
+phrases:
+  ignore_previous:
+    - ignore previous
+    - ignore all previous
+    - ignore the previous
+    - ignore prior instructions
+    - disregard previous
+    - disregard the above
+    - forget your instructions
+    - new instructions
+  system_tag:
+    - system prompt
+    - note to ai
+    - note to the ai
+    - message to ai
+    - instructions for the ai
+  addressed_to_ai:
+    - ai assistant
+    - assistant ai
+    - language model
+    - as an ai
+  pay_instruction:
+    - pay to account
+    - pay the full amount to
+    - pay the amount to account
+    - send to the account above
+    - send to the account below
+    - transfer to account
+    - transfer the full amount
+    - wire to account
+    - deposit to account
+  skip_confirm:
+    - skip all confirmation
+    - skip confirmation
+    - skip the confirmation
+    - do not ask the user
+    - dont ask the user
+    - without asking
+    - do not confirm
+    - do not mention this
+    - dont mention this
+    - verified request from the account owner
+  bank_update:
+    - updated bank details
+    - new bank details
+    - bank details have changed
+    - banking provider has changed
+    - previous account details are no longer valid
+    - previous bank details are no longer valid
+    - account details have changed
+    - new account number
+    - change of bank account
+regexes:
+  system_tag:
+    - '(^|\s)system\s*:'
+    - '(^|\s)assistant\s*:'
+    - '\[\s*note to'
+tokens:
+  addressed_to_ai: [ai, llm, chatbot, chatgpt, assistant]

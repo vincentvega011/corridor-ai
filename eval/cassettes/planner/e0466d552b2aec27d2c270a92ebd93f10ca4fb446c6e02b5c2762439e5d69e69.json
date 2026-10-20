@@ -1,0 +1,1 @@
+{"key": "e0466d552b2aec27d2c270a92ebd93f10ca4fb446c6e02b5c2762439e5d69e69", "role": "planner", "response": {"text": "I'll check that for you.", "tool_calls": [{"id": "call_bb7fa2a88c894b969b8155d1", "name": "get_fx_quote", "arguments": {"from_currency": "AUD", "to_currency": "NPR", "amount_minor": 20000}}], "input_tokens": 1660, "output_tokens": 87, "usage_estimated": false}}

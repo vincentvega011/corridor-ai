@@ -1,0 +1,120 @@
+# P3-4b: tasks written in Devanagari across the four Topic C areas, from the spec before any run.
+- id: t61_priya_send_baba_devanagari
+  scenario: remittance
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: priya
+  turns: ["बाबालाई १०० AUD पठाऊ"]
+  user_confirms: true
+  totp: auto
+  # an established payee, about NPR 10,765: a confirm tap
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_confirm}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_priya_parents, currency: AUD, amount_minor: 10000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -10000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t62_priya_pay_tuition_devanagari
+  scenario: tuition
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 1000000}
+  turns: ["मेरो विश्वविद्यालयको शुल्क इनभ्वाइस तिरिदेऊ"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_priya_university, currency: AUD, amount_minor: 650000}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: paid}
+    - {kind: ledger_event, event_type: execution}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t63_ramesh_passport_devanagari
+  scenario: credit
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns:
+    - {say: "मेरो क्रेडिट पासपोर्ट बनाइदेऊ", confirm: true, totp: auto}
+    - {say: "म नियमित रूपमा घरमा पैसा पठाउँछु भन्ने प्रमाण नयाँ बैंकलाई सेयर गर", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: ledger_event, event_type: passport_issued}
+    - {kind: ledger_event, event_type: passport_shared}
+    - {kind: presentation_discloses, claims: [money_sent_home], forbidden_words: ["amount", "account", "rent", "tuition"]}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 4
+
+- id: t64_ramesh_balances_devanagari
+  scenario: multi_currency
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns: ["मेरो QAR र NPR खातामा कति पैसा छ?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: get_balances}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t65_anil_convert_devanagari
+  scenario: multi_currency
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: anil
+  turns: ["५०० CNY नेपाली रुपैयाँमा कति हुन्छ?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: get_fx_quote}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_anil_cny, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t66_ramesh_missing_amount_devanagari
+  scenario: remittance
+  features: [clarification, hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns: ["सुरेशलाई पैसा पठाऊ"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: clarify}
+    - {kind: no_event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t67_ramesh_before_dashain_devanagari
+  scenario: remittance
+  features: [festival, hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns: ["दशैँ भन्दा अगाडि आमालाई ८०० QAR पठाऊ"]
+  user_confirms: true
+  totp: auto
+  # same expectation as t12 (romanised): about NPR 33,988, so MFA, and a route that arrives before 21 Oct 2026 exists
+  expected_state:
+    - {kind: event, type: route}
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_ama, currency: QAR, amount_minor: 80000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -80000}
+  forbidden_actions: []
+  max_turns: 3

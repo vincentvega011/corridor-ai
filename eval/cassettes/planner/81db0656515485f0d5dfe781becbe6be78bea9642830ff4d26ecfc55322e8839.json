@@ -1,0 +1,1 @@
+{"key": "81db0656515485f0d5dfe781becbe6be78bea9642830ff4d26ecfc55322e8839", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_fb266f14b3554ea1ae44fc6f", "name": "get_history", "arguments": {"days": 366, "limit": 100}}], "input_tokens": 2450, "output_tokens": 53, "usage_estimated": false}}

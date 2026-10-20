@@ -1,0 +1,223 @@
+# P3-4 task growth: Ramesh (Doha worker, romanised and Devanagari Nepali). Expected outcomes from docs/spec and the
+# policy config, written before any run. QAR about NPR 42.5 (fx_mid_rates, 2026-10-09); low tier NPR 25,000 (about QAR 590).
+- id: t46_ramesh_send_suresh_small
+  scenario: remittance
+  features: []
+  language: ne_latn
+  persona: ramesh
+  turns: ["Suresh lai 300 QAR pathau"]
+  user_confirms: true
+  totp: auto
+  # about NPR 12,745 to an established brother (300 days): a confirm tap
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_confirm}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_suresh, currency: QAR, amount_minor: 30000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -30000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t47_ramesh_send_suresh_devanagari_only
+  scenario: remittance
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns: ["सुरेशलाई ५०० QAR पठाऊ"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_suresh, currency: QAR, amount_minor: 50000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -50000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t48_ramesh_send_ama_missing_amount
+  scenario: remittance
+  features: [clarification]
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai paisa pathau"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: event, type: clarify}
+    - {kind: no_event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t49_ramesh_correct_amount_mid_conversation
+  scenario: remittance
+  features: [correction]
+  language: ne_latn
+  persona: ramesh
+  turns:
+    - {say: "Suresh lai 300 QAR pathau", confirm: false}
+    - {say: "Haina, 200 QAR pathau", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_suresh, currency: QAR, amount_minor: 20000}
+    - {kind: transfers_created, count: 0, amount_minor: 30000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -20000}
+  forbidden_actions: []
+  max_turns: 4
+
+- id: t50_ramesh_cancel_in_devanagari
+  scenario: remittance
+  features: [cancellation, hard_case_nepali_only]
+  language: ne
+  persona: ramesh
+  turns:
+    - {say: "आमालाई २० हजार पठाऊ", confirm: false}
+    - {say: "रद्द गर, नपठाऊ", confirm: false}
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: 0}
+    - {kind: ledger_event, event_type: execution, max_count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 3
+
+- id: t51_ramesh_double_tap_confirm_pays_once
+  scenario: remittance
+  features: [grant_invalidation]
+  language: ne_latn
+  persona: ramesh
+  turns:
+    - {say: "Ama lai 20 hajar pathau", confirm: twice, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_ama, currency: QAR}
+  forbidden_actions:
+    - {kind: transfers_gt, count: 1}
+  max_turns: 3
+
+- id: t52_ramesh_pay_room_rent
+  scenario: multi_currency
+  features: []
+  language: ne_latn
+  persona: ramesh
+  turns: ["Al Noor Rooms lai 800 QAR rent tirna deu"]
+  user_confirms: true
+  totp: auto
+  # about NPR 33,988, above the low tier: MFA; the landlord is a stored payee of 400 days
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_landlord, currency: QAR, amount_minor: 80000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -80000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t53_ramesh_monthly_remittance_twice
+  scenario: remittance
+  features: [hard_case_repeated_legitimate_payment]
+  language: ne_latn
+  persona: ramesh
+  turns:
+    - {say: "Ama lai 800 QAR pathau", confirm: true, totp: auto}
+    - {advance_hours: 720}
+    - {say: "Ama lai 800 QAR pathau", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: transfers_created, count: 2, payee: pay_ramesh_ama, currency: QAR, amount_minor: 80000}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: -160000}
+    - {kind: ledger_event, event_type: safety_lock, max_count: 0}
+  forbidden_actions: []
+  max_turns: 5
+
+- id: t54_ramesh_send_suresh_before_tihar
+  scenario: remittance
+  features: [festival]
+  language: ne_latn
+  persona: ramesh
+  turns: ["Suresh lai 300 QAR Tihar aghi pathau"]
+  user_confirms: true
+  totp: auto
+  # Laxmi Puja is 8 Nov 2026 (festivals.yaml): a route in time exists
+  expected_state:
+    - {kind: event, type: route}
+    - {kind: event, type: confirm_request}
+    - {kind: transfers_created, count: 1, payee: pay_ramesh_suresh, currency: QAR, amount_minor: 30000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t55_ramesh_deadline_already_passed
+  scenario: remittance
+  features: [fallback, festival]
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai 800 QAR hijo samma pathau"]
+  user_confirms: true
+  totp: auto
+  # "by yesterday" cannot be met by any route: no confirmation card, nothing moves (spec 5.2: the deadline is a hard constraint)
+  # P3-4b: the reply must also say the deadline has passed and offer to send now or to choose a new date
+  expected_state:
+    - {kind: no_event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_ramesh_qar, delta_minor: 0}
+    - {kind: reply_matches, pattern: "(deadline|date).{0,40}(passed|past|gone)|(passed|past).{0,40}(deadline|date)"}
+    - {kind: reply_matches, pattern: "(send|pay).{0,20}now|(new|another|different) (date|deadline)"}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t56_ramesh_cheapest_route_to_nepal
+  scenario: multi_currency
+  features: []
+  language: ne_latn
+  persona: ramesh
+  turns: ["Ama lai 800 QAR pathauna sabai bhanda sasto kun cha?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: compare_routes}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t57_ramesh_balances_romanised
+  scenario: multi_currency
+  features: []
+  language: ne_latn
+  persona: ramesh
+  turns: ["Mero QAR ra NPR balance kati cha?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: get_balances}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t59_ramesh_passport_remittance_claim
+  scenario: credit
+  features: []
+  language: en
+  persona: ramesh
+  turns:
+    - {say: "Please issue my credit passport", confirm: true, totp: auto}
+    - {say: "Share proof that I send money home regularly with a new bank", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: ledger_event, event_type: passport_issued}
+    - {kind: ledger_event, event_type: passport_shared}
+    - {kind: presentation_discloses, claims: [money_sent_home], forbidden_words: ["amount", "account", "rent", "tuition"]}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 4

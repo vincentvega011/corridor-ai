@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" font-family="Helvetica,Arial,sans-serif">
+<rect width="1100" height="560" fill="white"/>
+<text x="70" y="32" font-size="20" font-weight="bold">Attack success rate by category (cautious_user): baseline vs full</text>
+<line x1="70" y1="410.0" x2="1070" y2="410.0" stroke="#e5e7eb"/><text x="62" y="414.0" font-size="12" text-anchor="end">0%</text>
+<line x1="70" y1="342.0" x2="1070" y2="342.0" stroke="#e5e7eb"/><text x="62" y="346.0" font-size="12" text-anchor="end">20%</text>
+<line x1="70" y1="274.0" x2="1070" y2="274.0" stroke="#e5e7eb"/><text x="62" y="278.0" font-size="12" text-anchor="end">40%</text>
+<line x1="70" y1="206.0" x2="1070" y2="206.0" stroke="#e5e7eb"/><text x="62" y="210.0" font-size="12" text-anchor="end">60%</text>
+<line x1="70" y1="138.0" x2="1070" y2="138.0" stroke="#e5e7eb"/><text x="62" y="142.0" font-size="12" text-anchor="end">80%</text>
+<line x1="70" y1="70.0" x2="1070" y2="70.0" stroke="#e5e7eb"/><text x="62" y="74.0" font-size="12" text-anchor="end">100%</text>
+<rect x="80.0" y="408.5" width="38.0" height="1.5" fill="#b3261e"/>
+<text x="100.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="120.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="140.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="120.0" y="424" font-size="12" transform="rotate(35 120.0 424)">direct_injection</text>
+<rect x="180.0" y="408.5" width="38.0" height="1.5" fill="#b3261e"/>
+<text x="200.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="220.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="240.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="220.0" y="424" font-size="12" transform="rotate(35 220.0 424)">indirect_injection_document</text>
+<rect x="280.0" y="408.5" width="38.0" height="1.5" fill="#b3261e"/>
+<text x="300.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="320.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="340.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="320.0" y="424" font-size="12" transform="rotate(35 320.0 424)">indirect_injection_image</text>
+<rect x="380.0" y="408.5" width="38.0" height="1.5" fill="#b3261e"/>
+<text x="400.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="420.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="440.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="420.0" y="424" font-size="12" transform="rotate(35 420.0 424)">induced_transfer_social_engineering</text>
+<rect x="480.0" y="408.5" width="38.0" height="1.5" fill="#b3261e"/>
+<text x="500.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<rect x="520.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="540.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="520.0" y="424" font-size="12" transform="rotate(35 520.0 424)">data_extraction</text>
+<rect x="580.0" y="258.9" width="38.0" height="151.1" fill="#b3261e"/>
+<text x="600.0" y="254.9" font-size="11" text-anchor="middle">44</text>
+<rect x="620.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="640.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="620.0" y="424" font-size="12" transform="rotate(35 620.0 424)">privilege_escalation</text>
+<rect x="680.0" y="296.7" width="38.0" height="113.3" fill="#b3261e"/>
+<text x="700.0" y="292.7" font-size="11" text-anchor="middle">33</text>
+<rect x="720.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="740.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="720.0" y="424" font-size="12" transform="rotate(35 720.0 424)">hallucination</text>
+<rect x="780.0" y="325.0" width="38.0" height="85.0" fill="#b3261e"/>
+<text x="800.0" y="321.0" font-size="11" text-anchor="middle">25</text>
+<rect x="820.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="840.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="820.0" y="424" font-size="12" transform="rotate(35 820.0 424)">replay_duplicate</text>
+<rect x="880.0" y="296.7" width="38.0" height="113.3" fill="#b3261e"/>
+<text x="900.0" y="292.7" font-size="11" text-anchor="middle">33</text>
+<rect x="920.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="940.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="920.0" y="424" font-size="12" transform="rotate(35 920.0 424)">confirmation_swap</text>
+<rect x="980.0" y="362.8" width="38.0" height="47.2" fill="#b3261e"/>
+<text x="1000.0" y="358.8" font-size="11" text-anchor="middle">14</text>
+<rect x="1020.0" y="408.5" width="38.0" height="1.5" fill="#1b6ca8"/>
+<text x="1040.0" y="404.5" font-size="11" text-anchor="middle">0</text>
+<text x="1020.0" y="424" font-size="12" transform="rotate(35 1020.0 424)">overall</text>
+<rect x="70" y="532" width="14" height="14" fill="#b3261e"/><text x="90" y="544" font-size="13">baseline</text>
+<rect x="260" y="532" width="14" height="14" fill="#1b6ca8"/><text x="280" y="544" font-size="13">full</text>
+<text x="70" y="518" font-size="12" fill="#555">P2-8 preview: baseline and full on every case; ablation rows STALE (P2-4 code)</text>
+</svg>

@@ -1,0 +1,17 @@
+# Corridor configuration (docs/spec/repo-layout.md section 9). Corridors and providers are data, not code.
+version: 1
+# Currency of the account a customer normally sends from, by region of residence (users.home_region).
+home_currency: {AU: AUD, QA: QAR, CN: CNY, MY: MYR, US: USD, NP: NPR}
+# Time zone (IANA) of the region of residence: times shown to the user (for example the earliest allowed payment time)
+# are shown in it, with the zone named. UTC is the fallback.
+region_timezone: {AU: Australia/Sydney, QA: Asia/Qatar, CN: Asia/Shanghai, MY: Asia/Kuala_Lumpur, US: America/New_York, NP: Asia/Kathmandu}
+# The configured default provider per corridor: the yardstick for "savings versus default" (the route
+# itself is chosen by the exact optimizer, ADR 0013). Keys are "FROM/TO" currencies.
+default_providers:
+  "AUD/NPR": prov_kathmandulink_aud_npr
+  "QAR/NPR": prov_kathmandulink_qar_npr
+  "MYR/NPR": prov_kathmandulink_myr_npr
+  "NPR/CNY": prov_kathmandulink_npr_cny
+  "USD/NPR": prov_kathmandulink_usd_npr
+  "CNY/NPR": prov_kathmandulink_cny_npr
+  "QAR/AUD": prov_peakremit_qar_aud

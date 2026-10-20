@@ -1,0 +1,9 @@
+version: 1
+markers:
+  latn: [if, only, provided, once, after]
+reserve_words:
+  rent:    {latn: [rent, rents]}
+  tuition: {latn: [tuition, fee, fees]}
+  bill:    {latn: [bill, bills]}
+cover_triggers:
+  latn: [covered, paid, enough, left, remaining, after]

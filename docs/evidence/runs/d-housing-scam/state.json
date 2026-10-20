@@ -1,0 +1,239 @@
+{
+  "after": {
+    "accounts": {
+      "usr_priya": [
+        {
+          "balance_minor": 420000,
+          "currency": "AUD",
+          "id": "acc_priya_aud"
+        },
+        {
+          "balance_minor": 150000,
+          "currency": "AUD",
+          "id": "acc_priya_aud_savings"
+        },
+        {
+          "balance_minor": 62000000,
+          "currency": "NPR",
+          "id": "acc_priya_npr"
+        }
+      ]
+    },
+    "payees": {
+      "usr_priya": [
+        {
+          "account_no_masked": "****2208",
+          "added_via": "document",
+          "display_name": "CityNest Bookings",
+          "id": "pay_doc_dfb32726bdc72d10",
+          "provenance": "untrusted",
+          "verified": false
+        },
+        {
+          "account_no_masked": "****0928",
+          "added_via": "seed",
+          "display_name": "Mr. Chen",
+          "id": "pay_priya_landlord",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****5592",
+          "added_via": "seed",
+          "display_name": "Baba",
+          "id": "pay_priya_parents",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****2125",
+          "added_via": "seed",
+          "display_name": "Harbourview University",
+          "id": "pay_priya_university",
+          "provenance": "system",
+          "verified": true
+        }
+      ]
+    },
+    "safety_locks": {
+      "usr_priya": [
+        {
+          "locked": false,
+          "reason": "critical_risk"
+        }
+      ]
+    },
+    "transfers": {
+      "usr_priya": [
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260505",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260605",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260705",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 650000,
+          "currency": "AUD",
+          "id": "tr_priya_tuition_university_20260720",
+          "payee_id": "pay_priya_university",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260805",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 20000,
+          "currency": "AUD",
+          "id": "tr_priya_remittance_parents_20260815",
+          "payee_id": "pay_priya_parents",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260905",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20261005",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        }
+      ]
+    }
+  },
+  "before": {
+    "accounts": {
+      "usr_priya": [
+        {
+          "balance_minor": 420000,
+          "currency": "AUD",
+          "id": "acc_priya_aud"
+        },
+        {
+          "balance_minor": 150000,
+          "currency": "AUD",
+          "id": "acc_priya_aud_savings"
+        },
+        {
+          "balance_minor": 62000000,
+          "currency": "NPR",
+          "id": "acc_priya_npr"
+        }
+      ]
+    },
+    "payees": {
+      "usr_priya": [
+        {
+          "account_no_masked": "****0928",
+          "added_via": "seed",
+          "display_name": "Mr. Chen",
+          "id": "pay_priya_landlord",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****5592",
+          "added_via": "seed",
+          "display_name": "Baba",
+          "id": "pay_priya_parents",
+          "provenance": "system",
+          "verified": true
+        },
+        {
+          "account_no_masked": "****2125",
+          "added_via": "seed",
+          "display_name": "Harbourview University",
+          "id": "pay_priya_university",
+          "provenance": "system",
+          "verified": true
+        }
+      ]
+    },
+    "safety_locks": {
+      "usr_priya": []
+    },
+    "transfers": {
+      "usr_priya": [
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260505",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260605",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260705",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 650000,
+          "currency": "AUD",
+          "id": "tr_priya_tuition_university_20260720",
+          "payee_id": "pay_priya_university",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260805",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 20000,
+          "currency": "AUD",
+          "id": "tr_priya_remittance_parents_20260815",
+          "payee_id": "pay_priya_parents",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20260905",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        },
+        {
+          "amount_minor": 180000,
+          "currency": "AUD",
+          "id": "tr_priya_rent_landlord_20261005",
+          "payee_id": "pay_priya_landlord",
+          "status": "executed"
+        }
+      ]
+    }
+  }
+}

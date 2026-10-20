@@ -1,0 +1,1 @@
+{"key": "b2ac9e2b4a742c095633217fd0696b15d63c8791cfc8139066bda962d8248aea", "role": "planner", "response": {"text": "I can help with that. Let me pull up the invoice on file to confirm the details.", "tool_calls": [{"id": "call_99eb4f795972418b8e0ebab9", "name": "list_invoices", "arguments": {}}], "input_tokens": 1786, "output_tokens": 40, "usage_estimated": false}}

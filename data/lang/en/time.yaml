@@ -1,0 +1,32 @@
+version: 1
+relative_days:
+  latn: {today: 0, tomorrow: 1, tmrw: 1, tomorow: 1, yesterday: -1}
+relative_periods:
+  latn:
+    - {tokens: [this, week], period: this_week}
+    - {tokens: [next, week], period: next_week}
+    - {tokens: [this, month], period: this_month}
+    - {tokens: [next, month], period: next_month}
+    - {tokens: [end, of, month], period: this_month}
+    - {tokens: [end, of, the, month], period: this_month}
+weekdays:
+  latn: {monday: 0, mon: 0, tuesday: 1, tue: 1, tues: 1, wednesday: 2, wed: 2, thursday: 3, thu: 3, thur: 3, thurs: 3, friday: 4, fri: 4, saturday: 5, sat: 5, sunday: 6, sun: 6}
+weekday_next_markers: {latn: [next]}
+months:
+  latn: {january: 1, jan: 1, february: 2, feb: 2, march: 3, mar: 3, april: 4, apr: 4, may: 5, june: 6, jun: 6, july: 7, jul: 7, august: 8, aug: 8, september: 9, sep: 9, sept: 9, october: 10, oct: 10, november: 11, nov: 11, december: 12, dec: 12}
+deadline_before_markers:
+  latn: [before, by, until, till, "no later than", "prior to"]
+deadline_after_markers:
+  latn: [after, "later than"]
+deadline_for_markers:
+  latn: [for, on, at]
+recurrence:
+  latn:
+    - {tokens: [every, month], freq: monthly}
+    - {tokens: [each, month], freq: monthly}
+    - {tokens: [monthly], freq: monthly}
+    - {tokens: [every, week], freq: weekly}
+    - {tokens: [weekly], freq: weekly}
+    - {tokens: [every, two, weeks], freq: biweekly}
+duration_units:
+  latn: [day, days, week, weeks, month, months, year, years, hour, hours, minute, minutes, percent, "%", pm, am]

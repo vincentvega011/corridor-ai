@@ -1,0 +1,1 @@
+{"key": "63edace9ef196c847f203881a404f258a474de69bcfa79e325a75a16056c23ea", "role": "planner", "response": {"text": "What would you like to do next? For example:\n\n- Send another transfer\n- Check your balance\n- View an FX rate or fees\n- Pay an invoice or bill\n\nLet me know the details.", "tool_calls": [], "input_tokens": 2399, "output_tokens": 42, "usage_estimated": false}}

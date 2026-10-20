@@ -1,0 +1,1 @@
+{"key": "88e72b844ed82e160eeb461078d13d9578031e6f84b41d217d2912507e92b1cb", "role": "planner", "response": {"text": "I'll help you send money to Ama. Let me check your saved payees first.", "tool_calls": [{"id": "call_2a10e6de6eb54acda7e19115", "name": "get_payees", "arguments": {}}], "input_tokens": 1710, "output_tokens": 41, "usage_estimated": false}}

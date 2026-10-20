@@ -1,0 +1,20 @@
+# Required slots per intent (a clarification question is asked for each missing one).
+# A currency that was named but is ambiguous (for example "dollar") is also a clarification.
+version: 1
+required:
+  send_money: [amount, payee_ref]
+  schedule_transfer: [amount, payee_ref, recurrence]
+  cancel_schedule: []
+  pay_invoice: []
+  check_balance: []
+  convert_currency: [amount]
+  compare_routes: [amount]
+  set_budget: [amount]
+  spending_summary: []
+  add_payee: [payee_ref]
+  credit_passport_issue: []
+  credit_passport_share: []
+  explain_decision: []
+  help: []
+  other: []
+slot_names: [amount, currency, payee_ref, source_account, deadline, recurrence, condition, purpose]

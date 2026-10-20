@@ -1,0 +1,91 @@
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 71ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 372ms
+  Running TypeScript ...
+  Finished TypeScript in 1310ms ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/2) ...
+✓ Generating static pages using 9 workers (2/2) in 104ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /api/bff/[...path]
+├ ƒ /api/console/[...path]
+├ ƒ /api/console/session
+├ ƒ /api/session
+├ ƒ /console
+├ ƒ /console/compare
+├ ƒ /console/eval
+├ ƒ /console/ledger
+├ ƒ /console/login
+├ ƒ /console/queue
+├ ƒ /console/risk
+├ ƒ /console/trace
+├ ƒ /family
+├ ƒ /passport
+├ ƒ /payees
+├ ƒ /routes
+├ ƒ /tuition
+└ ƒ /verify
+
+
+ƒ Proxy (Middleware)
+
+ƒ  (Dynamic)  server-rendered on demand
+
+[WebServer] INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+[WebServer] INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+e2e database ready: corridor_e2e
+
+Running 42 tests using 1 worker
+
+  ✓   1 [chromium] › e2e/console-flows.spec.ts:33:5 › the officer verifies a typed landlord after a CoP match plus a callback, and it is ledgered (3.3s)
+  ✓   2 [chromium] › e2e/console-flows.spec.ts:63:5 › a CoP mismatch cannot be verified, in the console or by the API (24.7s)
+  ✓   3 [chromium] › e2e/console-flows.spec.ts:83:5 › tampering with one ledger row makes the chain check fail (31.7s)
+  ✓   4 [chromium] › e2e/console-flows.spec.ts:98:5 › a customer token is rejected on every officer route, in the API and through the console gateway (1.6s)
+  ✓   5 [chromium] › e2e/console-flows.spec.ts:113:5 › the trace of the housing scam shows the document as untrusted and the rules that fired (2.7s)
+  ✓   6 [chromium] › e2e/console-flows.spec.ts:134:5 › a denied proposal is traced as denied, with the rule that denied it (2.7s)
+  ✓   7 [chromium] › e2e/console-flows.spec.ts:150:5 › side by side and the evaluation summary read only the published report (2.6s)
+  ✓   8 [chromium] › e2e/console-flows.spec.ts:168:5 › a button action is traced as one deterministic node, with no parser and no planner (2.6s)
+  ✓   9 [chromium] › e2e/console-flows.spec.ts:187:5 › after login the console goes straight to the queue, the risk queue shows a table or the empty state, side by side opens on RT-026 (2.1s)
+  ✓  10 [chromium] › e2e/console-shell.spec.ts:17:5 › each officer logs in with their own credential; a customer token or another officer's does not work (2.1s)
+  ✓  11 [chromium] › e2e/housing-scam.spec.ts:13:5 › housing scam: the account is saved, held and warned, and no money moves (12.4s)
+  ✓  12 [chromium] › e2e/housing-scam.spec.ts:53:5 › the hold card in Nepali with Devanagari digits (29.1s)
+  ✓  13 [chromium] › e2e/landlord.spec.ts:20:5 › payees: a payee you type is saved with MFA, held at first, and the bank can verify it (30.8s)
+  ✓  14 [chromium] › e2e/landlord.spec.ts:55:5 › same-day landlord deposit: the cap refuses, the bank verifies, MFA payment goes through (t20) (59.3s)
+  ✓  15 [chromium] › e2e/p41-polish.spec.ts:18:7 › no raw ids or fixture suffixes on any customer screen (usr_priya) (6.0s)
+  ✓  16 [chromium] › e2e/p41-polish.spec.ts:18:7 › no raw ids or fixture suffixes on any customer screen (usr_ramesh) (5.7s)
+  ✓  17 [chromium] › e2e/p41-polish.spec.ts:18:7 › no raw ids or fixture suffixes on any customer screen (usr_anil) (5.7s)
+  ✓  18 [chromium] › e2e/p41-polish.spec.ts:29:5 › routes: arrival is the demo clock plus the speed in the user's zone, with labelled amounts, rate and source (2.1s)
+  ✓  19 [chromium] › e2e/p41-polish.spec.ts:48:5 › tuition: the invoice, family and accounts are named, and the totals are labelled (2.0s)
+  ✓  20 [chromium] › e2e/p41-polish.spec.ts:62:5 › passport: claims are a readable list with the user's own figures, the card says nothing is shared, and the done card is a one line receipt (8.1s)
+  ✓  21 [chromium] › e2e/p41-polish.spec.ts:88:5 › chat: no onboarding sentence once a persona is chosen, and none on the other pages (2.2s)
+  ✓  22 [chromium] › e2e/p41-polish.spec.ts:99:5 › payees: no fictional suffix, a small synthetic badge instead (1.6s)
+  ✓  23 [chromium] › e2e/p41-polish.spec.ts:109:5 › every screen in Nepali has no leftover English except proper names (14.8s)
+  ✓  24 [chromium] › e2e/p41-polish.spec.ts:126:5 › the sandbox authenticator panel shows the current code, only in a demo build (1.9s)
+  ✓  25 [chromium] › e2e/p41-polish.spec.ts:136:5 › the tuition plan names the rate source in Nepali too (1.8s)
+  ✓  26 [chromium] › e2e/p41-polish.spec.ts:143:5 › authenticator codes are always Western digits, and the code box accepts Devanagari digits (7.1s)
+  ✓  27 [chromium] › e2e/p41-polish.spec.ts:163:5 › a Western digit code works too, and the plan names the rate only when it converts money (30.5s)
+  ✓  28 [chromium] › e2e/p41-polish.spec.ts:182:5 › the Devanagari digit option applies only in Nepali: English shows Western digits everywhere (5.7s)
+  ✓  29 [chromium] › e2e/p41-polish.spec.ts:204:5 › tuition: a persona without an invoice is told so; the no-plan message needs an invoice (4.4s)
+  ✓  30 [chromium] › e2e/p42-buttons.spec.ts:6:5 › Routes: send with the recommended route is a button flow with the rate source on the card (20.0s)
+  ✓  31 [chromium] › e2e/p42-buttons.spec.ts:22:5 › Payees: the pay form works in Nepali too and a refused payment shows one explanation (1.3s)
+  ✓  32 [chromium] › e2e/passport.spec.ts:6:5 › passport: issue, share with a landlord's challenge, and a forwarded copy is rejected (30.2s)
+  ✓  33 [chromium] › e2e/screens.spec.ts:8:7 › key screens in en (3.7s)
+  ✓  34 [chromium] › e2e/screens.spec.ts:8:7 › key screens in ne (3.8s)
+  ✓  35 [chromium] › e2e/screens.spec.ts:36:5 › the app talks to nothing but its own origin, and has a strict policy (893ms)
+  ✓  36 [chromium] › e2e/screens.spec.ts:58:5 › text from a model, a document or a payee name is shown as text, never as markup (904ms)
+  ✓  37 [chromium] › e2e/tuition-and-family.spec.ts:7:5 › tuition plan: one confirm per proposal, then the uncle accepts (49.7s)
+  ✓  38 [chromium] › e2e/tuition-and-family.spec.ts:51:5 › route comparison shows the server's numbers, in Nepali too (1.5s)
+  ✓  39 [chromium] › e2e/tuition-and-family.spec.ts:68:5 › the uncle accepts a request and the student sees the answer; accepting moves no money (3.0s)
+  ✓  40 [chromium] › e2e/tuition-and-family.spec.ts:95:5 › the uncle can decline (1.8s)
+  ✓  41 [chromium] › e2e/zh.spec.ts:9:5 › zh: the recorded housing deposit line still gives the card and the hold card, with the UI in Chinese (23.1s)
+  ✓  42 [chromium] › e2e/zh.spec.ts:38:5 › zh: routes, tuition, passport and the console trace render Chinese (4.3s)
+
+  42 passed (7.6m)

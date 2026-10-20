@@ -1,0 +1,49 @@
+% Shared preamble of the three submission PDFs (technical document, security self-assessment, execution evidence).
+% Same fonts, header, monochrome palette and page geometry as main.tex. No maths in these two documents.
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.15cm,top=2.0cm,bottom=2.0cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{plex-sans}
+\usepackage[scale=MatchLowercase]{plex-mono}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{booktabs,array,longtable,makecell}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage[nobottomtitles*]{titlesec}
+\def\bottomtitlespace{0.07\textheight}
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\raggedbottom
+\definecolor{ink}{HTML}{09090B}
+\definecolor{g6}{HTML}{52525B}
+\definecolor{g4}{HTML}{A1A1AA}
+\definecolor{g2}{HTML}{E4E4E7}
+\definecolor{g1}{HTML}{F4F4F5}
+\color{ink}
+\setlist{nosep,leftmargin=1.4em,itemsep=1pt,topsep=2pt}
+\setlength{\parindent}{0pt}
+\emergencystretch=3em
+\tolerance=1200
+\setlength{\parskip}{2.5pt}
+\renewcommand{\arraystretch}{1.05}
+\setlength{\LTpre}{3pt}\setlength{\LTpost}{3pt}
+\captionsetup{font={small},labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=false,skip=4pt}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{-4pt}\rule{\linewidth}{0.5pt}]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+\titleformat{\subsubsection}{\small\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{7pt}{1pt}
+\titlespacing*{\subsection}{0pt}{5pt}{1pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{1pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\code}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,columns=fullflexible,keepspaces=true,
+  frame=single,rulecolor=\color{g4},backgroundcolor=\color{g1},xleftmargin=2pt,xrightmargin=2pt,
+  aboveskip=6pt,belowskip=6pt,showstringspaces=false,upquote=true}

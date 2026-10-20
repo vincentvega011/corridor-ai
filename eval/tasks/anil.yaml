@@ -1,0 +1,29 @@
+- id: t09_anil_check_cny_balance
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: anil
+  turns: ["What is my CNY balance?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_anil_cny, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t10_anil_send_before_dashain
+  scenario: remittance
+  features: [festival]
+  language: ne_latn
+  persona: anil
+  turns: ["Aama ra Baba lai 50 hajar NPR pathau Dashain aghi"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: intent, data: {"slots.deadline.value.date": "2026-10-21"}}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions: []
+  max_turns: 3

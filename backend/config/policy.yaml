@@ -1,0 +1,56 @@
+# Corridor AI policy configuration (docs/spec/modules.md 5.7). ILLUSTRATIVE ASSUMPTIONS, not legal limits:
+# see docs/assumptions.md. The canonical form of this file is hashed (SHA-256) and the hash is
+# written into every policy decision and ledger entry (policy_version_hash).
+version: 1
+base_currency: NPR
+limits:
+  low_npr_minor: 2500000          # NPR 25,000.00 equivalent: at or below this a verified, established payee needs only a confirm tap
+  daily_npr_minor: 100000000      # NPR 1,000,000.00 equivalent outgoing in any rolling 24 hours: above it, DENY
+new_payee_days: 30                # a payee added fewer days ago than this never gets the low tier: always MFA
+payee_cooloff:                    # R-PAYEE-COOLOFF: the fooled-user control (a deceived user can confirm and pass MFA)
+  hours: 24                       # a destination account first saved less than this long ago ...
+  first_payment_cap_npr_minor: 500000   # ... can receive at most NPR 5,000.00 equivalent in total; above it, DENY
+  untrusted_origin_cap_npr_minor: 0     # ... but an account that came from a document, message or model guess is held in full: cap 0
+velocity:
+  window_minutes: 10
+  mfa_over: 3                     # more than 3 transfers in the window: MFA
+  deny_over: 6                    # more than 6 in the window: DENY
+risk:                             # R-RISK: a deterministic rule score (P3-1, ADR 0016), thresholds in basis points
+  high_bps: 6000                  # at or above: MFA
+  critical_bps: 9000              # at or above: DENY
+  weights_bps:                    # what each reason adds; the sum is capped at 10000
+    new_payee: 1500
+    untrusted_payee: 3000
+    held_payee: 2500
+    document_derived: 1500
+    amount_unusual: 2000
+    amount_extreme: 3500
+    unusual_hour: 1500
+    recent_denial_each: 1000
+    recent_denials_max: 3000
+    cop_mismatch: 6000   # with an untrusted payee (3000) this alone reaches critical
+  amount_unusual_multiple: 3      # the amount is more than 3 x the user's median payment
+  amount_extreme_multiple: 10     # ... more than 10 x (replaces amount_unusual)
+  quiet_hours: [0, 5]             # local hours [start, end): money moving in the small hours
+lock:                             # INV-11
+  window_minutes: 10
+  denied_attempts: 3              # denied or failed high risk attempts in the window
+  totp_failures: 5                # failed TOTP codes in the window
+contribution:
+  max_requests_per_contributor_per_day: 3   # requests to one family member in a rolling 24 hours (assumption, docs/assumptions.md)
+# A budget category containing one of these words is an attempt to change a security setting through
+# the agent: denied (R-SETTINGS). Limits, MFA and contact details change only on the settings screen.
+protected_setting_words: [limit, mfa, otp, password, pin, contact, email, phone, address]
+read_tools:
+  - get_balances
+  - get_payees
+  - get_fx_quote
+  - list_providers
+  - get_invoice
+  - list_invoices
+  - get_history
+  - get_schedules
+  - get_credit_summary
+  - compare_routes
+  - plan_tuition_funding
+  - list_passports

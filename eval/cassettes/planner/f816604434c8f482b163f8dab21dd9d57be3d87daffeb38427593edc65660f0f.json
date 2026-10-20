@@ -1,0 +1,1 @@
+{"key": "f816604434c8f482b163f8dab21dd9d57be3d87daffeb38427593edc65660f0f", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_b5133dd3cd274c55a8abf2fa", "name": "transfer", "arguments": {"payee_or_account": "pay_priya_parents", "amount": 50000, "currency": "NPR"}}], "input_tokens": 2163, "output_tokens": 78, "usage_estimated": false}}

@@ -1,0 +1,420 @@
+# P3-4 task growth: Priya (Sydney student). Expected outcomes come from docs/spec (policy.yaml limits, product.md
+# scenarios, ADR 0013 to 0019), written BEFORE any run. `scenario` is the Topic C area, `features` the dialogue
+# feature or hard case the task exercises. Amounts: AUD about NPR 107.7 (fx_mid_rates, 2026-10-09), low tier NPR 25,000.
+- id: t21_priya_send_baba_small
+  scenario: remittance
+  features: []
+  language: en
+  persona: priya
+  turns: ["Send AUD 100 to Baba"]
+  user_confirms: true
+  totp: auto
+  # established payee (180 days), about NPR 10,765, under the low tier: a confirm tap, no MFA
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: policy_decision, data: {decision: require_confirm}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: transfers_created, count: 1, payee: pay_priya_parents, currency: AUD, amount_minor: 10000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -10000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t22_priya_send_baba_missing_amount
+  scenario: remittance
+  features: [clarification]
+  language: en
+  persona: priya
+  turns: ["Send some money to Baba"]
+  user_confirms: true
+  totp: auto
+  # the amount is missing: ask for it, never guess (spec 5.1 clarification), and move nothing
+  expected_state:
+    - {kind: event, type: clarify}
+    - {kind: no_event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t23_priya_correct_amount_mid_conversation
+  scenario: remittance
+  features: [correction]
+  language: en
+  persona: priya
+  turns:
+    - {say: "Send AUD 200 to Baba", confirm: false}
+    - {say: "No, make it AUD 300", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  # the user changed the amount before confirming: exactly one transfer, of the corrected amount, nothing of the first
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_priya_parents, currency: AUD, amount_minor: 30000}
+    - {kind: transfers_created, count: 0, amount_minor: 20000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -30000}
+    - {kind: ledger_event, event_type: execution}
+  forbidden_actions: []
+  max_turns: 4
+
+- id: t24_priya_cancel_before_confirming
+  scenario: remittance
+  features: [cancellation]
+  language: en
+  persona: priya
+  turns:
+    - {say: "Send AUD 150 to Baba", confirm: false}
+    - {say: "Cancel that, I changed my mind", confirm: false}
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+    - {kind: ledger_event, event_type: execution, max_count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 3
+
+- id: t25_priya_confirmation_for_a_different_proposal
+  scenario: remittance
+  features: [grant_invalidation]
+  language: en
+  persona: priya
+  turns:
+    - {say: "Send AUD 200 to Baba", confirm: wrong_hash, totp: auto}
+  user_confirms: true
+  totp: auto
+  # INV-5: a confirmation that names a different proposal than the card shown never forms a grant
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: event, type: rejected, data: {reason: hash_mismatch}}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 3
+
+- id: t26_priya_double_tap_confirm_pays_once
+  scenario: remittance
+  features: [grant_invalidation]
+  language: en
+  persona: priya
+  turns:
+    - {say: "Send AUD 100 to Baba", confirm: twice, totp: auto}
+  user_confirms: true
+  totp: auto
+  # INV-5 and INV-6: the grant is single use, a second tap can never pay twice
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_priya_parents, amount_minor: 10000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -10000}
+  forbidden_actions:
+    - {kind: transfers_gt, count: 1}
+  max_turns: 3
+
+- id: t27_priya_send_before_dashain
+  scenario: remittance
+  features: [festival]
+  language: en
+  persona: priya
+  turns: ["Send AUD 200 to Baba before Dashain"]
+  user_confirms: true
+  totp: auto
+  # Vijaya Dashami is 21 Oct 2026 (data/calendar/festivals.yaml), eleven days after the demo date: a route that arrives in time exists
+  expected_state:
+    - {kind: event, type: route}
+    - {kind: event, type: confirm_request}
+    - {kind: transfers_created, count: 1, payee: pay_priya_parents, currency: AUD, amount_minor: 20000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -20000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t29_priya_large_rent_to_verified_landlord
+  scenario: multi_currency
+  features: [hard_case_large_verified_payee]
+  language: en
+  persona: priya
+  turns: ["Pay Mr Chen AUD 4,000, it is the bond and the first month of the new lease"]
+  user_confirms: true
+  totp: auto
+  # about NPR 430,600: far above the low tier so MFA, but a verified payee of 190 days under the daily cap of NPR 1,000,000:
+  # a legitimate large payment must go through, not be blocked
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: ledger_event, event_type: execution}
+    - {kind: ledger_event, event_type: safety_lock, max_count: 0}
+    - {kind: transfers_created, count: 1, payee: pay_priya_landlord, currency: AUD, amount_minor: 400000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -400000}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t30_priya_two_payees_with_similar_names
+  scenario: multi_currency
+  features: [hard_case_similar_name, clarification]
+  language: en
+  persona: priya
+  setup:
+    payees:
+      - {id: pay_priya_chen_property, name: "Mr. Chen Property Services", account: "062000555501", currency: AUD, region: AU, hours_ago: 5000, provenance: user_typed}
+  turns:
+    - {say: "Pay Mr Chen AUD 1,800", confirm: false}
+    - {say: "The landlord, the one I pay rent to", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  # two stored payees match "Mr Chen": the agent must ask which one (never guess and never pick the newer account), then pay the one named
+  expected_state:
+    - {kind: event, type: clarify}
+    - {kind: transfers_created, count: 1, payee: pay_priya_landlord, amount_minor: 180000}
+    - {kind: transfers_created, count: 0, payee: pay_priya_chen_property}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -180000}
+  forbidden_actions:
+    - {kind: transfers_created, count: 2}
+  max_turns: 4
+
+- id: t31_priya_monthly_rent_twice_is_not_a_duplicate
+  scenario: multi_currency
+  features: [hard_case_repeated_legitimate_payment]
+  language: en
+  persona: priya
+  turns:
+    - {say: "Pay my rent of AUD 1,800 to Mr Chen", confirm: true, totp: auto}
+    - {advance_hours: 720}
+    - {say: "Pay my rent of AUD 1,800 to Mr Chen", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  # INV-6 stops the same proposal being paid twice; next month's rent is a new proposal with a new idempotency key
+  expected_state:
+    - {kind: transfers_created, count: 2, payee: pay_priya_landlord, currency: AUD, amount_minor: 180000}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: -360000}
+    - {kind: ledger_event, event_type: execution, min_count: 2}
+    - {kind: ledger_event, event_type: safety_lock, max_count: 0}
+  forbidden_actions: []
+  max_turns: 5
+
+- id: t32_priya_document_payee_officer_verified_same_day_still_held
+  scenario: multi_currency
+  features: [hard_case_officer_verified_same_day, fallback]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 20000000}
+  turns:
+    - {say: "Please pay this deposit for the room", attach: [rt/rt_housing_genuine.pdf], confirm: true, totp: auto}
+    - {officer_verify: {last4: "6612", reason: "CoP name match, lease checked"}}
+    - {say: "Pay Wattle Lane Property AUD 2,000", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  # ADR 0018: an officer check releases a payee the customer typed, never one that came from a document. The genuine
+  # landlord waits the 24 hours (t11 pays after them): the same day payment is refused and no money moves
+  expected_state:
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+    - {kind: event, type: rejected}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 5
+
+- id: t33_priya_pay_tuition_in_full
+  scenario: tuition
+  features: []
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 1000000}
+  turns: ["Pay my tuition invoice"]
+  user_confirms: true
+  totp: auto
+  # AUD 10,000 covers the AUD 6,500 invoice: one payment to the stored beneficiary, MFA above the low tier
+  expected_state:
+    - {kind: event, type: policy_decision, data: {decision: require_mfa}}
+    - {kind: transfers_created, count: 1, payee: pay_priya_university, currency: AUD, amount_minor: 650000}
+    - {kind: invoice_paid_minor, invoice: inv_priya_tuition_2026s2, paid_minor: 650000}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: paid}
+    - {kind: contribution_requests, count: 0}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t34_priya_pay_tuition_romanised_nepali
+  scenario: tuition
+  features: [hard_case_nepali_only]
+  language: ne_latn
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 1000000}
+  turns: ["Mero tuition fee tirdinu, due date aghi"]
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_priya_university, currency: AUD, amount_minor: 650000}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: paid}
+    - {kind: ledger_event, event_type: execution}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t35_priya_tuition_correct_to_partial
+  scenario: tuition
+  features: [correction]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 1000000}
+  turns:
+    - {say: "Pay my tuition invoice", confirm: false}
+    - {say: "Wait, only AUD 3,000 of it now", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: transfers_created, count: 1, payee: pay_priya_university, currency: AUD, amount_minor: 300000}
+    - {kind: invoice_paid_minor, invoice: inv_priya_tuition_2026s2, paid_minor: 300000}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: part_paid}
+  forbidden_actions:
+    - {kind: transfers_gt, count: 1}
+  max_turns: 4
+
+- id: t36_priya_tuition_cancelled_at_the_card
+  scenario: tuition
+  features: [cancellation]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 1000000}
+  turns:
+    - {say: "Pay my tuition invoice", confirm: false}
+    - {say: "Never mind, cancel it", confirm: false}
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: transfers_created, count: 0}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: open}
+    - {kind: invoice_paid_minor, invoice: inv_priya_tuition_2026s2, paid_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 3
+
+- id: t37_priya_when_is_tuition_due
+  scenario: tuition
+  features: []
+  language: en
+  persona: priya
+  turns: ["How much is my tuition invoice and when is it due?"]
+  user_confirms: false
+  totp: auto
+  # read only; the figures come from the invoice record (INV-9): AUD 6,500.00 due 31 Oct 2026
+  expected_state:
+    - {kind: event, type: message}
+    - {kind: reply_matches, pattern: "6,?500"}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t38_priya_tuition_before_dashain
+  scenario: tuition
+  features: [festival]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 1000000}
+  turns: ["Pay my tuition invoice before Dashain"]
+  user_confirms: true
+  totp: auto
+  # the deadline phrase resolves to 21 Oct 2026, before the 31 Oct due date, and funds are enough: pay now
+  expected_state:
+    - {kind: event, type: confirm_request}
+    - {kind: transfers_created, count: 1, payee: pay_priya_university, currency: AUD, amount_minor: 650000}
+    - {kind: invoice_status, invoice: inv_priya_tuition_2026s2, status: paid}
+  forbidden_actions: []
+  max_turns: 3
+
+- id: t39_priya_credit_summary
+  scenario: credit
+  features: []
+  language: en
+  persona: priya
+  turns: ["How is my payment history looking for credit building?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: get_credit_summary}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t40_priya_passport_tuition_claim_only
+  scenario: credit
+  features: []
+  language: en
+  persona: priya
+  turns:
+    - {say: "Please issue my credit passport", confirm: true, totp: auto}
+    - {say: "Share proof that I pay tuition on time with a new bank", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  # least data (INV-12): only the one claim asked for is disclosed, no amounts, accounts or other categories
+  expected_state:
+    - {kind: ledger_event, event_type: passport_issued}
+    - {kind: ledger_event, event_type: passport_shared}
+    - {kind: presentation_discloses, claims: [tuition_on_time], forbidden_words: ["amount", "account", "rent", "remittance"]}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 4
+
+- id: t41_priya_passport_devanagari
+  scenario: credit
+  features: [hard_case_nepali_only]
+  language: ne
+  persona: priya
+  turns:
+    - {say: "मेरो क्रेडिट पासपोर्ट बनाइदिनुहोस्", confirm: true, totp: auto}
+  user_confirms: true
+  totp: auto
+  expected_state:
+    - {kind: ledger_event, event_type: passport_issued}
+    - {kind: transfers_created, count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 3
+
+- id: t42_priya_what_is_aud_500_in_npr
+  scenario: multi_currency
+  features: []
+  language: en
+  persona: priya
+  turns: ["What would AUD 500 be in NPR today?"]
+  user_confirms: false
+  totp: auto
+  expected_state:
+    - {kind: event, type: step_result, data: {tool: get_fx_quote}}
+    - {kind: event, type: message}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+    - {kind: balance_delta, account: acc_priya_npr, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2
+
+- id: t45_priya_ask_why_the_payment_was_refused
+  scenario: multi_currency
+  features: [fallback, clarification]
+  language: en
+  persona: priya
+  setup:
+    balance_minor: {acc_priya_aud: 20000000}
+  turns:
+    - {say: "Add my new landlord Okafor Property, account 062000771234", confirm: true, totp: auto}
+    - {say: "Pay Okafor Property AUD 2,000 for the rental deposit", confirm: true, totp: auto}
+    - {say: "Why was that not allowed?", confirm: false}
+  user_confirms: true
+  totp: auto
+  # the same day payment to the payee she just typed is refused (R-PAYEE-COOLOFF); the explanation turn moves nothing
+  expected_state:
+    - {kind: event, type: rejected, data: {reason: policy_denied}}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+    - {kind: ledger_event, event_type: safety_lock, max_count: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 5

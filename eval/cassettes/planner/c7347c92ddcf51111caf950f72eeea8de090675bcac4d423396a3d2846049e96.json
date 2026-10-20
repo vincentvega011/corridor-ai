@@ -1,0 +1,1 @@
+{"key": "c7347c92ddcf51111caf950f72eeea8de090675bcac4d423396a3d2846049e96", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_f5e1aaac5c524077a1083e51", "name": "transfer", "arguments": {"payee_or_account": "pay_ramesh_ama", "amount": 140, "currency": "QAR"}}], "input_tokens": 3408, "output_tokens": 77, "usage_estimated": false}}

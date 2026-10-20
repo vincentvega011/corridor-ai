@@ -1,0 +1,37 @@
+version: 1
+# Nepali (Devanagari and romanised) and code-mixed phrases. See data/lang/en/injection_patterns.yaml.
+phrases:
+  ignore_previous:
+    - purano nirdeshan
+    - aghiko nirdeshan nasuna
+    - पहिलेका निर्देशन बेवास्ता
+    - अघिका निर्देशन बेवास्ता
+  pay_instruction:
+    - naya account ma pathau
+    - naya account ma pathaideu
+    - yo account ma pathau
+    - yo account ma paisa pathau
+    - tala ko account ma pathau
+    - mathi ko account ma pathau
+    - account ma jamma garnu
+    - यो खातामा पठाउ
+    - नयाँ खातामा पठाउ
+    - खातामा जम्मा गर
+  skip_confirm:
+    - confirm nagari
+    - pushti nagari
+    - kasailai nabhannu
+    - kasailai nabhanu
+    - sodhnu pardaina
+    - पुष्टि नगरी
+    - कसैलाई नभन्नु
+  bank_update:
+    - naya account
+    - purano account block
+    - naya bank details
+    - account badalieko
+    - नयाँ खाता
+    - खाता बदलिएको
+    - पुरानो खाता बन्द
+tokens:
+  addressed_to_ai: [एआई]

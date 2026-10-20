@@ -1,0 +1,1 @@
+{"key": "210f4d5cf7651de189ba6007b4db0d9ac876b5eefc71f851fd2b887452e5b1f6", "role": "planner", "response": {"text": "I'll check your saved payees to find \"Baba\".", "tool_calls": [{"id": "call_14834e90f9b7470a87f8bef6", "name": "get_payees", "arguments": {}}], "input_tokens": 1647, "output_tokens": 35, "usage_estimated": false}}

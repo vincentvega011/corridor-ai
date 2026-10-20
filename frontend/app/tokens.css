@@ -1,0 +1,146 @@
+/*
+ * Design tokens: the only place a colour, a font or a size scale is defined (docs/spec/design-system.md).
+ * Monochrome: black, greys and white. One functional colour, a muted red, for blocked, denied, critical and FAIL.
+ * Customer app: light. Bank console: dark by default, light on request.
+ * Every pair used for text meets WCAG AA (4.5:1) on the surface it sits on.
+ * The legacy names (pine, saffron, verified, typed, doc, held) are kept so components need no change; they now
+ * resolve to greys. State is told apart by icon, border style and weight, never by colour (see globals.css).
+ */
+@theme {
+  /* raw palette (light) */
+  --color-paper: #ffffff;
+  --color-surface: #fafafa;
+  --color-sand: #f4f4f5;
+  --color-line: #e4e4e7;
+  --color-line-strong: #d4d4d8;
+  --color-ink: #09090b;
+  --color-muted: #52525b; /* secondary text */
+  --color-faint: #71717a; /* placeholders and icons only: 4.8:1 on white, below AA on grey fills */
+  --color-pine: #09090b; /* primary action fill */
+  --color-pine-strong: #27272a;
+  --color-pine-soft: #f4f4f5;
+  --color-saffron: #52525b;
+  --color-saffron-ink: #09090b;
+  --color-saffron-soft: #f4f4f5;
+
+  /* trust states: provenance and outcome (greys; the red is the only hue) */
+  --color-verified: #09090b;
+  --color-verified-soft: #f4f4f5;
+  --color-typed: #09090b;
+  --color-typed-soft: #ffffff;
+  --color-doc: #3f3f46;
+  --color-doc-soft: #fafafa;
+  --color-held: #09090b;
+  --color-held-soft: #f4f4f5;
+  --color-deny: #b91c1c;
+  --color-deny-soft: #ffffff;
+  --color-on-solid: #ffffff; /* text on a solid black or red fill */
+
+  /* legacy names used across the components, mapped onto the palette */
+  --color-bg: var(--color-paper);
+  --color-brand: var(--color-pine);
+  --color-brand-soft: var(--color-pine-soft);
+  --color-warn: var(--color-doc);
+  --color-warn-bg: var(--color-doc-soft);
+  --color-bad: var(--color-deny);
+  --color-bad-bg: var(--color-deny-soft);
+  --color-ok: var(--color-verified);
+  --color-ok-bg: var(--color-verified-soft);
+
+  /* type: IBM Plex Sans for text and headings, IBM Plex Mono for amounts in tables, hashes and codes */
+  --font-sans: var(--font-plex-sans), var(--font-noto-sc), var(--font-noto-deva), system-ui, sans-serif;
+  --font-display: var(--font-plex-sans), var(--font-noto-sc), var(--font-noto-deva), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), var(--font-noto-sc), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-console: var(--font-plex-sans), var(--font-noto-sc), var(--font-noto-deva), system-ui, sans-serif;
+
+  /* radius (8px at most) and no elevation: hierarchy comes from 1px borders and spacing */
+  --radius-sm: 6px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-chip: 4px;
+  --shadow-e1: none;
+  --shadow-e2: none;
+  --shadow-e3: none;
+}
+
+:root {
+  color-scheme: light;
+  --focus: #09090b;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---- bank console: dense, dark by default, light on request (data-theme="light") ---- */
+.console-root {
+  --color-paper: #09090b;
+  --color-surface: #18181b;
+  --color-sand: #27272a; /* raised */
+  --color-line: #3f3f46;
+  --color-line-strong: #52525b;
+  --color-line-soft: #27272a;
+  --color-ink: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-faint: #a1a1aa;
+  --color-pine: #fafafa;
+  --color-pine-strong: #e4e4e7;
+  --color-pine-soft: #27272a;
+  --color-saffron: #d4d4d8;
+  --color-saffron-ink: #fafafa;
+  --color-saffron-soft: #27272a;
+  --color-verified: #fafafa;
+  --color-verified-soft: #27272a;
+  --color-typed: #fafafa;
+  --color-typed-soft: #09090b;
+  --color-doc: #d4d4d8;
+  --color-doc-soft: #18181b;
+  --color-held: #fafafa;
+  --color-held-soft: #27272a;
+  --color-deny: #f87171;
+  --color-deny-soft: #18181b;
+  --focus: #fafafa;
+  --color-on-solid: #09090b;
+  /* re-derive the legacy names here: a var() in a custom property resolves where it is declared */
+  --color-bg: var(--color-paper);
+  --color-brand: var(--color-pine);
+  --color-brand-soft: var(--color-pine-soft);
+  --color-warn: var(--color-doc);
+  --color-warn-bg: var(--color-doc-soft);
+  --color-bad: var(--color-deny);
+  --color-bad-bg: var(--color-deny-soft);
+  --color-ok: var(--color-verified);
+  --color-ok-bg: var(--color-verified-soft);
+  color-scheme: dark;
+  font-family: var(--font-console);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.console-root[data-theme="light"] {
+  --color-paper: #ffffff;
+  --color-surface: #fafafa;
+  --color-sand: #f4f4f5;
+  --color-line: #d4d4d8;
+  --color-line-strong: #a1a1aa;
+  --color-line-soft: #e4e4e7;
+  --color-ink: #09090b;
+  --color-muted: #52525b;
+  --color-faint: #71717a;
+  --color-pine: #09090b;
+  --color-pine-strong: #27272a;
+  --color-pine-soft: #f4f4f5;
+  --color-saffron: #52525b;
+  --color-saffron-ink: #09090b;
+  --color-saffron-soft: #f4f4f5;
+  --color-verified: #09090b;
+  --color-verified-soft: #f4f4f5;
+  --color-typed: #09090b;
+  --color-typed-soft: #ffffff;
+  --color-doc: #3f3f46;
+  --color-doc-soft: #fafafa;
+  --color-held: #09090b;
+  --color-held-soft: #f4f4f5;
+  --color-deny: #b91c1c;
+  --color-deny-soft: #ffffff;
+  --focus: #09090b;
+  --color-on-solid: #ffffff;
+  color-scheme: light;
+}

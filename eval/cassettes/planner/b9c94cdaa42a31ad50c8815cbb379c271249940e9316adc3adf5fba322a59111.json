@@ -1,0 +1,1 @@
+{"key": "b9c94cdaa42a31ad50c8815cbb379c271249940e9316adc3adf5fba322a59111", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_5bc48c5d97fb41a7a60c1c3c", "name": "get_payees", "arguments": {}}, {"id": "call_6e431b68f458442fa7be74ec", "name": "list_invoices", "arguments": {}}], "input_tokens": 2104, "output_tokens": 36, "usage_estimated": false}}

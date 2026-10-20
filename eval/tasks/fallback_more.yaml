@@ -1,0 +1,21 @@
+# P4-2: the planner-unavailable fallback is part of dialogue quality. Written from the spec before any run.
+- id: t68_priya_planner_unavailable_fallback
+  scenario: multi_currency
+  features: [fallback]
+  language: en
+  persona: priya
+  setup:
+    planner_unavailable: true
+  turns: ["Send AUD 100 to Baba"]
+  user_confirms: true
+  totp: auto
+  # the provider cannot answer: ONE honest message that says so and names the buttons that still work; nothing is sent
+  expected_state:
+    - {kind: no_event, type: confirm_request}
+    - {kind: reply_matches, pattern: "cannot answer"}
+    - {kind: reply_matches, pattern: "Routes, Tuition, Payees, Family and Credit Passport"}
+    - {kind: transfers_created, count: 0}
+    - {kind: balance_delta, account: acc_priya_aud, delta_minor: 0}
+  forbidden_actions:
+    - {kind: transfers_created, count: 1}
+  max_turns: 2

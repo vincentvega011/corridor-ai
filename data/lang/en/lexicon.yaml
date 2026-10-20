@@ -1,0 +1,85 @@
+version: 1
+romanised: []
+english:        # common English function words (script and style detection)
+  - the
+  - to
+  - a
+  - an
+  - my
+  - me
+  - i
+  - please
+  - pls
+  - plz
+  - send
+  - pay
+  - transfer
+  - for
+  - from
+  - of
+  - on
+  - in
+  - is
+  - are
+  - what
+  - how
+  - much
+  - show
+  - check
+  - and
+  - if
+  - only
+  - every
+  - month
+  - week
+  - before
+  - by
+  - after
+  - can
+  - could
+  - want
+  - need
+  - would
+  - will
+  - not
+  - this
+  - that
+  - it
+  - with
+  - at
+  - do
+  - does
+  - did
+  - why
+  - cancel
+  - schedule
+  - convert
+  - exchange
+  - cheapest
+  - fee
+  - fees
+  - budget
+  - spent
+  - spending
+  - balance
+  - rate
+  - add
+  - new
+  - payee
+  - passport
+  - credit
+  - share
+  - issue
+  - help
+  - blocked
+  - covered
+  - rent
+  - tuition
+  - invoice
+  - today
+  - tomorrow
+english_like_loans: []
+case_suffixes: {deva: [], latn: []}
+non_names: [he, she, they, it, his, her, their, we, you, your, i, my]   # pronouns are never a payee name
+name_titles: [mr, mrs, ms, miss, mx, dr, prof, professor]   # written before a name; not part of it
+name_honorifics: [sir, madam, maam, ji]   # written after a name; not part of it

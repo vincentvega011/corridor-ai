@@ -1,0 +1,1 @@
+{"key": "557580c2bf35b6b20f5765591956d93ec5b6939d078d65f549f1c8a7dfa7354a", "role": "parser", "response": {"text": "{\"language\": \"en\", \"intent\": \"convert_currency\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2210, "output_tokens": 34, "usage_estimated": false}}

@@ -1,0 +1,1 @@
+{"key": "47c0dd27344a0844281d578017946f806dd73ce22feb78985ba71b52f014de05", "role": "planner", "response": {"text": "Done ✅\n\n- **Sent:** QAR 120.00 to Ama (****4212)\n- **She receives:** ~NPR 5,098\n- **Reference:** btr_9ca9e2fe66e14008\n- **New QAR balance:** QAR 19,770.00", "tool_calls": [], "input_tokens": 3079, "output_tokens": 67, "usage_estimated": false}}

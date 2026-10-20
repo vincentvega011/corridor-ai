@@ -1,0 +1,8 @@
+cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy
+All checks passed!
+236 files already formatted
+Success: no issues found in 129 source files
+
+> corridor-web@0.1.0 lint <repo>/frontend
+> eslint .
+

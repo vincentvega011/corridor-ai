@@ -1,0 +1,256 @@
+{
+  "suite": "tasks",
+  "mode": "full",
+  "planner": "cloud",
+  "run_at": "2026-10-10T17:37:31+00:00",
+  "n": 10,
+  "completion_rate": 1.0,
+  "mean_turns": 1,
+  "failovers": 0,
+  "results": [
+    {
+      "id": "t09_anil_check_cny_balance",
+      "scenario": "multi_currency",
+      "language": "en",
+      "persona": "anil",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 5.4,
+      "providers": [],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "plan",
+        "step_start",
+        "step_result",
+        "message"
+      ]
+    },
+    {
+      "id": "t10_anil_send_before_dashain",
+      "scenario": "remittance",
+      "language": "ne_latn",
+      "persona": "anil",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 5.6,
+      "providers": [],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "clarify"
+      ]
+    },
+    {
+      "id": "t01_priya_check_balances",
+      "scenario": "multi_currency",
+      "language": "en",
+      "persona": "priya",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 4.3,
+      "providers": [],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "plan",
+        "step_start",
+        "step_result",
+        "message"
+      ]
+    },
+    {
+      "id": "t02_priya_pay_rent",
+      "scenario": "multi_currency",
+      "language": "en",
+      "persona": "priya",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 5.1,
+      "providers": [
+        "tokenharbor"
+      ],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "plan",
+        "step_start",
+        "step_result",
+        "policy_decision",
+        "confirm_request",
+        "executed",
+        "message"
+      ]
+    },
+    {
+      "id": "t03_priya_parents_transfer_status",
+      "scenario": "remittance",
+      "language": "en",
+      "persona": "priya",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 1.0,
+      "providers": [],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "message"
+      ]
+    },
+    {
+      "id": "t04_priya_pay_tuition_before_due",
+      "scenario": "tuition",
+      "language": "en",
+      "persona": "priya",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 4.9,
+      "providers": [
+        "tokenharbor"
+      ],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "plan",
+        "step_start",
+        "step_result",
+        "rejected",
+        "message"
+      ]
+    },
+    {
+      "id": "t05_ramesh_send_ama_romanised",
+      "scenario": "remittance",
+      "language": "ne_latn",
+      "persona": "ramesh",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 4.9,
+      "providers": [
+        "tokenharbor"
+      ],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "plan",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "route",
+        "policy_decision",
+        "confirm_request",
+        "executed",
+        "message"
+      ]
+    },
+    {
+      "id": "t06_ramesh_send_ama_devanagari",
+      "scenario": "remittance",
+      "language": "ne",
+      "persona": "ramesh",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 6.4,
+      "providers": [
+        "tokenharbor"
+      ],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "plan",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "route",
+        "policy_decision",
+        "confirm_request",
+        "executed",
+        "message"
+      ]
+    },
+    {
+      "id": "t07_ramesh_conditional_send",
+      "scenario": "remittance",
+      "language": "ne_latn",
+      "persona": "ramesh",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 6.5,
+      "providers": [
+        "tokenharbor"
+      ],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "plan",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "route",
+        "policy_decision",
+        "confirm_request",
+        "executed",
+        "message"
+      ]
+    },
+    {
+      "id": "t08_ramesh_unknown_name",
+      "scenario": "remittance",
+      "language": "ne_latn",
+      "persona": "ramesh",
+      "passed": true,
+      "failures": [],
+      "turns": 1,
+      "latency_s": 1.1,
+      "providers": [],
+      "failover": false,
+      "event_types": [
+        "intent",
+        "step_start",
+        "step_result",
+        "step_start",
+        "step_result",
+        "clarify"
+      ]
+    }
+  ],
+  "stamp": "P1 preview: happy-path tasks only, stub policy and executor; not a headline result"
+}

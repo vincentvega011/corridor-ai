@@ -1,0 +1,1 @@
+{"key": "111673088c9edf3c38c46f2402ed33411ed40f144a84e72b04a7106309707708", "role": "parser", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"compare_routes\", \"slots\": {\"currency\": \"CNY\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2198, "output_tokens": 40, "usage_estimated": false}}

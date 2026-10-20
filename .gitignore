@@ -1,0 +1,101 @@
+# secrets and env
+.env
+.env.*
+!.env.example
+secrets/*
+!secrets/.gitkeep
+
+# model weights and adapters
+models/finetune/adapters/
+*.safetensors
+*.gguf
+
+# node
+node_modules/
+.next/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# eval reports (keep the folder)
+eval/reports/*/
+!eval/reports/.gitkeep
+# the published report and its merge sources are tracked (cited by docs/submission)
+!eval/reports/20261011T175100/
+!eval/reports/20261011T175048/
+!eval/reports/patch_p28_baseline/
+
+# os
+**/.DS_Store
+.coverage
+htmlcov/
+logs/
+
+# fine-tuning data (a 50 line sample is committed as models/finetune/sample_50.jsonl)
+models/finetune/data/
+data/uploads/
+graphify-out/
+models/finetune/runs/*/*.safetensors
+eval/reports/checkpoint.json
+
+# raw partial results of a running or interrupted eval: never a report, never published
+eval/reports/partial.json
+
+# local agent tooling, not part of the submission
+AGENTS.md
+.codex/
+.agents/
+/tst1.pdf
+/docs/submission/main_doc/security_self_assessment.*
+/docs/submission/main_doc/execution_evidence.*
+
+# private / local-only material (kept on disk, not published)
+.claude/
+CLAUDE.md
+.graphifyignore
+docs/HANDOFF.md
+docs/progress.md
+docs/tasks/
+docs/templates/
+docs/spec/claude-code-tooling.md
+docs/spec/phase-plan.md
+_video/
+docs/submission/_to_delete/
+docs/submission/deck_spec.md
+docs/submission/paper/
+docs/submission/Corridor_AI_Technical_Documentation.pdf
+docs/submission/main_doc/main.pdf
+tst1.pdf
+.DS_Store
+*.mov
+*.mp4
+*.m4a
+*.wav
+*.pptx
+*.key
+
+# papers (private)
+docs/submission/paper_short/
+docs/submission/Corridor_AI_Technical_Documentation_v2.pdf
+docs/submission/Corridor_AI_Technical_Documentation.pdf
+scripts/paper_data.py
+scripts/paper_lemma_check.py
+
+# demo, deck and registration material (private)
+docs/submission/demo-video-script.md
+docs/submission/presentation-outline.md
+docs/submission/registration-summary.md
+docs/submission/README.md
+docs/spec/demo-script.md
+docs/demo-walkthrough-p34.md
+
+docs/p4-quota-budget.md
+docs/diagnosis-p42.md
+
+docs/evidence/redesign/

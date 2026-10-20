@@ -1,0 +1,76 @@
+# Gregorian dates of Nepali festivals. Every date has a source and a `verified` flag. Do not add a date
+# without a source. A festival with no verified date for a year returns "date unknown" and the agent
+# asks the user; the code never guesses. Dates follow the lunar calendar and Nepal's official list
+# (Nepal Gazette, panchang committee), so sources can differ by a day: differences are noted.
+# Sources are recorded in docs/assumptions.md as well. Retrieved 2026-10-10.
+# `verified: true` means a dated source exists; `grade` says how strong it is:
+#   official_calendar_site = Nepali calendar site that publishes the government holiday list (Hamro Patro)
+#   computed_panchang      = astronomical calculation on a third party site, to be re-checked against the Nepal Gazette
+# `conflict` lists dates other sources gave; the NLU carries it into the deadline slot so the agent can ask.
+version: 1
+sources:
+  hamropatro_2083: https://www.hamropatro.com/nepali-public-holidays/2083
+  hamropatro_2084: https://www.hamropatro.com/nepali-public-holidays/2084
+  drik_dashain: https://www.drikpanchang.com/nepali/dashain/dashain-calendar.html?year=2027
+  drik_tihar: https://www.drikpanchang.com/nepali/tihar/tihar-calendar.html?year=2027
+  vedicmarga_2084: https://vedicmarga.com/hindu-calendar/2027/04/14/
+  calendarific_2026: https://calendarific.com/holidays/2026/np
+festivals:
+  dashain:
+    names:
+      deva: [दशैं, दशैँ, दसैं, दसैँ, दशै, दसै, विजया दशमी, बिजया दशमी]
+      latn: [dashain, dasain, dashai, dasai, dashera, dussehra, vijaya dashami, bijaya dashami]
+    # "before Dashain", "Dashain aghi", "dashain bhanda agadi" all mean: arrive on or before the main day
+    # (Vijaya Dashami, the Tika day). "before Dashain starts" is the separate festival dashain_start below
+    # (Ghatasthapana). The same main-day rule applies to every festival: Laxmi Puja for Tihar, and so on.
+    years:
+      2026:
+        main_day: {date: 2026-10-21, conflict: [2026-10-20], label: Vijaya Dashami, verified: true, grade: official_calendar_site, source: hamropatro_2083, note: "Calendarific lists 2026-10-20; the Nepali calendar page (Hamro Patro) lists 2026-10-21. Hamro Patro is used."}
+      2027:
+        main_day: {date: 2027-10-10, label: Vijaya Dashami, verified: true, grade: computed_panchang, source: drik_dashain, note: "computed panchang (Drik Panchang), not yet the Nepal Gazette list"}
+  dashain_start:
+    names:
+      deva: [घटस्थापना, दशैं सुरु हुन, दशैँ सुरु हुन, दशै सुरु हुन, दशैं सुरु, दशैँ सुरु]
+      latn: [ghatasthapana, dashain suru huna, dashain suru hunu, dashain suru, dashain starts, dashain begins, dasain starts, dasain suru huna]
+    years:
+      2026:
+        main_day: {date: 2026-10-11, label: Ghatasthapana, verified: true, grade: official_calendar_site, source: hamropatro_2083}
+      2027:
+        main_day: {date: 2027-09-30, label: Ghatasthapana, verified: true, grade: computed_panchang, source: drik_dashain, note: "computed panchang (Drik Panchang), not yet the Nepal Gazette list"}
+  tihar:
+    names:
+      deva: [तिहार, दीपावली, दिपावली, लक्ष्मी पूजा, दिवाली]
+      latn: [tihar, deepawali, diwali, laxmi puja, lakshmi puja, deepavali]
+    years:
+      2026:
+        main_day: {date: 2026-11-08, label: Laxmi Puja, verified: true, grade: official_calendar_site, source: hamropatro_2083}
+      2027:
+        main_day: {date: 2027-10-29, label: Laxmi Puja, verified: true, grade: computed_panchang, source: drik_tihar, note: "computed panchang (Drik Panchang)"}
+  bhai_tika:
+    names:
+      deva: [भाइटीका, भाईटीका, भाइ टीका]
+      latn: [bhai tika, bhaitika, bhai tika]
+    years:
+      2026: {main_day: {date: 2026-11-11, label: Bhai Tika, verified: true, grade: official_calendar_site, source: hamropatro_2083}}
+      2027: {main_day: {date: 2027-10-31, label: Bhai Tika, verified: true, grade: computed_panchang, source: drik_tihar, note: "computed panchang (Drik Panchang)"}}
+  chhath:
+    names:
+      deva: [छठ, छठ पर्व]
+      latn: [chhath, chath, chhat]
+    years:
+      2026: {main_day: {date: 2026-11-15, label: Chhath, verified: true, grade: official_calendar_site, source: hamropatro_2083, note: "Calendarific also lists 2026-11-15"}}
+      2027: {main_day: {date: null, label: Chhath, verified: false, source: null, note: "no authoritative 2027 source found"}}
+  lhosar:
+    names:
+      deva: [ल्होसार, ल्होछार]
+      latn: [lhosar, losar]
+    years:    # Lhosar has several observances (Sonam, Gyalpo, Tamu); we keep the next listed one
+      2026: {main_day: {date: 2026-12-30, label: Tamu Lhosar, verified: true, grade: official_calendar_site, source: hamropatro_2083}}
+      2027: {main_day: {date: 2027-02-07, label: Sonam Lhosar, verified: true, grade: official_calendar_site, source: hamropatro_2083, note: "Gyalpo Lhosar is listed as 2027-03-09 on the same page; Tamu Lhosar 2027-12-30 is only on third party sites and is unverified"}}
+  nepali_new_year:
+    names:
+      deva: [नयाँ वर्ष, नयाँ बर्ष, नेपाली नयाँ वर्ष, बैशाख १]
+      latn: [naya barsa, nepali new year, naya varsa, baisakh 1, baishakh 1, nepali naya barsa]
+    years:
+      2026: {main_day: {date: 2026-04-14, label: Baisakh 1 2083, verified: true, grade: official_calendar_site, source: hamropatro_2083}}
+      2027: {main_day: {date: 2027-04-14, label: Baisakh 1 2084, verified: true, grade: computed_panchang, source: vedicmarga_2084, note: "Hamro Patro 2084 page also gives 2027-04-14 in a search snippet; the 2084 holiday list is not yet published"}}

@@ -1,0 +1,115 @@
+# Model gateway configuration (docs/spec/modules.md 5.2). Switching a role's provider or model is a change here only.
+#
+# Providers are first class: each has a base URL env var, an API key env var and request limits.
+# Each role picks a provider and a model (model id read from an env var, never hardcoded).
+# Env var names refer to fields of corridor.config.Settings (loaded from the environment or .env).
+# temperature_milli is thousandths (0 means temperature 0.0); no floats in config (ADR 0003).
+# Prices are integer micro-USD per 1M tokens. Models whose id ends with ":free" always cost 0.
+#
+# PRICE ASSUMPTION (alibaba, disabled): Singapore list prices from
+#   https://www.alibabacloud.com/help/en/model-studio/model-pricing (page dated 2026-10-09, read 2026-10-10).
+# LIMIT ASSUMPTION (tokenharbor): free account limits are 60 requests/min and 1,800/hour per account,
+#   shared by all keys and models (https://tokenharbor.ai/docs/api/rate-limits, read 2026-10-10).
+#   We stay below them: 50/min and 1,500/hour. See docs/assumptions.md.
+version: 2
+defaults:
+  retries: 2          # extra attempts after the first, connection errors and 5xx only
+  backoff_ms: 500     # doubled after each retry
+  retry_after_max_s: 10   # honour a 429 Retry-After once if it is at most this long
+providers:
+  tokenharbor:
+    enabled: true
+    kind: cloud
+    base_url_env: TOKENHARBOR_BASE_URL
+    api_key_env: TOKENHARBOR_API_KEY
+    free_tier: true       # prompts on free routes may be retained: synthetic data only
+    limits: {requests_per_minute: 50, requests_per_hour: 1500}
+  alibaba:
+    enabled: false        # paid only for the models we need; kept for later
+    kind: cloud
+    base_url_env: PLANNER_BASE_URL
+    api_key_env: PLANNER_API_KEY
+    free_tier: false
+    limits: {requests_per_minute: 0, requests_per_hour: 0}   # 0 means no client-side limit
+  local_mlx:
+    enabled: true
+    kind: local
+    base_url_env: LOCAL_PLANNER_BASE_URL
+    api_key_env: null
+    default_model_env: LOCAL_PLANNER_MODEL
+    free_tier: false
+    limits: {requests_per_minute: 0, requests_per_hour: 0}
+  local_ollama:
+    enabled: true
+    kind: local
+    base_url_env: READER_BASE_URL
+    api_key_env: null
+    default_model_env: READER_MODEL
+    free_tier: false
+    limits: {requests_per_minute: 0, requests_per_hour: 0}
+roles:
+  planner:
+    fallback_roles: [local_planner]   # tokenharbor first, then local Qwen3 4B (started on demand)
+    provider: tokenharbor
+    model_env: PLANNER_MODEL
+    timeout_s: 30
+    max_tokens: 2048
+    temperature_milli: 0
+    structured_mode: json_object
+    supports_tools: true
+    extra_body: {thinking: {type: disabled}}   # DeepSeek: the plan is a short JSON; hidden reasoning caused 18 s+ calls and timeouts (2026-10-10)
+    price: {input_micro_usd_per_m: 0, output_micro_usd_per_m: 0, model: free}
+  composer:
+    provider: tokenharbor
+    model_env: COMPOSER_MODEL
+    timeout_s: 30
+    max_tokens: 1024
+    temperature_milli: 0
+    structured_mode: json_object
+    supports_tools: false
+    extra_body: {thinking: {type: disabled}}   # DeepSeek: no hidden reasoning, 10x fewer tokens, measured 2026-10-10
+    price: {input_micro_usd_per_m: 0, output_micro_usd_per_m: 0, model: free}
+  parser_fallback:
+    provider: tokenharbor
+    model_env: PARSER_FALLBACK_MODEL
+    timeout_s: 30
+    max_tokens: 512
+    temperature_milli: 0
+    structured_mode: json_object
+    supports_tools: false
+    extra_body: {thinking: {type: disabled}}   # DeepSeek: no hidden reasoning, 10x fewer tokens, measured 2026-10-10
+    price: {input_micro_usd_per_m: 0, output_micro_usd_per_m: 0, model: free}
+  parser:
+    provider: local_mlx
+    local_only: true
+    base_url_env: PARSER_BASE_URL
+    model_env: PARSER_MODEL
+    timeout_s: 20
+    max_tokens: 512
+    temperature_milli: 0
+    structured_mode: prompt        # mlx_lm.server: schema in the prompt, output validated by us
+    supports_tools: false
+    extra_body: {chat_template_kwargs: {enable_thinking: false}}  # Qwen3 hybrid: no <think>
+    price: {input_micro_usd_per_m: 0, output_micro_usd_per_m: 0, model: local}
+  reader:
+    provider: local_ollama
+    local_only: true
+    model_env: READER_MODEL
+    timeout_s: 120           # a 4B vision model on a fanless laptop: image encoding plus first load is slow
+    max_tokens: 768
+    temperature_milli: 0
+    structured_mode: prompt
+    supports_tools: false          # the reader has no tools by design (INV-3)
+    extra_body: {}
+    price: {input_micro_usd_per_m: 0, output_micro_usd_per_m: 0, model: local}
+  local_planner:
+    autostart: {port: 8082, model_repo: "mlx-community/Qwen3-4B-4bit", ready_timeout_s: 90}
+    provider: local_mlx
+    model_env: LOCAL_PLANNER_MODEL
+    timeout_s: 60            # a 4B model on a fanless laptop needs more than the 20 s used for the small parser
+    max_tokens: 1024
+    temperature_milli: 0
+    structured_mode: prompt
+    supports_tools: true     # verified live with Qwen3 4B on mlx_lm.server (3 of 3 tool calls)
+    extra_body: {chat_template_kwargs: {enable_thinking: false}}
+    price: {input_micro_usd_per_m: 0, output_micro_usd_per_m: 0, model: local}

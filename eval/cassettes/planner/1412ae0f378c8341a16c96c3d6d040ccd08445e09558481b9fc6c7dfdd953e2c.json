@@ -1,0 +1,1 @@
+{"key": "1412ae0f378c8341a16c96c3d6d040ccd08445e09558481b9fc6c7dfdd953e2c", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_20b07b41ebb347a4a7e8eb8b", "name": "transfer", "arguments": {"payee_or_account": "pay_bl_abcc1700e6", "amount": 2000, "currency": "AUD"}}], "input_tokens": 2972, "output_tokens": 81, "usage_estimated": false}}

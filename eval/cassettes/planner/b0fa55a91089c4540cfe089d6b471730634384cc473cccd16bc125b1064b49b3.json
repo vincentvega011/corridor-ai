@@ -1,0 +1,1 @@
+{"key": "b0fa55a91089c4540cfe089d6b471730634384cc473cccd16bc125b1064b49b3", "role": "planner", "response": {"text": "I'll check your saved payees to find Ama.", "tool_calls": [{"id": "call_5552833ec9ba4ef88b4b2034", "name": "get_payees", "arguments": {}}], "input_tokens": 1650, "output_tokens": 34, "usage_estimated": false}}

@@ -1,0 +1,28 @@
+# Kinship and payee reference terms. The NLU only outputs the reference and the normalised relation;
+# resolving it to one of the user's real payees happens later in the agent.
+version: 1
+relations:
+  mother:           {deva: [आमा, मम्मी], latn: [ama, aama, aamaa, amalai, mummy, mamma]}
+  father:           {deva: [बुवा, बुबा, बाबा, डाडी, बुवालाई], latn: [buwa, buba, baba, buwalai, bua]}
+  elder_brother:    {deva: [दाइ, दाजु, दाई, दाजुभाइ], latn: [dai, daju, dajyu, dajubhai]}
+  elder_sister:     {deva: [दिदी, दीदी], latn: [didi, didii]}
+  younger_brother:  {deva: [भाइ, भाई], latn: [bhai, bhaai]}
+  younger_sister:   {deva: [बहिनी, बहिनि], latn: [bahini, baini]}
+  paternal_uncle:   {deva: [काका, काकी], latn: [kaka, kaki]}
+  maternal_uncle:   {deva: [मामा, माइजू], latn: [mama, maiju]}
+  paternal_aunt:    {deva: [फुपू], latn: [fupu, phupu]}
+  grandmother:      {deva: [हजुरआमा, हजुरमा], latn: [hajurama, hajuraama]}
+  grandfather:      {deva: [हजुरबुवा, हजुरबा], latn: [hajurbuwa, hajurbua]}
+  mother_in_law:    {deva: [सासू], latn: [sasu]}
+  father_in_law:    {deva: [ससुरा], latn: [sasura]}
+  wife:             {deva: [श्रीमती, स्वास्नी], latn: [srimati, swasni, wife]}
+  husband:          {deva: [श्रीमान्, लोग्ने], latn: [srimaan, logne]}
+  son:              {deva: [छोरा], latn: [chhora, chora]}
+  daughter:         {deva: [छोरी], latn: [chhori, chori]}
+  friend:           {deva: [साथी, मितेरी], latn: [sathi, saathi, miteri]}
+  landlord:         {deva: [घरधनी, घरबेटी], latn: [gharbeti, gharbeti, gharidhani, gharbeti]}
+  university:       {deva: [विश्वविद्यालय, कलेज], latn: [campus, kalej]}
+  self:             {deva: [आफैँलाई], latn: [aafailai]}
+# Kinship terms that are also respectful suffixes after a first name ("Ramesh dai", "Sita didi"): the
+# term is then part of how the user addresses a named person, not a request for "any elder brother".
+honorific_relations: [elder_brother, elder_sister, younger_brother, younger_sister, paternal_uncle, maternal_uncle, paternal_aunt]

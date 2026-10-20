@@ -1,0 +1,120 @@
+# Nepali number words. 0-100 compiled from the Wikipedia article "Numbers in Nepali language"
+# (https://en.wikipedia.org/wiki/Numbers_in_Nepali_language) and common usage. The irregular forms
+# between 11 and 99 are NOT individually verified against a dictionary; several romanised spellings
+# are listed per value on purpose, and romanisation_folding.yaml collapses vowel length and doubled
+# consonants so more spellings match. Review before relying on rare forms.
+version: 1
+digits:
+  deva: "०१२३४५६७८९"
+words:      # value: {deva: [...], latn: [...]}
+  0:  {deva: [शून्य, सुन्ना], latn: [sunya, sunna, shunya]}
+  1:  {deva: [एक], latn: [ek]}
+  2:  {deva: [दुई, दुइ], latn: [dui, du]}
+  3:  {deva: [तीन], latn: [tin, teen]}
+  4:  {deva: [चार], latn: [char, chaar]}
+  5:  {deva: [पाँच, पाच], latn: [panch, paanch, pach]}
+  6:  {deva: [छ], latn: [chha, chhaa]}
+  7:  {deva: [सात], latn: [saat, sat]}
+  8:  {deva: [आठ], latn: [aath, ath, aaTh]}
+  9:  {deva: [नौ], latn: [nau, no]}
+  10: {deva: [दश, दस], latn: [das, dash]}
+  11: {deva: [एघार], latn: [eghar, eghara, egaara]}
+  12: {deva: [बाह्र], latn: [bahra, baahra, barha]}
+  13: {deva: [तेह्र], latn: [tehra, tera, terha]}
+  14: {deva: [चौध], latn: [chaudha, chaudah]}
+  15: {deva: [पन्ध्र], latn: [pandhra, pandra, panddra]}
+  16: {deva: [सोह्र], latn: [sohra, sorha, sora]}
+  17: {deva: [सत्र], latn: [satra, satrah]}
+  18: {deva: [अठार], latn: [athara, athaara, athar]}
+  19: {deva: [उन्नाइस], latn: [unnais, unnaais]}
+  20: {deva: [बीस, बिस], latn: [bis, bees, bees]}
+  21: {deva: [एक्काइस], latn: [ekkais, ekaais]}
+  22: {deva: [बाइस], latn: [baais, bais]}
+  23: {deva: [तेइस], latn: [teis, taeis]}
+  24: {deva: [चौबीस, चौबिस], latn: [chaubis, chaubees]}
+  25: {deva: [पच्चीस, पच्चिस], latn: [pachchis, pacchis, pachis, pachchees, pachhis]}
+  26: {deva: [छब्बीस, छब्बिस], latn: [chhabbis, chabbis, chhabis]}
+  27: {deva: [सत्ताइस], latn: [sattais, satais]}
+  28: {deva: [अट्ठाइस, अठ्ठाइस], latn: [atthais, athais, aththais]}
+  29: {deva: [उनन्तीस, उनन्तिस], latn: [unantis, unantees]}
+  30: {deva: [तीस, तिस], latn: [tis, tees]}
+  31: {deva: [एकतीस], latn: [ektis, ekatis]}
+  32: {deva: [बत्तीस], latn: [battis, batis]}
+  33: {deva: [तेत्तीस], latn: [tettis, tetis]}
+  34: {deva: [चौँतीस, चौतीस], latn: [chautis, chauntis]}
+  35: {deva: [पैँतीस, पैंतीस, पैतिस], latn: [paintis, paitis, paintees]}
+  36: {deva: [छत्तीस, छत्तिस], latn: [chhattis, chattis]}
+  37: {deva: [सैँतीस, सैंतीस], latn: [saintis, saitis]}
+  38: {deva: [अठतीस, अड्तिस], latn: [athtis, adtis]}
+  39: {deva: [उनन्चालीस, उनन्चालिस], latn: [unanchalis, unanchaalis]}
+  40: {deva: [चालीस, चालिस], latn: [chalis, chaalis, chaaleeS]}
+  41: {deva: [एकचालीस, एकचालिस], latn: [ekchalis, ekachalis]}
+  42: {deva: [बयालीस, बयालिस], latn: [bayalis, bayaalis]}
+  43: {deva: [त्रिचालीस, त्रिचालिस], latn: [trichalis]}
+  44: {deva: [चौवालीस, चौवालिस], latn: [chauwalis, chaubalis]}
+  45: {deva: [पैँतालीस, पैंतालीस, पैतालिस], latn: [paintalis, paitalis]}
+  46: {deva: [छयालीस, छयालिस], latn: [chhayalis, chayalis]}
+  47: {deva: [सट्चालीस, सतचालीस], latn: [satchalis, sadchalis]}
+  48: {deva: [अट्चालीस, अठचालीस], latn: [atchalis, athchalis]}
+  49: {deva: [उनान्पचास, उनन्चास], latn: [unanpachas, unanchas]}
+  50: {deva: [पचास], latn: [pachas, pachaas, pacas]}
+  51: {deva: [एकाउन्न], latn: [ekaunna, ekaaunna]}
+  52: {deva: [बाउन्न], latn: [baunna, baaunna]}
+  53: {deva: [त्रिपन्न], latn: [tripanna, tripan]}
+  54: {deva: [चौवन्न], latn: [chauwanna, chauvanna]}
+  55: {deva: [पचपन्न, पच्पन्न], latn: [pachpanna, pachapanna]}
+  56: {deva: [छपन्न], latn: [chhapanna, chapanna]}
+  57: {deva: [सन्ताउन्न], latn: [santaunna]}
+  58: {deva: [अन्ठाउन्न], latn: [anthaunna, anthaaunna]}
+  59: {deva: [उनान्साठी], latn: [unansathi, unansaathi]}
+  60: {deva: [साठी, साठि], latn: [sathi, saathi, sath]}
+  61: {deva: [एकसट्ठी, एकसठ्ठी], latn: [ekasatthi, eksatthi]}
+  62: {deva: [बैसट्ठी, बैसठ्ठी], latn: [baisatthi]}
+  63: {deva: [त्रिसट्ठी, त्रिसठ्ठी], latn: [trisatthi]}
+  64: {deva: [चौसट्ठी, चौंसठ्ठी], latn: [chausatthi, chaunsatthi]}
+  65: {deva: [पैसट्ठी, पैंसठ], latn: [paisatthi, painsath]}
+  66: {deva: [छैसट्ठी, छैसठ], latn: [chhaisatthi, chhaisath]}
+  67: {deva: [सतसट्ठी, सडसठ], latn: [satsatthi, sadsath]}
+  68: {deva: [अठसट्ठी, अडसठ], latn: [athsatthi, adsath]}
+  69: {deva: [उनान्सत्तरी, उनन्सत्तर], latn: [unansattari, unansattar]}
+  70: {deva: [सत्तरी, सत्तरि], latn: [sattari, sattri]}
+  71: {deva: [एकहत्तर], latn: [ekahattar, ekhattar]}
+  72: {deva: [बहत्तर], latn: [bahattar]}
+  73: {deva: [त्रिहत्तर], latn: [trihattar]}
+  74: {deva: [चौहत्तर], latn: [chauhattar]}
+  75: {deva: [पचहत्तर], latn: [pachahattar, pachhattar]}
+  76: {deva: [छयहत्तर], latn: [chhayahattar]}
+  77: {deva: [सतहत्तर], latn: [satahattar, sathattar]}
+  78: {deva: [अठहत्तर], latn: [athahattar, athhattar]}
+  79: {deva: [उनासी, उनास्सी], latn: [unasi, unaasi]}
+  80: {deva: [असी], latn: [asi, aasi]}
+  81: {deva: [एकासी], latn: [ekasi, ekaasi]}
+  82: {deva: [बयासी], latn: [bayasi, bayaasi]}
+  83: {deva: [त्रिरासी, तेर्सी], latn: [trirasi, tersi]}
+  84: {deva: [चौरासी], latn: [chaurasi, chauraasi]}
+  85: {deva: [पचासी], latn: [pachasi, pachaasi]}
+  86: {deva: [छयासी], latn: [chhayasi, chayasi]}
+  87: {deva: [सतासी, सत्यासी], latn: [satasi, satyasi]}
+  88: {deva: [अठासी], latn: [athasi, athaasi]}
+  89: {deva: [उनान्नब्बे, उनान्नब्बे], latn: [unannabbe, unanabbe]}
+  90: {deva: [नब्बे], latn: [nabbe, nabbay]}
+  91: {deva: [एकान्नब्बे, एकानब्बे], latn: [ekannabbe, ekanabbe]}
+  92: {deva: [बयान्नब्बे, बयानब्बे], latn: [bayannabbe, bayanabbe]}
+  93: {deva: [त्रियान्नब्बे, त्रियानब्बे], latn: [triyannabbe, triyanabbe]}
+  94: {deva: [चौरान्नब्बे, चौरानब्बे], latn: [chaurannabbe, chauranabbe]}
+  95: {deva: [पन्चान्नब्बे, पन्चानब्बे], latn: [panchannabbe, panchanabbe]}
+  96: {deva: [छयान्नब्बे], latn: [chhayannabbe, chhyanabbe]}
+  97: {deva: [सन्तान्नब्बे], latn: [santannabbe, santanabbe]}
+  98: {deva: [अन्ठान्नब्बे], latn: [anthannabbe, anthanabbe]}
+  99: {deva: [उनान्सय], latn: [unansaya, unansai]}
+multipliers:
+  100:       {deva: [सय], latn: [saya, sau, sai]}
+  1000:      {deva: [हजार, हज़ार], latn: [hajar, hazar, hajaar, hazaar]}
+  100000:    {deva: [लाख], latn: [lakh, lac, laakh]}
+  10000000:  {deva: [करोड, करोड़], latn: [crore, karod, karor]}
+  1000000000: {deva: [अर्ब], latn: [arab]}
+# Words that are also very common non-number words. They only count as numbers next to a
+# multiplier or a currency word, never alone ("chha" means "is").
+ambiguous_alone: [chha, ek, das, छ, एक, दश, दस, nau, no, sat, char, tin, panch, ath]
+suffixes: {k: 1000}      # 20k = 20,000
+connectors: [ra, ani, र, and, "&"]

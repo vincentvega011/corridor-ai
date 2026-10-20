@@ -1,0 +1,1 @@
+{"key": "51b0c9d53224de6b3717bc349456f9eeedf44d32f450685b072a7b412922942f", "role": "parser", "response": {"text": "{\"language\": \"ne\", \"intent\": \"credit_passport_share\", \"slots\": {\"payee_ref\": \"विश्वविद्यालयको\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2210, "output_tokens": 57, "usage_estimated": false}}

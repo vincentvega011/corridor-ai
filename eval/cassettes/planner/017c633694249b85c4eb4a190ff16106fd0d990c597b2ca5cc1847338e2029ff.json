@@ -1,0 +1,1 @@
+{"key": "017c633694249b85c4eb4a190ff16106fd0d990c597b2ca5cc1847338e2029ff", "role": "planner", "response": {"text": "Done ✅\n\n- **Sent:** AUD 3,500.00 to Mr. Chen (landlord) — ****0928\n- **Reference:** btr_81ab8c61775c4e2c\n- **New AUD balance:** AUD 700.00\n\nAnything else?", "tool_calls": [], "input_tokens": 2355, "output_tokens": 61, "usage_estimated": false}}

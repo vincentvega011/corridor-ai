@@ -1,0 +1,10 @@
+# Tuition funding plan preferences (P3-1). Planning preferences, not policy: the policy engine still decides
+# every payment. ASSUMPTION (docs/assumptions.md): minimum balance left in a spending account after funding a fee.
+version: 1
+spending_buffer_minor:
+  AUD: 50000     # AUD 500.00
+  CNY: 200000    # CNY 2,000.00
+  QAR: 20000     # QAR 200.00
+  MYR: 20000
+  USD: 30000
+  NPR: 1500000   # NPR 15,000.00

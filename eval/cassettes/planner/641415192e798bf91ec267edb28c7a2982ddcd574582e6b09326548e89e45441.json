@@ -1,0 +1,1 @@
+{"key": "641415192e798bf91ec267edb28c7a2982ddcd574582e6b09326548e89e45441", "role": "planner", "response": {"text": "फेरि प्रयास गर्छु।", "tool_calls": [{"id": "call_000921e026d84bd7be11478c", "name": "transfer", "arguments": {"payee_or_account": "pay_priya_parents", "amount": 3000, "currency": "AUD"}}], "input_tokens": 3769, "output_tokens": 89, "usage_estimated": false}}

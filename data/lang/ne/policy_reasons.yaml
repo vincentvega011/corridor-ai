@@ -1,0 +1,216 @@
+version: 1
+# Human text for policy reason keys (RULE_ID.reason). No LLM involved. Styles: en, ne (Devanagari), ne_latn.
+reasons:
+  "R-LOCK.locked":
+    en: "Outgoing actions are locked for your safety. Verify with your authenticator code to unlock."
+    ne: "तपाईंको सुरक्षाका लागि बाहिर जाने कारोबार रोकिएको छ। खोल्न आफ्नो अथेन्टिकेटर कोड प्रमाणित गर्नुहोस्।"
+    ne_latn: "Tapaiko surakshako lagi bahira jane karobar rokieko chha. Kholna aafno authenticator code pramanit garnuhos."
+  "R-SETTINGS.settings_change":
+    en: "Limits, MFA and contact details can only be changed on the settings screen, not through the assistant."
+    ne: "सीमा, MFA र सम्पर्क विवरण सेटिङ स्क्रिनमा मात्र बदल्न सकिन्छ, सहायकमार्फत होइन।"
+    ne_latn: "Seema, MFA ra sampark vivaran setting screen ma matra badalna sakinchha, sahayak marfat hoina."
+  "R-OWNERSHIP.account_not_usable":
+    en: "The source account is not available."
+    ne: "स्रोत खाता उपलब्ध छैन।"
+    ne_latn: "Srot khata uplabdha chhaina."
+  "R-OWNERSHIP.payee_not_found":
+    en: "That payee is not in your saved payees."
+    ne: "त्यो प्राप्तकर्ता तपाईंका सुरक्षित प्राप्तकर्तामा छैन।"
+    ne_latn: "Tyo praptakarta tapaika surakshit praptakartama chhaina."
+  "R-OWNERSHIP.invoice_not_found":
+    en: "That invoice is not one of your open invoices."
+    ne: "त्यो इनभ्वाइस तपाईंका खुला इनभ्वाइसमध्ये होइन।"
+    ne_latn: "Tyo invoice tapaika khula invoice madhye hoina."
+  "R-INVOICE-BENEFICIARY.beneficiary_differs":
+    en: "An invoice can only be paid to its stored beneficiary. This payee is different."
+    ne: "इनभ्वाइस भण्डारण गरिएको प्राप्तकर्तालाई मात्र तिर्न सकिन्छ। यो प्राप्तकर्ता फरक छ।"
+    ne_latn: "Invoice bhandaran gariyeko praptakartalai matra tirna sakinchha. Yo praptakarta pharak chha."
+  "R-INVOICE-BENEFICIARY.invoice_amount_differs":
+    en: "That is more than is still owed on the stored invoice."
+    ne: "यो भण्डारण गरिएको इनभ्वाइसमा बाँकी रकमभन्दा बढी हो।"
+    ne_latn: "Yo bhandaran gariyeko invoicema baki rakambhanda badhi ho."
+  "R-TAINT-PAYEE.tainted_beneficiary_differs":
+    en: "This payee came from an untrusted source and differs from the invoice beneficiary. Blocked."
+    ne: "यो प्राप्तकर्ता अविश्वसनीय स्रोतबाट आएको हो र इनभ्वाइसको प्राप्तकर्तासँग फरक छ। रोकियो।"
+    ne_latn: "Yo praptakarta abishwasaniya srotbata aayeko ho ra invoice ko praptakartasanga pharak chha. Rokiyo."
+  "R-TAINT-PAYEE.tainted_payee":
+    en: "This payee or account came from an untrusted source, so your authenticator code is required."
+    ne: "यो प्राप्तकर्ता वा खाता अविश्वसनीय स्रोतबाट आएको हो, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Yo praptakarta wa khata abishwasaniya srotbata aayeko ho, tesaile authenticator code chahinchha."
+  "R-TAINT-PAYEE.tainted_source_account":
+    en: "The source account was not chosen by you, so your authenticator code is required."
+    ne: "स्रोत खाता तपाईंले छान्नुभएको होइन, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Srot khata tapaile chhannubhayeko hoina, tesaile authenticator code chahinchha."
+  "R-CURRENCY.account_currency_mismatch":
+    en: "The amount currency does not match the account currency."
+    ne: "रकमको मुद्रा खाताको मुद्रासँग मेल खाँदैन।"
+    ne_latn: "Rakamko mudra khatako mudrasanga mel khandaina."
+  "R-CURRENCY.corridor_unsupported":
+    en: "This currency pair is not supported on any route."
+    ne: "यो मुद्रा जोडी कुनै मार्गमा समर्थित छैन।"
+    ne_latn: "Yo mudra jodi kunai margama samarthit chhaina."
+  "R-CURRENCY.route_currency_mismatch":
+    en: "The route does not deliver in the payee's currency."
+    ne: "मार्गले प्राप्तकर्ताको मुद्रामा पठाउँदैन।"
+    ne_latn: "Margale praptakartako mudrama pathaudaina."
+  "R-CURRENCY.route_missing":
+    en: "A cross-currency payment needs a route."
+    ne: "मुद्रा फरक भएको भुक्तानीलाई मार्ग चाहिन्छ।"
+    ne_latn: "Mudra pharak bhayeko bhuktanilai marg chahinchha."
+  "R-CURRENCY.pair_unsupported":
+    en: "This conversion is not supported."
+    ne: "यो रूपान्तरण समर्थित छैन।"
+    ne_latn: "Yo rupantaran samarthit chhaina."
+  "R-CURRENCY.no_fx_rate":
+    en: "No exchange rate is available to check the limits, so this is blocked."
+    ne: "सीमा जाँच्न विनिमय दर उपलब्ध छैन, त्यसैले रोकियो।"
+    ne_latn: "Seema janchna vinimay dar uplabdha chhaina, tesaile rokiyo."
+  "R-BALANCE.insufficient_funds":
+    en: "Your balance is too low for this payment."
+    ne: "यो भुक्तानीका लागि तपाईंको मौज्दात कम छ।"
+    ne_latn: "Yo bhuktanika lagi tapaiko maujdat kam chha."
+  "R-DAILY-LIMIT.daily_limit_exceeded":
+    en: "This would go over your daily outgoing limit."
+    ne: "यसले तपाईंको दैनिक बाहिर जाने सीमा नाघ्छ।"
+    ne_latn: "Yasle tapaiko dainik bahira jane seema naghchha."
+  "R-VELOCITY.velocity_mfa":
+    en: "Several transfers in a short time, so your authenticator code is required."
+    ne: "छोटो समयमा धेरै कारोबार, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Chhoto samayama dherai karobar, tesaile authenticator code chahinchha."
+  "R-VELOCITY.velocity_deny":
+    en: "Too many transfers in a short time. Please wait a few minutes."
+    ne: "छोटो समयमा धेरै कारोबार भयो। केही मिनेट पर्खनुहोस्।"
+    ne_latn: "Chhoto samayama dherai karobar bhayo. Kehi minet parkhanuhos."
+  "R-TAINT-AMOUNT.untrusted_amount":
+    en: "The amount did not come from you, so please check it carefully."
+    ne: "रकम तपाईंबाट आएको होइन, त्यसैले ध्यानपूर्वक जाँच्नुहोस्।"
+    ne_latn: "Rakam tapaibata aayeko hoina, tesaile dhyanpurwak janchnuhos."
+  "R-TAINT-AMOUNT.inferred_amount":
+    en: "The assistant guessed the amount, so your authenticator code is required."
+    ne: "सहायकले रकम अनुमान गरेको हो, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Sahayakle rakam anuman gareko ho, tesaile authenticator code chahinchha."
+  "R-INJECTION.injection_suspected":
+    en: "The document behind this request contained suspicious instructions. Your authenticator code is required."
+    ne: "यो अनुरोधको कागजातमा शंकास्पद निर्देशन थियो। अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Yo anurodhko kagajatma shankaspad nirdeshan thiyo. Authenticator code chahinchha."
+  "R-RISK.risk_high":
+    en: "This looks risky, so your authenticator code is required."
+    ne: "यो जोखिमपूर्ण देखिन्छ, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Yo jokhimpurna dekhinchha, tesaile authenticator code chahinchha."
+  "R-RISK.risk_critical":
+    en: "This looks like a scam and was blocked. Your outgoing actions are locked."
+    ne: "यो ठगी जस्तो देखिन्छ र रोकियो। तपाईंको बाहिर जाने कारोबार रोकिएको छ।"
+    ne_latn: "Yo thagi jasto dekhinchha ra rokiyo. Tapaiko bahira jane karobar rokieko chha."
+  "R-PAYEE-ADD.payee_add_mfa":
+    en: "Adding a payee always needs your authenticator code."
+    ne: "प्राप्तकर्ता थप्न सधैं अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Praptakarta thapna sadhai authenticator code chahinchha."
+  "R-PAYEE-ADD.payee_add_untrusted":
+    en: "A payee cannot be added from untrusted details. Please type them yourself."
+    ne: "अविश्वसनीय विवरणबाट प्राप्तकर्ता थप्न सकिँदैन। आफैं टाइप गर्नुहोस्।"
+    ne_latn: "Abishwasaniya vivaranbata praptakarta thapna sakindaina. Aafai type garnuhos."
+  "R-TIER-HIGH.shares_personal_data":
+    en: "Sharing your payment record with someone else needs your authenticator code."
+    ne: "तपाईंको भुक्तानी विवरण अरूसँग साझा गर्न अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Tapaiko bhuktani vivaran arusanga sajha garna authenticator code chahinchha."
+  "R-PASSPORT.no_payment_history":
+    en: "There is no payment history to build a passport from yet."
+    ne: "पासपोर्ट बनाउन भुक्तानी इतिहास अझै छैन।"
+    ne_latn: "Passport banauna bhuktani itihas ajhai chhaina."
+  "R-PASSPORT.passport_not_found":
+    en: "That passport was not found among yours."
+    ne: "त्यो पासपोर्ट तपाईंका पासपोर्टहरूमा भेटिएन।"
+    ne_latn: "Tyo passport tapaika passportharuma bhetiyena."
+  "R-PASSPORT.passport_expired":
+    en: "That passport has expired. Issue a new one."
+    ne: "त्यो पासपोर्टको म्याद सकिएको छ। नयाँ जारी गर्नुहोस्।"
+    ne_latn: "Tyo passportko myad sakieko chha. Naya jari garnuhos."
+  "R-PASSPORT.claim_not_held":
+    en: "That passport does not contain the claim you asked to share."
+    ne: "तपाईंले साझा गर्न खोज्नुभएको दाबी त्यो पासपोर्टमा छैन।"
+    ne_latn: "Tapaile sajha garna khojnubhaeko daabi tyo passportma chhaina."
+  "R-PASSPORT.audience_missing":
+    en: "Say who the proof is for."
+    ne: "प्रमाण कसका लागि हो भन्नुहोस्।"
+    ne_latn: "Praman kasko lagi ho bhannuhos."
+  "R-CONTRIBUTION.no_family_link":
+    en: "You can only ask family members the bank has linked to your account."
+    ne: "तपाईं बैंकले जोडेका परिवारका सदस्यसँग मात्र माग्न सक्नुहुन्छ।"
+    ne_latn: "Tapai bankle jodeka parivarka sadasyasanga matra magna saknuhunchha."
+  "R-CONTRIBUTION.contribution_over_limit":
+    en: "That is more than one request may ask for."
+    ne: "यो एउटा अनुरोधमा माग्न मिल्ने भन्दा बढी हो।"
+    ne_latn: "Yo euta anurodhma magna milne bhanda badhi ho."
+  "R-CONTRIBUTION.contribution_currency":
+    en: "The request must be in your family member's account currency."
+    ne: "अनुरोध परिवारको सदस्यको खाताको मुद्रामा हुनुपर्छ।"
+    ne_latn: "Anurodh parivarko sadasyako khatako mudrama hunuparchha."
+  "R-TIER-HIGH.amount_above_low_limit":
+    en: "This amount is above your low limit, so your authenticator code is required."
+    ne: "यो रकम तपाईंको न्यून सीमाभन्दा माथि छ, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Yo rakam tapaiko nyun seemabhanda mathi chha, tesaile authenticator code chahinchha."
+  "R-TIER-HIGH.schedule":
+    en: "Scheduled payments need your authenticator code."
+    ne: "तालिकाबद्ध भुक्तानीलाई अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Talikabaddha bhuktanilai authenticator code chahinchha."
+  "R-TIER-HIGH.new_payee":
+    en: "This payee was added recently, so your authenticator code is required."
+    ne: "यो प्राप्तकर्ता भर्खरै थपिएको हो, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Yo praptakarta bharkhrai thapieko ho, tesaile authenticator code chahinchha."
+  "R-TIER-HIGH.unverified_payee":
+    en: "This payee is not verified, so your authenticator code is required."
+    ne: "यो प्राप्तकर्ता प्रमाणित छैन, त्यसैले अथेन्टिकेटर कोड चाहिन्छ।"
+    ne_latn: "Yo praptakarta pramanit chhaina, tesaile authenticator code chahinchha."
+  "R-TIER-LOW.within_low_limit":
+    en: "Small payment to a verified payee: please confirm."
+    ne: "प्रमाणित प्राप्तकर्तालाई सानो भुक्तानी: कृपया पुष्टि गर्नुहोस्।"
+    ne_latn: "Pramanit praptakartalai sano bhuktani: kripaya pushti garnuhos."
+  "R-TIER-LOW.state_change":
+    en: "Please confirm this change."
+    ne: "कृपया यो परिवर्तन पुष्टि गर्नुहोस्।"
+    ne_latn: "Kripaya yo parivartan pushti garnuhos."
+  "R-FLOOR.confirmation_always":
+    en: "Every payment needs your confirmation."
+    ne: "हरेक भुक्तानीलाई तपाईंको पुष्टि चाहिन्छ।"
+    ne_latn: "Harek bhuktanilai tapaiko pushti chahinchha."
+  "R-TIER-READ.read_only":
+    en: "Reading information is allowed."
+    ne: "जानकारी हेर्न अनुमति छ।"
+    ne_latn: "Jankari herna anumati chha."
+  "R-TIER-READ.unknown_tool":
+    en: "That tool is not allowed."
+    ne: "त्यो उपकरण अनुमति छैन।"
+    ne_latn: "Tyo upakaran anumati chhaina."
+  "R-UNKNOWN.unknown_action":
+    en: "This action is not supported."
+    ne: "यो कार्य समर्थित छैन।"
+    ne_latn: "Yo karya samarthit chhaina."
+  "R-DAILY-LIMIT.daily_total_unknown":
+    en: "Today's total cannot be checked against your daily limit, so this is blocked."
+    ne: "आजको कुल रकम दैनिक सीमासँग जाँच्न सकिएन, त्यसैले रोकियो।"
+    ne_latn: "Aajako kul rakam dainik seemasanga janchna sakiena, tesaile rokiyo."
+
+  "R-DUPLICATE.same_payment":
+    en: "You already paid {amount} to this account at {time}. This looks like a repeat. Confirm again with a fresh authenticator code only if you really mean to pay it twice."
+    ne: "तपाईंले यही खातामा {time} मा {amount} पहिले नै पठाउनुभएको छ। यो दोहोरिएको जस्तो देखिन्छ। साँच्चै दुई पटक पठाउन चाहनुहुन्छ भने मात्र नयाँ प्रमाणीकरण कोडसहित फेरि पुष्टि गर्नुहोस्।"
+    ne_latn: "Tapaile yahi khatama {time} ma {amount} pahile nai pathaunubhayeko chha. Yo doharieko jasto dekhinchha. Sanchai dui patak pathauna chahanuhunchha bhane matra naya pramanikaran code sahit pheri pushti garnuhos."
+  "R-PAYEE-COOLOFF.unverified_warning":
+    en: "Scam warning: this account came from a document or message and nobody has verified it. Until it is verified it can receive at most {cap} in any 24 hours. Signs of a scam: urgency, a new or changed account, a request to keep it secret. Check with the person by a number you already trust."
+    ne: "ठगीको चेतावनी: यो खाता कागजात वा सन्देशबाट आएको हो र कसैले प्रमाणित गरेको छैन। प्रमाणित नभएसम्म यसले कुनै पनि २४ घण्टामा {cap} भन्दा बढी पाउन सक्दैन। ठगीका संकेत: हतार, नयाँ वा बदलिएको खाता, गोप्य राख्न भनिएको अनुरोध। आफूले पहिल्यै चिनेको नम्बरमा सम्बन्धित व्यक्तिलाई सोध्नुहोस्।"
+    ne_latn: "Thagiko chetawani: yo khata kagajat wa sandesh bata aayeko ho ra kasaile pramanit gareko chhaina. Pramanit nabhaesamma yasle kunai pani 24 ghantama {cap} bhanda badhi paauna sakdaina. Thagiko sanket: hataro, naya wa badaliyeko khata, gopya rakhna bhaniyeko anurodh. Aafule pahilyai chineko number ma sambandhit vyaktilai sodhnuhos."
+  "R-PAYEE-COOLOFF.unverified_cap":
+    en: "Scam warning: this account came from a document or message and nobody has verified it, so it can receive at most {cap} in any 24 hours. This payment is above that. Check with the person by a number you already trust."
+    ne: "ठगीको चेतावनी: यो खाता कागजात वा सन्देशबाट आएको हो र कसैले प्रमाणित गरेको छैन, त्यसैले कुनै पनि २४ घण्टामा यसले {cap} भन्दा बढी पाउन सक्दैन। यो भुक्तानी त्यसभन्दा बढी छ। आफूले पहिल्यै चिनेको नम्बरमा सम्बन्धित व्यक्तिलाई सोध्नुहोस्।"
+    ne_latn: "Thagiko chetawani: yo khata kagajat wa sandesh bata aayeko ho ra kasaile pramanit gareko chhaina, tesaile kunai pani 24 ghantama yasle {cap} bhanda badhi paauna sakdaina. Yo bhuktani tyo bhanda badhi chha. Aafule pahilyai chineko number ma sambandhit vyaktilai sodhnuhos."
+  "R-PAYEE-COOLOFF.first_payment_cap":
+    en: "This account was saved less than 24 hours ago. Until {until} it can receive at most {cap} in total. Scammers rely on speed: real recipients can wait one day. You can ask the bank to verify this payee; once an officer confirms the account holder name matches, you can pay today."
+    ne: "यो खाता २४ घण्टाभन्दा कम अघि सुरक्षित गरिएको हो। {until} सम्म यसले जम्मा {cap} भन्दा बढी पाउन सक्दैन। ठगहरू हतारमा भर पर्छन्, साँचो प्राप्तकर्ताले एक दिन पर्खन सक्छन्। तपाईं बैंकलाई यो प्राप्तकर्ता प्रमाणित गर्न अनुरोध गर्न सक्नुहुन्छ; अधिकारीले खाताधनीको नाम मिलेको पुष्टि गरेपछि आजै भुक्तानी गर्न सकिन्छ।"
+    ne_latn: "Yo khata 24 ghanta bhanda kam agadi surakshit gariyeko ho. {until} samma yasle jamma {cap} bhanda badhi paauna sakdaina. Thagharu hatarma bhar parchhan, sancho praptakartale ek din parkhana sakchhan. Tapain bainkalai yo praptakarta pramanit garna anurodh garna saknuhunchha; adhikarile khatadhaniko naam mileko pushti garepachhi aajai bhuktani garna sakinchha."
+  "R-PAYEE-COOLOFF.first_payment_cap_untrusted":
+    en: "Scam warning: this account came from a document or message, and it is on hold. Nothing can be paid to it until {until}. Signs of a scam: urgency, a new or changed account, a request to keep it secret. Check with the person by a number you already trust. You can ask the bank to verify this payee. Verification does not shorten the hold."
+    ne: "ठगीको चेतावनी: यो खाता कागजात वा सन्देशबाट आएको हो र रोकिएको छ। {until} सम्म यसमा कुनै पैसा पठाउन मिल्दैन। ठगीका संकेत: हतार, नयाँ वा बदलिएको खाता, गोप्य राख्न भनिएको अनुरोध। आफूले पहिल्यै चिनेको नम्बरमा सम्बन्धित व्यक्तिलाई सोध्नुहोस्। तपाईं बैंकलाई यो प्राप्तकर्ता प्रमाणित गर्न अनुरोध गर्न सक्नुहुन्छ। प्रमाणीकरणले रोक अवधि छोट्याउँदैन।"
+    ne_latn: "Thagiko chetawani: yo khata kagajat wa sandesh bata aayeko ho ra rokiyeko chha. {until} samma yasma kunai paisa pathauna mildaina. Thagiko sanket: hataro, naya wa badaliyeko khata, gopya rakhna bhaniyeko anurodh. Aafule pahilyai chineko number ma sambandhit vyaktilai sodhnuhos. Tapain bainkalai yo praptakarta pramanit garna anurodh garna saknuhunchha. Pramanikaranle rok awadhi chhotyaundaina."
+  "R-PAYEE-ADD.payee_add_untrusted_warning":
+    en: "Scam warning: this account came from a document or message. Signs of a scam are urgency, a changed account and a request to keep it secret. Check with the person by a number you already trust before you continue."
+    ne: "ठगीको चेतावनी: यो खाता कागजात वा सन्देशबाट आएको हो। ठगीका संकेत: हतार, बदलिएको खाता र गोप्य राख्न भनिएको अनुरोध। अगाडि बढ्नु अघि आफूले पहिल्यै चिनेको नम्बरमा सम्बन्धित व्यक्तिलाई सोध्नुहोस्।"
+    ne_latn: "Thagiko chetawani: yo khata kagajat wa sandesh bata aayeko ho. Thagiko sanket: hataro, badaliyeko khata ra gopya rakhna bhaniyeko anurodh. Agadi badhnu agadi aafule pahilyai chineko number ma sambandhit vyaktilai sodhnuhos."

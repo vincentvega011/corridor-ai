@@ -1,0 +1,26 @@
+# Currency words. A word listed under `ambiguous` never resolves to one currency: the agent must ask.
+version: 1
+currencies:
+  NPR: {deva: [रुपैयाँ, रुपैया, रुपियाँ, रुपैयां, रु, रुपया], latn: [rupiya, rupiyan, rupaiya, rupaiyan, rupees, rupee, rs, nrs, npr, rupia]}
+  QAR: {deva: [रियाल, रियाल], latn: [riyal, riyals, qar, qr, riyaal]}
+  MYR: {deva: [रिङ्गिट, रिंगिट], latn: [ringgit, myr, rm, ringit]}
+  CNY: {deva: [युआन], latn: [yuan, rmb, cny, renminbi]}
+  AUD: {deva: [], latn: [aud]}
+  USD: {deva: [], latn: [usd]}
+phrases:      # token sequences (lowercase) -> currency
+  USD: [[us, dollar], [us, dollars], [american, dollar], [us, "$"], [usd, dollar]]
+  AUD: [[australian, dollar], [australian, dollars], [aus, dollar], [a, "$"], [aud, dollar]]
+ambiguous:    # surface form -> candidate currencies (never guessed)
+  "dollar": [AUD, USD]
+  "dollars": [AUD, USD]
+  "डलर": [AUD, USD]
+  "डलरको": [AUD, USD]
+  "$": [AUD, USD]
+unsupported:  # currencies we do not support: rule R-CURRENCY denies later
+  EUR: [euro, euros, eur, "€"]
+  GBP: [pound, pounds, gbp, "£"]
+  INR: [inr, "₹", indian]
+  KRW: [won, krw]
+  USDT: [usdt, usdc, tether]   # no crypto anywhere in this product (docs/spec/product.md)
+  BTC: [btc, bitcoin]
+  ETH: [eth, ethereum]

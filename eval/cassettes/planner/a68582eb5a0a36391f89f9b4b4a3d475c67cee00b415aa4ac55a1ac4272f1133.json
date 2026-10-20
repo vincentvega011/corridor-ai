@@ -1,0 +1,1 @@
+{"key": "a68582eb5a0a36391f89f9b4b4a3d475c67cee00b415aa4ac55a1ac4272f1133", "role": "planner", "response": {"text": "", "tool_calls": [{"id": "call_56723e76c66649558e7d6fd7", "name": "transfer", "arguments": {"payee_or_account": "pay_priya_landlord", "amount": 300, "currency": "AUD"}}], "input_tokens": 2408, "output_tokens": 78, "usage_estimated": false}}

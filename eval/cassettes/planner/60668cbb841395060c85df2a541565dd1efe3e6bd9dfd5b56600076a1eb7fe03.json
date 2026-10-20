@@ -1,0 +1,1 @@
+{"key": "60668cbb841395060c85df2a541565dd1efe3e6bd9dfd5b56600076a1eb7fe03", "role": "planner", "response": {"text": "I'll check your balances.", "tool_calls": [{"id": "call_cd731ef7bb4646c7a3cf5cca", "name": "get_balances", "arguments": {}}], "input_tokens": 1650, "output_tokens": 27, "usage_estimated": false}}

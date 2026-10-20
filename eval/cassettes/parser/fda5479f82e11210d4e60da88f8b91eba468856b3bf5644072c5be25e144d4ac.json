@@ -1,0 +1,1 @@
+{"key": "fda5479f82e11210d4e60da88f8b91eba468856b3bf5644072c5be25e144d4ac", "role": "parser", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"send_money\", \"slots\": {\"amount\": 20000, \"payee_ref\": \"Ama\"}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2182, "output_tokens": 52, "usage_estimated": false}}

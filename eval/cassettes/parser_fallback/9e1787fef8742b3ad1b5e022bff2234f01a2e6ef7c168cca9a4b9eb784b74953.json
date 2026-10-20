@@ -1,0 +1,1 @@
+{"key": "9e1787fef8742b3ad1b5e022bff2234f01a2e6ef7c168cca9a4b9eb784b74953", "role": "parser_fallback", "response": {"text": "{\"language\": \"mixed\", \"intent\": \"other\", \"slots\": {\"currency\": \"CNY\"}, \"missing_slots\": [], \"confidence_bps\": 8500}", "tool_calls": [], "input_tokens": 2173, "output_tokens": 39, "usage_estimated": false}}

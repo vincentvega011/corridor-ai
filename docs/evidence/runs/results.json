@@ -1,0 +1,301 @@
+{
+  "a-route-payment": {
+    "chain": {
+      "entries_checked": 6,
+      "first_broken_seq": null,
+      "reason": null,
+      "valid": true
+    },
+    "checks": [
+      {
+        "claim": "route comparison returns a recommended route and alternatives",
+        "observed": "KathmanduLink plus 2 alternatives",
+        "pass": true
+      },
+      {
+        "claim": "the payment button builds a proposal that needs the authenticator",
+        "observed": "level mfa, rules ['R-TIER-HIGH', 'R-FLOOR']",
+        "pass": true
+      },
+      {
+        "claim": "the confirmed payment executes",
+        "observed": "executed, grounding, message",
+        "pass": true
+      },
+      {
+        "claim": "a second confirmation of the same proposal does not pay twice",
+        "observed": "HTTP 409, new transfers 1",
+        "pass": true
+      },
+      {
+        "claim": "button flows call no model (every cascade decision is parser=structured)",
+        "observed": "1 cascade decisions, parsers ['structured']",
+        "pass": true
+      }
+    ],
+    "event_types": {
+      "cascade_decision": 1,
+      "confirmation_granted": 1,
+      "execution": 1,
+      "mfa_attempt": 1,
+      "policy_decision": 1,
+      "proposal": 1
+    },
+    "ledger_entries": 6,
+    "ok": true,
+    "title": "A. Route comparison and a confirmed route payment with TOTP"
+  },
+  "b-tuition-plan": {
+    "chain": {
+      "entries_checked": 13,
+      "first_broken_seq": null,
+      "reason": null,
+      "valid": true
+    },
+    "checks": [
+      {
+        "claim": "step 1 is a contribution request that moves no money",
+        "observed": "plan_step {'n': 1, 'total': 3}, level confirm",
+        "pass": true
+      },
+      {
+        "claim": "step 1 moved no money",
+        "observed": "Priya's balances unchanged after the request",
+        "pass": true
+      },
+      {
+        "claim": "the contributor accepts as Ramesh (no money moves by accepting)",
+        "observed": "status accepted",
+        "pass": true
+      },
+      {
+        "claim": "step 2 is a payment proposal with its own hash",
+        "observed": "step {'n': 2, 'total': 3}, level mfa",
+        "pass": true
+      },
+      {
+        "claim": "step 2 executes after the TOTP",
+        "observed": "executed, ledger_append, ledger_append, policy_decision, confirm_request",
+        "pass": true
+      },
+      {
+        "claim": "button flows call no model (every cascade decision is parser=structured)",
+        "observed": "1 cascade decisions, parsers ['structured']",
+        "pass": true
+      }
+    ],
+    "event_types": {
+      "cascade_decision": 1,
+      "confirmation_granted": 2,
+      "contribution_responded": 1,
+      "execution": 2,
+      "mfa_attempt": 1,
+      "policy_decision": 3,
+      "proposal": 3
+    },
+    "ledger_entries": 13,
+    "ok": true,
+    "title": "B. Tuition plan: request to the uncle, he accepts, step 2 paid with TOTP"
+  },
+  "c-credit-passport": {
+    "chain": {
+      "entries_checked": 9,
+      "first_broken_seq": null,
+      "reason": null,
+      "valid": true
+    },
+    "checks": [
+      {
+        "claim": "the passport is issued after the confirmation",
+        "observed": "HTTP 200, kind issued",
+        "pass": true
+      },
+      {
+        "claim": "a presentation is produced for exactly one claim and one audience",
+        "observed": "claims ['rent_on_time'], audience Mr Okafor",
+        "pass": true
+      },
+      {
+        "claim": "the intended verifier accepts the presentation",
+        "observed": "valid=True reason=None",
+        "pass": true
+      },
+      {
+        "claim": "a forwarded presentation is rejected",
+        "observed": "valid=False reason=wrong_audience",
+        "pass": true
+      },
+      {
+        "claim": "a replayed presentation is rejected (nonce used once)",
+        "observed": "valid=False reason=nonce_reused",
+        "pass": true
+      }
+    ],
+    "event_types": {
+      "confirmation_granted": 2,
+      "mfa_attempt": 1,
+      "passport_issued": 1,
+      "passport_shared": 1,
+      "policy_decision": 2,
+      "proposal": 2
+    },
+    "ledger_entries": 9,
+    "ok": true,
+    "title": "C. Credit Passport: issue, verifier challenge, valid presentation, forwarded copy rejected"
+  },
+  "d-housing-scam": {
+    "chain": {
+      "entries_checked": 14,
+      "first_broken_seq": null,
+      "reason": null,
+      "valid": true
+    },
+    "checks": [
+      {
+        "claim": "the document-derived payee is proposed with a warning and MFA, never paid",
+        "observed": "level mfa, warnings 1",
+        "pass": true
+      },
+      {
+        "claim": "the payee is saved (a record, not a payment)",
+        "observed": "Saved payee ****2208. Name taken from the document, not verified: CityNest Bookings. Nothi",
+        "pass": true
+      },
+      {
+        "claim": "the saved payee is marked untrusted (document) and unverified",
+        "observed": "provenance untrusted, verified False",
+        "pass": true
+      },
+      {
+        "claim": "the payment attempt is denied by the payee hold",
+        "observed": "deny ['R-PAYEE-COOLOFF', 'R-RISK', 'R-TAINT-PAYEE', 'R-TIER-HIGH', 'R-FLOOR']",
+        "pass": true
+      },
+      {
+        "claim": "no payment executed",
+        "observed": "intent, ledger_append, step_start, step_result, step_start, step_result, plan, ledger_append, ledger_append, ledger_append, policy_decision, rejected, message",
+        "pass": true
+      },
+      {
+        "claim": "a critical-risk attempt locks outgoing transfers (INV-11)",
+        "observed": "safety_locks [{'locked': True, 'reason': 'critical_risk'}]",
+        "pass": true
+      },
+      {
+        "claim": "Priya's balances did not change",
+        "observed": "0 minor units moved",
+        "pass": true
+      },
+      {
+        "claim": "MFA re-verification lifts the safety lock",
+        "observed": "{'unlocked': True, 'reason': None}",
+        "pass": true
+      }
+    ],
+    "event_types": {
+      "cascade_decision": 2,
+      "confirmation_granted": 1,
+      "execution": 1,
+      "mfa_attempt": 2,
+      "policy_decision": 2,
+      "proposal": 2,
+      "reader_extraction": 2,
+      "safety_lock": 2
+    },
+    "ledger_entries": 14,
+    "ok": true,
+    "title": "D. Housing scam: poisoned PDF, payee saved and held, payment denied, session locked"
+  },
+  "e-officer-verification": {
+    "chain": {
+      "entries_checked": 13,
+      "first_broken_seq": null,
+      "reason": null,
+      "valid": true
+    },
+    "checks": [
+      {
+        "claim": "the genuine landlord is saved on hold",
+        "observed": "hold_until 2026-10-11T03:17:30.948243+00:00",
+        "pass": true
+      },
+      {
+        "claim": "during the hold a payment to the document-derived payee is denied",
+        "observed": "deny ['R-PAYEE-COOLOFF', 'R-RISK', 'R-TAINT-PAYEE', 'R-TIER-HIGH', 'R-FLOOR']",
+        "pass": true
+      },
+      {
+        "claim": "the queue shows a Confirmation of Payee match",
+        "observed": "cop match",
+        "pass": true
+      },
+      {
+        "claim": "the officer verifies the payee under their own identity",
+        "observed": "HTTP 200, {'verified': True, 'payee_id': 'pay_doc_9a5f5837753a8342', 'officer_id': 'officer_asha'}",
+        "pass": true
+      },
+      {
+        "claim": "a customer token cannot verify a payee",
+        "observed": "HTTP 401",
+        "pass": true
+      }
+    ],
+    "event_types": {
+      "cascade_decision": 2,
+      "confirmation_granted": 1,
+      "execution": 2,
+      "mfa_attempt": 1,
+      "policy_decision": 2,
+      "proposal": 2,
+      "reader_extraction": 2,
+      "verification_requested": 1
+    },
+    "ledger_entries": 13,
+    "ok": true,
+    "title": "E. Officer verifies the genuine landlord (CoP match and out-of-band method)"
+  },
+  "f-ledger-tamper": {
+    "chain": {
+      "entries_checked": 13,
+      "first_broken_seq": null,
+      "reason": null,
+      "valid": true
+    },
+    "checks": [
+      {
+        "claim": "the hash chain verifies before any tampering",
+        "observed": "{\"valid\": true, \"entries_checked\": 13, \"first_broken_seq\": null, \"reason\": null}",
+        "pass": true
+      },
+      {
+        "claim": "verification FAILS after one stored entry is altered",
+        "observed": "{\"valid\": false, \"entries_checked\": 6, \"first_broken_seq\": 6, \"reason\": \"payload does not match payload_hash\"}",
+        "pass": true
+      },
+      {
+        "claim": "the first broken link is reported",
+        "observed": "first_broken_seq 6",
+        "pass": true
+      },
+      {
+        "claim": "restoring the row makes the chain verify again",
+        "observed": "{\"valid\": true, \"entries_checked\": 13, \"first_broken_seq\": null, \"reason\": null}",
+        "pass": true
+      }
+    ],
+    "event_types": {
+      "cascade_decision": 2,
+      "confirmation_granted": 1,
+      "execution": 2,
+      "mfa_attempt": 1,
+      "policy_decision": 2,
+      "proposal": 2,
+      "reader_extraction": 2,
+      "verification_requested": 1
+    },
+    "ledger_entries": 13,
+    "ok": true,
+    "reset_ledger_entries": 0,
+    "title": "F. Ledger chain verification, tamper detection, restore, reset"
+  }
+}

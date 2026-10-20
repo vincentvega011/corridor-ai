@@ -1,0 +1,11 @@
+version: 1
+currencies:
+  NPR: {latn: [npr, rupee, rupees, rs]}
+  QAR: {latn: [qar, riyal, riyals]}
+  MYR: {latn: [myr, ringgit]}
+  CNY: {latn: [cny, yuan, rmb]}
+  AUD: {latn: [aud]}
+  USD: {latn: [usd]}
+phrases: {}
+ambiguous: {}
+unsupported: {}

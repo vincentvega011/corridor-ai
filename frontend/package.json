@@ -1,0 +1,42 @@
+{
+  "name": "corridor-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Corridor AI customer PWA (sandbox only, no real money)",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "check-external": "node scripts/check-no-external.mjs",
+    "check-production": "node scripts/check-production-build.mjs"
+  },
+  "packageManager": "pnpm@10.28.2",
+  "dependencies": {
+    "@xyflow/react": "^12.12.0",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/noto-sans": "^5.3.0",
+    "@fontsource/noto-sans-devanagari": "^5.3.0",
+    "@fontsource/noto-serif-devanagari": "^5.3.0",
+    "@playwright/test": "^1.64.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.0",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}

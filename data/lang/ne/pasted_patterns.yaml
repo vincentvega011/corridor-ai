@@ -1,0 +1,29 @@
+version: 1
+# See data/lang/en/pasted_patterns.yaml. Nepali, romanised Nepali and code-mixed markers.
+header_prefixes:
+  - "bata:"
+  - "pathaeko:"
+  - "sandesh:"
+  - "फर्वार्ड"
+  - "सन्देश:"
+quote_prefixes: []
+voice_markers:
+  - hajur lai
+  - tapai lai
+  - ahile nai pathau
+  - ahile nai pathaideu
+  - jaldi pathau
+  - bahut urgent
+  - kasailai nabhannu
+  - maile naya account
+  - तपाईंलाई
+  - हजुरलाई
+  - छिटो पठाउ
+  - अहिले नै पठाउ
+imperative_markers:
+  - pathau
+  - pathaideu
+  - pathaidinu
+  - jamma
+  - पठाउ
+  - जम्मा

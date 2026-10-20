@@ -1,0 +1,40 @@
+version: 1
+digits: {}
+words:
+  0: {latn: [zero]}
+  1: {latn: [one]}
+  2: {latn: [two]}
+  3: {latn: [three]}
+  4: {latn: [four]}
+  5: {latn: [five]}
+  6: {latn: [six]}
+  7: {latn: [seven]}
+  8: {latn: [eight]}
+  9: {latn: [nine]}
+  10: {latn: [ten]}
+  11: {latn: [eleven]}
+  12: {latn: [twelve]}
+  13: {latn: [thirteen]}
+  14: {latn: [fourteen]}
+  15: {latn: [fifteen]}
+  16: {latn: [sixteen]}
+  17: {latn: [seventeen]}
+  18: {latn: [eighteen]}
+  19: {latn: [nineteen]}
+  20: {latn: [twenty]}
+  30: {latn: [thirty]}
+  40: {latn: [forty]}
+  50: {latn: [fifty]}
+  60: {latn: [sixty]}
+  70: {latn: [seventy]}
+  80: {latn: [eighty]}
+  90: {latn: [ninety]}
+multipliers:
+  100: {latn: [hundred]}
+  1000: {latn: [thousand, grand]}
+  100000: {latn: [lakh, lac]}
+  1000000: {latn: [million]}
+  10000000: {latn: [crore]}
+ambiguous_alone: [one]
+suffixes: {k: 1000}
+connectors: [and]

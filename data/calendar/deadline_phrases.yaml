@@ -1,0 +1,30 @@
+# Deadline phrase patterns for corridor.nlu.deadline. Matched on the lower cased message with Devanagari
+# digits turned into ASCII digits. Each pattern is a regular expression; group `n` is a number.
+version: 1
+within_days:        # "within 3 days" -> today + 3
+  - 'within\s+(?P<n>\d{1,5})\s+days?'
+  - 'in\s+(?P<n>\d{1,5})\s+days?\s+(?:time)?'
+  - '(?P<n>\d{1,5})\s+din\s*(?:bhitra|bhitrai|ma|maa)'
+  - '(?P<n>\d{1,5})\s*दिन\s*(?:भित्र|भित्रै|मा)'
+within_weeks:
+  - 'within\s+(?P<n>\d{1,2})\s+weeks?'
+  - '(?P<n>\d{1,2})\s+hapta\s*(?:bhitra|bhitrai|ma|maa)'
+  - '(?P<n>\d{1,2})\s*हप्ता\s*(?:भित्र|भित्रै|मा)'
+end_of_month:
+  - '(?:end\s+of\s+(?:the\s+|this\s+)?month)'
+  - 'mahina\s*ko\s+ant(?:\s+samma)?'
+  - 'mahina\s+sakinu\s+(?:agadi|aghi|pahile)'
+  - 'महिना\s*को\s+अन्त(?:\s*सम्म)?'
+  - 'महिनाको\s+अन्त(?:\s*सम्म)?'
+semester_start:
+  - '(?:semester|term)\s+(?:starts?|begins?|start\s+hunu|suru\s+hunu|suru\s+hune)'
+  - 'सेमेस्टर\s+सुरु\s+हुनु'
+bikram_sambat_markers:   # a year in this range, or a BS marker, means a Bikram Sambat date
+  year_min: 2070
+  year_max: 2100
+  markers: ['\bbs\b', 'b\.s\.', 'bikram', 'विक्रम', 'वि\.सं']
+  months: [baisakh, baishakh, jestha, jeth, ashadh, asar, shrawan, saun, bhadra, bhadau, ashwin, asoj, kartik, mangsir, poush, push, magh, falgun, phagun, chaitra, chait, बैशाख, बैसाख, जेठ, असार, श्रावण, साउन, भदौ, असोज, आश्विन, कात्तिक, कार्तिक, मंसिर, मङ्सिर, पौष, पुस, माघ, फागुन, फाल्गुन, चैत, चैत्र]
+unknown_event:           # a deadline cue with no date we can resolve
+  - 'before\s+the\s+(?:festival|festivals|holidays?|holiday\s+season)'
+  - 'chadparva\s+(?:agadi|aghi|pahile)'
+  - 'चाडपर्व\s+(?:अगाडि|अघि|पहिले)'

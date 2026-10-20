@@ -1,0 +1,6 @@
+# Language packs are data, not code (docs/spec/modules.md section 5.3). Adding Korean (ko) or Simplified Chinese (zh)
+# later means adding a folder data/lang/<code>/ with the same files and listing it here.
+# Fully evaluated now: en, ne (Devanagari and romanised) and their mixtures.
+enabled: [en, ne]
+planned: [ko, zh]       # not implemented: no pack folders exist yet
+files: [numbers, currency, kinship, time, conditions, lexicon, clarify, intents]

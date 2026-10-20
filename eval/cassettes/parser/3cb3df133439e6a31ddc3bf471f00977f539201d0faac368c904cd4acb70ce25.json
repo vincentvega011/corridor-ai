@@ -1,0 +1,1 @@
+{"key": "3cb3df133439e6a31ddc3bf471f00977f539201d0faac368c904cd4acb70ce25", "role": "parser", "response": {"text": "{\"language\": \"ne_latn\", \"intent\": \"other\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2146, "output_tokens": 35, "usage_estimated": false}}

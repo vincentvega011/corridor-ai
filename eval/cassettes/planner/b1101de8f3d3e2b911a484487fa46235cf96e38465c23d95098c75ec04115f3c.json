@@ -1,0 +1,1 @@
+{"key": "b1101de8f3d3e2b911a484487fa46235cf96e38465c23d95098c75ec04115f3c", "role": "planner", "response": {"text": "नयाँ payee बनाउन \"Bob\" को account number चाहिन्छ। कृपया account number दिनुहोस्, र ५ हजार कुन currency (NPR कि QAR) मा पठाउने हो पनि बताउनुहोस्।", "tool_calls": [], "input_tokens": 2345, "output_tokens": 74, "usage_estimated": false}}

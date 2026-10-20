@@ -1,0 +1,1 @@
+{"key": "e9b3568d77d9b27e34b9a6440fc69b8684f054173b28342c961e39d4d86bece4", "role": "parser", "response": {"text": "{\"language\": \"ne_latn\", \"intent\": \"credit_passport_share\", \"slots\": {}, \"missing_slots\": [], \"confidence_bps\": 9500}", "tool_calls": [], "input_tokens": 2154, "output_tokens": 38, "usage_estimated": false}}
